@@ -51,9 +51,10 @@ def printFindInversion():
     printExp("findInversion(10, 5)", 0)
     printExp("findInversion(6, 3)", 0)
 
+# 34.
+def printLogarithms():
+    t = np.arange(1., 500., 0.2)
 
-
-t = np.arange(0., 5., 0.2)
-
-plt.plot(t, t, 'r--')
-plt.show()
+    plt.plot(t, np.floor(np.log10(t)), 'r-', t, np.floor(np.log10(np.floor(t))), 'g-')
+    plt.plot(t, np.floor(np.log(t)), 'm-', t, np.floor(np.log(np.floor(t))), 'b-')
+    plt.show()
