@@ -4,13 +4,6 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-def printExp(e, er):
-    r = eval(e)
-    print('{0} = {1}, {2}'.format(
-        e,
-        r,
-        ('pass' if (r == er) else '!!! fail - {0} expected'.format(er))))
-
 def printFloorCeil():
     printExp("math.floor(1.1)", 1)
     printExp("math.floor(-1.1)", -2)
