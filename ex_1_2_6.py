@@ -1,6 +1,7 @@
 import itertools
 import math
 import utils
+from tabulate import tabulate
 
 # 3.
 # Count of combinations from n by k.
@@ -79,7 +80,6 @@ def combinationsSn(n, k):
     
     return nSn
 
-
 def evalSn(sn):
     r = 1
     for i, v in sn.items():
@@ -90,4 +90,77 @@ def printCombinationsSn():
     utils.printExp('combinationsSn(52, 13)', {2: 4, 5: 2, 7: 2, 17: 1, 23: 1, 41: 1, 43: 1, 47: 1}, globals(), locals())
     utils.printExp('evalSn(combinationsSn(52, 13))', 635013559600, globals(), locals())
 
+# 5.
+# 11^4 = 14641
+#         10       11
+# 0       10        1
+# 1      110       11
+# 2     1210      121
+# 3    13310     1331
+# 4             14641
+def pascal11(p):
+    rows = [[0, 10, 1]]
+    for i in range(1, p + 1):
+        prev = rows[i - 1]
+        pow = prev[1] + prev[2];
+        rows.append([i, 10 * pow, pow])
+    return rows
 
+def printPascal11():
+    print(tabulate(pascal11(4), headers=['', '10', '11'], tablefmt='orgtbl'))
+
+# (10 + 1)^4 = 10^4 + 4 * 10^3 + 6 * 10^2 + 4 * 10 + 1 = 10000 + 4000 + 600 + 40 + 1 = 14641
+
+# 6.
+# pascal triangle
+row0 = {0: 1}
+
+def getPascalRow(rowIndex, prev, left, right):
+    row = {}
+    for i in range(left, right + 1):
+        v = prev.get(i - 1, 0) + prev.get(i, 0)
+        if v != 0:
+            row[i] = v
+    return row
+
+def getPrevPascalRow(rowIndex, next, left, right):
+    row = {rowIndex: 1}
+    for i in range(rowIndex + 1, right + 1):
+        v = next.get(i, 0) - row.get(i - 1, 0)
+        if v != 0:
+            row[i] = v
+    for i in range(rowIndex - 1, left - 1, -1):
+        v = next.get(i + 1, 0) - row.get(i + 1, 0)
+        if v != 0:
+            row[i] = v
+    return row
+
+def rowToList(row, i, l, r):
+    list = [i]
+    for i in range(l, r + 1):
+        list.append(row.get(i, 0))
+    return list
+
+def printPascalTriangle():
+    l = -3
+    r = 9
+    headers = ['r']
+    for i in range(l, r + 1):
+        headers.append('by ' + str(i))
+    values = []
+    row = row0
+    for i in range(-1, l - 1, -1):
+        row = getPrevPascalRow(i, row, l, r)
+        values.insert(0, rowToList(row, i, l, r))
+    values.append(rowToList(row0, 0, l, r))
+    row = row0
+    for i in range(1, r + 1):
+        row = getPascalRow(i, row, l, r)
+        values.append(rowToList(row, i, l, r))
+    print(tabulate(values, headers=headers, tablefmt='orgtbl'))
+
+def callPrintPascalTriangle():
+    printPascalTriangle()
+
+        
+        
