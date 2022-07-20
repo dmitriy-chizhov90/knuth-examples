@@ -124,13 +124,9 @@ def getPascalRow(rowIndex, prev, left, right):
     return row
 
 def getPrevPascalRow(rowIndex, next, left, right):
-    row = {rowIndex: 1}
-    for i in range(rowIndex + 1, right + 1):
+    row = {0: 1}
+    for i in range(1, right + 1):
         v = next.get(i, 0) - row.get(i - 1, 0)
-        if v != 0:
-            row[i] = v
-    for i in range(rowIndex - 1, left - 1, -1):
-        v = next.get(i + 1, 0) - row.get(i + 1, 0)
         if v != 0:
             row[i] = v
     return row
@@ -142,14 +138,14 @@ def rowToList(row, i, l, r):
     return list
 
 def printPascalTriangle():
-    l = -3
+    l = 0
     r = 9
     headers = ['r']
     for i in range(l, r + 1):
         headers.append('by ' + str(i))
     values = []
     row = row0
-    for i in range(-1, l - 1, -1):
+    for i in range(-1, -4, -1):
         row = getPrevPascalRow(i, row, l, r)
         values.insert(0, rowToList(row, i, l, r))
     values.append(rowToList(row0, 0, l, r))
@@ -162,5 +158,5 @@ def printPascalTriangle():
 def callPrintPascalTriangle():
     printPascalTriangle()
 
-        
+callPrintPascalTriangle()
         
