@@ -32,9 +32,9 @@
 
 \paragraph{e.}
 
-\begin{flalign*}
+\begin{flalign} \label{eq:1_2_6__10_e_1}
   \binom{n}{k} \equiv \binom{\lfloor n/p \rfloor}{\lfloor k/p \rfloor} \binom{n \bmod p}{k \bmod p} (\textrm{по модулю} \ \ p) &&
-\end{flalign*}
+\end{flalign}
 
 Основная формула биномиального коэффициента:
 
@@ -94,8 +94,8 @@
   \prod_{i=0}^{2} 20-i  & \equiv 6 \cdot 5 \cdot 4 \ \ & (\textrm{по модулю } 7) \\
   20 \cdot 19 \cdot 18  & \equiv 6 \cdot 5 \cdot 4 \ \ & (\textrm{по модулю } 7) \\
   6840 & \equiv 120  \ \ & (\textrm{по модулю } 7) \\
-  6840 \bmod 7 & = 1
-  120 \bmod 7 & = 1
+  6840 \bmod 7 & = 1 &\\
+  120 \bmod 7 & = 1 &
 \end{flalign*}
 
 Для случая $ k \bmod p = 0 $ произведение в числителе, также как и в знаменателе, обращается в $ 1 $.
@@ -113,5 +113,144 @@
 \end{flalign*}
 
 Для случая $ \prod_{i=0}^{(k \bmod p)-1} n-i \equiv 0 \ \ (\textrm{по модулю } p) $ соотношения также справедливы, т.к. $ \binom{0}{k} = \Bigl\{ \genfrac{}{}{0pt}{}{0 \textrm{ при } k > 0}{1 \textrm{ при } k = 0} $.
+
+Рассмотрим далее оставшиеся сомножители в знаменателе: $ \prod_{i=1}^{k-(k \bmod p)} i $. Например, для $ k=17, p = 7 $ имеем $ \prod_{i=1}^{14} i $. Можно выделить $ \lfloor k / p \rfloor $ групп по $ p $ элементов в каждой. При этом в каждой группе существует только один элемент, кратный $ p $, а остальные эквиваленты $ (p-1)! $. То же самое утверждение справедливо и для числителя.
+
+Тогда элементы некратные $p$ сокращаются в числителе и знаменателе. Рассмотрим $ \lfloor k / p \rfloor $ элементов кратных $p$. Разделим каждый сомножитель в числителе и знаменателе на $ p $. Получим в знаменателе $ \lfloor k / p \rfloor ! $, т.к. первое число равно $ \lfloor k / p \rfloor $, а каждое последующее должно уменьшаться на $1$. В числителе получим $ \lfloor k / p \rfloor $ сомножителей, первым из которых является $ \lfloor (n - (k \bmod p)) / p \rfloor $, а последующие также уменьшаются на единицу. Т.е. получим биномиальный коэффициент
+
+\begin{flalign*}
+  \binom{\lfloor (n - (k \bmod p)) / p \rfloor}{\lfloor k / p \rfloor}
+\end{flalign*}
+
+При этом
+
+\begin{flalign*}
+  \lfloor (n - (k \bmod p)) / p \rfloor = \biggl\{ \genfrac{}{}{0pt}{0}
+          {\lfloor n / p \rfloor \textrm{, если } k \bmod p \leq n \bmod p}
+          {\lfloor n / p \rfloor - 1 \textrm{, если } k \bmod p > n \bmod p}
+\end{flalign*}
+
+Учтем, что при $ k \bmod p > n \bmod p $ второй сомножитель $ \binom{n \bmod p}{k \bmod p} = 0 $, поэтому значение первого сомножителя во всех случаях можно оставить равным $ \lfloor n / p \rfloor $.
+
+Интересным следствием доказанной формулы является тот факт, что
+
+\begin{flalign} \label{eq:1_2_6__10_e_2}
+  \binom{n}{k} \equiv 0 \ \ (\textrm{по модулю } p) \textrm{, если } k \bmod p > n \bmod p 
+\end{flalign}
+
+\paragraph{a.}
+
+\begin{flalign} \label{eq:1_2_6__10_a_1}
+  \binom{n}{p} \equiv \biggl \lfloor \frac{n}{p} \biggl \rfloor \ \ (\textrm{по модулю} \ \ p) &&
+\end{flalign}
+
+
+Подставим в формулу \ref{eq:1_2_6__10_e_1} $p$ вместо $k$. Получим
+
+\begin{flalign*}
+  \binom{n}{p} & \equiv \binom{\lfloor n/p \rfloor}{\lfloor p/p \rfloor} \binom{n \bmod p}{p \bmod p} & (\textrm{по модулю} \ \ p) && \\
+  \binom{n}{p} & \equiv \binom{\lfloor n/p \rfloor}{1} \binom{n \bmod p}{0} & (\textrm{по модулю} \ \ p) && \\
+  \binom{n}{p} & \equiv \lfloor n/p \rfloor \cdot 1 & (\textrm{по модулю} \ \ p) && \\
+  \binom{n}{p} & \equiv \lfloor n/p \rfloor & (\textrm{по модулю} \ \ p) && \\
+\end{flalign*}
+
+\paragraph{b.}
+
+\begin{flalign} \label{eq:1_2_6__10_b_1}
+  \binom{p}{k} \equiv 0 \ \ (\textrm{по модулю} \ \ p) \textrm{ для } 1 \leq k \leq p-1 &&
+\end{flalign}
+
+Подставим в формулу \ref{eq:1_2_6__10_e_1} $p$ вместо $n$. Получим
+
+\begin{flalign*}
+  \binom{p}{k} & \equiv \binom{\lfloor p/p \rfloor}{\lfloor k/p \rfloor} \binom{p \bmod p}{k \bmod p} & (\textrm{по модулю} \ \ p) && \\
+  \binom{p}{k} & \equiv \binom{1}{\lfloor k/p \rfloor} \binom{0}{k \bmod p} & (\textrm{по модулю} \ \ p) && \\
+  & k \bmod p = k \textrm{ для } 1 \leq k \leq p-1 & && \\
+  & \lfloor k/p \rfloor = 0 \textrm{ для } 1 \leq k \leq p-1 & && \\
+  \binom{p}{k} & \equiv \binom{1}{0} \binom{0}{k} & (\textrm{по модулю} \ \ p) && \\
+  \binom{p}{k} & \equiv 1 \cdot 0 & (\textrm{по модулю} \ \ p) && \\
+  \binom{p}{k} & \equiv 0 & (\textrm{по модулю} \ \ p) && \\
+\end{flalign*}
+
+\paragraph{c.}
+
+\begin{flalign*}
+  \binom{p-1}{k} \equiv (-1)^{k} \ \ (\textrm{по модулю} \ \ p) \textrm{ для } 0 \leq k \leq p-1 &&
+\end{flalign*}
+
+Если $k=0$, а $p>0$, то $ \binom{p-1}{k} = \binom{p-1}{0} = 1 $ и $ (-1)^k = 1 $.
+
+Подстановка $p-1$ вместо $n$ в формулу \ref{eq:1_2_6__10_e_1} ничего не дает, т.к. первый сомножитель обращается в $1$, а второй в исходное выражение:
+
+\begin{flalign*}
+  \binom{p-1}{k} & \equiv \binom{\lfloor (p-1)/p \rfloor}{\lfloor k/p \rfloor} \binom{p-1 \bmod p}{k \bmod p} & (\textrm{по модулю} \ \ p) && \\
+  \binom{p-1}{k} & \equiv \binom{0}{\lfloor k/p \rfloor} \binom{p-1}{k \bmod p} & (\textrm{по модулю} \ \ p) && \\
+  & k \bmod p = k \textrm{ для } 0 \leq k \leq p-1 & && \\
+  & \lfloor k/p \rfloor = 0 \textrm{ для } 0 \leq k \leq p-1 & && \\
+  \binom{p-1}{k} & \equiv \binom{0}{0} \binom{p-1}{k} & (\textrm{по модулю} \ \ p) && \\
+\end{flalign*}
+
+Рассмотрим формулу сложения:
+
+\begin{flalign*}
+  \binom{p}{k} & = \binom{p-1}{k} + \binom{p-1}{k-1} && \\
+  \binom{p-1}{k} & = \binom{p}{k} - \binom{p-1}{k-1} && \\
+\end{flalign*}
+
+Т.к. по формуле \ref{eq:1_2_6__10_b_1} $\binom{p}{k} \equiv 0 \ \ (\textrm{по модулю } p)$, то имеем
+
+\begin{flalign*}
+  \binom{p-1}{k} & \equiv - \binom{p-1}{k-1} & (\textrm{по модулю } p) && \\
+  \binom{p-1}{0} & \equiv 1 & (\textrm{по модулю } p) && \\
+  \binom{p-1}{1} & \equiv -1 = p-1 & (\textrm{по модулю } p) && \\
+  \binom{p-1}{2} & \equiv 1 & (\textrm{по модулю } p) && \\
+  \dots & \equiv \dots & (\textrm{по модулю } p) && \\
+  \binom{p-1}{p-1} & \equiv 1 & (\textrm{по модулю } p) && \\
+  \binom{p-1}{k} & \equiv (-1)^{k} & (\textrm{по модулю } p) && \\
+\end{flalign*}
+
+Т.к. $p$ -- простое число, а следовательно и нечетное, то $p-1$ -- число четное и $(-1)^{p-1} = 1$. 
+
+\paragraph{d.}
+
+\begin{flalign*}
+  \binom{p+1}{k} \equiv 0 \ \ (\textrm{по модулю} \ \ p) \textrm{ для } 2 \leq k \leq p-1 &&
+\end{flalign*}
+
+По формуле сложения:
+
+\begin{flalign*}
+  \binom{r}{k} & = \binom{r-1}{k} + \binom{r-1}{k-1} && \\
+  \binom{p+1}{k} & = \binom{p}{k} + \binom{p}{k-1} && \\
+\end{flalign*}
+
+По формуле \ref{eq:1_2_6__10_b_1} $ \binom{p}{k} \equiv 0 \ \ (\textrm{по модулю } p) \textrm{ для } k \geq 1 $, но тогда и $ \binom{p}{k-1} \equiv 0 \ \ (\textrm{по модулю } p) $, т.к. по условию $ k \geq 2 $.
+
+\paragraph{f.}
+
+Если в системе счисления с основанием $p$ числа $n$ и $k$ представляются в виде
+
+\begin{flalign*}
+  \genfrac{}{}{0pt}{}{n = a_r p^r + \dots + a_1 p + a_0,}{k = b_r p^r + \dots + b_1 p + b_0,} \textrm{ то }
+  \binom{n}{k} \equiv \binom{a_r}{b_r} \dots \binom{a_1}{b_1} \binom{a_0}{b_0} \ \ (\textrm{по модулю } p)
+\end{flalign*}
+
+Заметим, что
+
+\begin{flalign*}
+  \lfloor n/p \rfloor & = a_r p^{r-1} + \dots + a_2 p + a_1 &&  \\
+  n \bmod p           & = a_0 &&
+\end{flalign*}
+
+Таким образом по формуле \ref{eq:1_2_6__10_e_1} получаем
+
+\begin{flalign*}
+  \binom{n}{k} & \equiv \binom{a_r p^{r-1} + \dots + a_2 p + a_1}{b_r p^{r-1} + \dots + b_2 p + b_1} \binom{a_0}{b_0} \ \ & (\textrm{по модулю } p) && \\
+  \binom{n}{k} & \equiv \binom{a_r p^{r-2} + \dots + a_3 p + a_2}{b_r p^{r-2} + \dots + b_3 p + b_2} \binom{a_1}{b_1} \binom{a_0}{b_0} \ \ & (\textrm{по модулю } p) && \\
+  \dots & \equiv \dots \ \ & (\textrm{по модулю } p) && \\
+  \binom{n}{k} & \equiv \binom{a_r p + a_{r-1}}{b_r p + b_{r-1}} \binom{a_{r-2}}{b_{r-2}} \dots \binom{a_1}{b_1} \binom{a_0}{b_0} \ \ & (\textrm{по модулю } p) && \\
+  \binom{n}{k} & \equiv \binom{a_r}{b_r} \binom{a_{r-1}}{b_{r-1}} \binom{a_{r-2}}{b_{r-2}} \dots \binom{a_1}{b_1} \binom{a_0}{b_0} \ \ & (\textrm{по модулю } p) && \\
+\end{flalign*}
+
 
 \end{document}

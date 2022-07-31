@@ -182,20 +182,23 @@ def callPrintPascalTriangle():
 
         
 # 10.
-# Cn(k)
-#n (n-1) (n-2) ... (n-k+1)
-#1 2 3 ... k
+def printFactorialMod(n, p):
+    rows = []
+    for i in range(n):
+        v = n - i
+        f = math.factorial(v)
+        mod = f % p
+        rows.append([v, f, mod])
+    print(tabulate(rows, headers=['n', 'n!', 'n! mod p'], tablefmt='orgtbl'))
 
-n n-1 n-2
-k k-1 k-2
+# Пример того, что при k%p > n%p binom equiv 0 по модулю p.
+def printFactorialEquivalence(n, p):
+    rows = []
+    for i in range(n + 1):
+        v = n - i
+        f = math.factorial(v)
+        mod = f % p
+        rows.append([n, i, n%p, i%p, combi_count1(n, i) % p])
+    print(tabulate(rows, headers=['n', 'k', 'n mod p', 'k mod p', '\binom {n}{k} mod p'], tablefmt='orgtbl'))
 
-C8(5)
-8 7 6
-5 4 3
-
-p = 4
-
-n mod p = 8 mod 4 = 0
-k mod p = 5 mod 4 = 1
-
-C0(1) = 1
+printFactorialEquivalence(17, 7)
