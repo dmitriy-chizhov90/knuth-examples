@@ -12,6 +12,9 @@ class Formula:
         self.right = r
         self.isFinal = isFinal
 
+    def __repr__(self):
+        return f'Formula {self.left} -> {self.right} {"dot" if self.isFinal else ""}'
+
     def process(self, p):
         i = p.find(self.left)
         l = len(self.left)
