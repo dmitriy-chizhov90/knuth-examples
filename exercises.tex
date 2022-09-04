@@ -207,6 +207,25 @@
 
 Если число $n+1$ простое, то его можно записать в качестве ``произведения'' одного числа. В противном случае $n+1$ делится без остатка на одно из чисел $q$ ($1 < q < n + 1$). При этом $n+1 = q d$, где $1 < d < n + 1$. Т.к. $P(q)$ и $P(d)$ выполняются, то $q$ и $d$ можно записать в виде произведения простых чисел. Следовательно, $n+1$ также можно записать в виде произведения простых чисел.
 
+\subsubsection{6.}
+
+Докажите, что если соотношения
+
+\begin{flalign*}
+  a'm + b'n = c \textrm{,} \ \ a m + b n = d & \\
+\end{flalign*}
+
+справедливы непосредственно перед выполнением шага E4, то они верны и после его выполнения.
+
+Шаг E4:
+
+\begin{flalign*}
+  c \leftarrow d, d \leftarrow r, t \leftarrow a', a' \leftarrow a, a \leftarrow t - q a, t \leftarrow b', b' \leftarrow b, b \leftarrow t - q b.
+\end{flalign*}
+
+Т.к. $ a' \leftarrow a, b' \leftarrow b, c \leftarrow d $, то справедливость $a'm + b'n = c$ после шага E4 следует из справедливости $a m + b n = d$ до шага E4.
+
+Заметим, что $ c = a'm + b'n = q d + r = q (a m + b n) + r $. Отсюда $ r = (a' - q a) m + (b' - q b) n $. Т.к. $ d \leftarrow r, a \leftarrow a' - q a, b \leftarrow b' - q b $, то $ a m + b n = d $ также справедливо.
 
 \subsection{Числа, степени и логарифмы}
 \subsection{Суммы и произведения}
