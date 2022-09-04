@@ -17,22 +17,24 @@ class EuclidesComputer:
             l,
             r,
             [
-                Formula('|c', 'c|'), # Проталкиваем палки в конец, а c -- в начало, чтобы завершить итерацию
-                Formula('b|', '|b'), # Проталкиваем b в конец, а a -- в начало, чтобы можно было продолжать вычитание.
-                Formula('|a', 'a|'),
-                Formula('|*|', 'a*b'), # Вычитание
-                Formula('a|', '|'), # Когда вычитание завершено убираем ненужные буквы
-                Formula('|b', '|'),
-                Formula('a*b', 'd*d'), # Числа равны. Прекращаем вычитание. Заменяем на d.
-                Formula('db', 'dd'),
-                Formula('ad', 'dd'),
-                Formula('a', 'e'), # Числа не равны. Заменяем на c.
-                Formula('b', 'c'),
-                Formula('c', '|'), # Заменяем на палки и получаем новое вычитаемое.
-                Formula('e', '|'),
-                Formula('*d', '*'), # Убираем правое число и разделитель. Получаем ответ.!
-                Formula('*', ''),
-                Formula('d', '|')],
+                Formula('|*', 'a*'),
+                Formula('*|', '*b'),
+                Formula('|a', 'aa'),
+                Formula('b|', 'bb'),
+                Formula('a*b', 'ab'),
+
+                Formula('cb', 'ac'),
+                Formula('cd', 'bc'),
+                Formula('c', ''),
+                
+                Formula('abb', 'bab'),
+                Formula('ab', 'd'),
+                Formula('b', 'cb'),
+                Formula('d', 'cd'),
+
+                Formula('eaa', '|ea'),
+                Formula('ea', '|'),
+                Formula('a', 'ea')],
             verbose)
 
     def compute(self):
