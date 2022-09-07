@@ -12,5 +12,20 @@ def square_sum(n):
         sg *= -1
     return s
 
-for i in range(5):
-    print(i+1, square_sum(i+1))
+def print_square_sum():
+    for i in range(5):
+        print(i+1, square_sum(i+1))
+
+# 11.
+
+def formula_11_item(i):
+    return math.pow(-1, i) * math.pow(2*i+1, 3) / (math.pow(2*i+1, 4) + 4)
+
+def formula_11(n):
+    s = 0
+    for i in range(n + 1):
+        s += formula_11_item(i)
+    return s
+
+for i in range(100):
+    print(i, formula_11(i), formula_11_item(i))
