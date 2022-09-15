@@ -8,6 +8,10 @@
 \usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{layout}
+
+\geometry{a4paper, textwidth=426pt}
 
 \title{Решение упражнений из книги Искусство программирования на компьютере Д. Кнута \thanks{}}
 \author{Dim Ch}
@@ -20,6 +24,7 @@
 \chapter{Основные понятия}
 
 \section{Алгоритмы}
+
 \subsection*{}
 \subsubsection{1.}
 
@@ -473,8 +478,38 @@ P(1) выполняется:
 \begin{flalign*}
   & A1: T=0, m>0, n>0 & \\
   & A2: T=1, c=m>0, d=n>0, a=b'=0, a'=b=1 & \\
+  & A3: T + 2 <= n - r + 2, am+bn=d, a'm+b'n=c=qd+r, 0 \leq r < d, \textrm{gcd}(c, d) = \textrm{gcd}(m,n) & \\
 \end{flalign*}
 
+Заметим, что на каждом шаге E2 выполняется условие $r<d$,следовательно $d-r \geq 1$.
+Нижняя граница $n-r$ увеличивается на $1$ на каждой итерации алгоритма и достигает $n$ при $r=0$ максимум за $n$ итераций.
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $i$ & $T_6$ & $T_3$ & $T_5$ & $\inf (n-r)$ \\
+ \hline  1 & --  & 2  & 3 & 1  \\
+ \hline  2 & 4  & 5  & 6 & 2  \\
+ \hline  3 & 7  & 8  & 9 & 3  \\
+ \hline  $\cdots$ & $\cdots$  & $\cdots$  & $\cdots$ & $\cdots$  \\
+ \hline  $i$ & $3i-2$  & $3i-1$  & $3i$ & $i$  \\
+ \hline  $\cdots$ & $\cdots$  & $\cdots$  & $\cdots$ & $\cdots$  \\
+ \hline  $last$ & $T-2$  & $T-1$  & $T \leq 3n$ & $n$  \\
+ \hline
+\end{tabularx}
+
+Предположим на основании данных в таблице, что $T_5 \leq 3(n-r)$. Из этого следует, что $T_3$, $T_4$ и $T_6$ также $\leq 3(n-r)$. На основе известных утверждений об алгоритме E $r \geq 0$ на любом шаге алгоритма, следовательно $n-r \leq n$. $P(2)$, $P(3)$ следует из таблицы. Докажем по индукции $P(i+1)$.
+
+
+\begin{flalign*} 
+  & r_{i+1} < r_i & \\
+  & T_5 \leq 3(n-r_i)& \\
+  & T_{5_{i+1}} = T_{5_i} + 3 \leq 3(n-r_i)+3 = 3(n-r_i +1) \leq 3(n-r_{i+1}) & \\
+  & T_{5_{i+1}} \leq 3(n-r_{i+1}) \leq 3n& \\
+\end{flalign*}
 
 \subsection{Числа, степени и логарифмы}
 \subsection{Суммы и произведения}

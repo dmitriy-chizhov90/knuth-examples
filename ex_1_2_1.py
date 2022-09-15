@@ -106,8 +106,6 @@ def fsqrt2(u, v):
         return f'{v}\/2'
     return f'{u}{v:+}\/2'
 
-print('2\/2: ', 1+numpy.float128(2**0.5))
-
 def euclides_sqrt2(mu, mv, nu, nv):
     i, cnt = 0, 100
     print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
@@ -131,12 +129,11 @@ def add_euclides(mu, mv, nu, nv):
     du, dv = euclides_sqrt2(mu, mv, nu, nv)
     table.append([mu, mv, nu, nv, du, dv])
 
-add_euclides(1347, 0, 52, 0)
-add_euclides(1, 0, 0, 1)
+def print_euclides_sqrt2():
+    add_euclides(1347, 0, 52, 0)
+    add_euclides(1, 0, 0, 1)
 
-
-
-print(tabulate(table, headers, tablefmt='orgtbl'))
+    print(tabulate(table, headers, tablefmt='orgtbl'))
 
 # 13.
 
@@ -153,7 +150,7 @@ def euclides_cnt(m, n):
         T += 1
         q, r = c // d, c % d
 
-        rows.append([(T-2)/3, T, c, d, q, r, a, b, _a, _b, a*m, b*n, a*m+b*n, _a*m, _b*n, _a*m+_b*n, n // (d)])
+        rows.append([(T-2)/3, T, c, d, q, r, a, b, _a, _b, n-r])
 
         T += 1
         if r == 0:
@@ -164,5 +161,6 @@ def euclides_cnt(m, n):
         _a, a = a, _a - q*a
         _b, b = b, _b - q*b
    
-#headers=['(T-2)/3', 'T', 'c', 'd', 'q', 'r', 'a', 'b', '_a', '_b', 'a*m', 'b*n', 'a*m+b*n', '_a*m', '_b*n', '_a*m+_b*n', 'm*n // (c*d)']
-#print(tabulate(euclides_cnt(1347, 52), headers, tablefmt='orgtbl'))
+headers=['(T-2)/3', 'T', 'c', 'd', 'q', 'r', 'a', 'b', '_a', '_b', 'n-3']
+for i in range(34, 35):
+    print(tabulate(euclides_cnt(1347, i), headers, tablefmt='orgtbl'))
