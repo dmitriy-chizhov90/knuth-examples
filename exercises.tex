@@ -608,6 +608,44 @@ P(1) выполняется:
 
 Существует единственное целое число $n$ такое, что $ n^m \leq u < (n+1)^m $. Существует единственное целое число $0 \leq d_1 < 10$ такое, что $ (n + \frac{d_1}{10})^m \leq u < (n + \frac{d_1}{10} + \frac{1}{10})^m $. И так далее существует единственное целое число $0 \leq d_k < 10$ такое, что $ (n + \frac{d_1}{10} + \frac{d_2}{100} + \cdots + \frac{d_k}{10^k})^m \leq u <  (n + \frac{d_1}{10} + \frac{d_2}{100} + \cdots + \frac{d_k}{10^k} + \frac{1}{10^k})^m $.
 
+\subsubsection{9.}
+
+Для заданных рациональных чисел $x$ и $y$ докажите правила возведения в степень, предполагая, что эти правила выполняются для целых чисел $x$ и $y$.
+
+\begin{flalign*} 
+  & b^{x+y} = b^x b^y & \\
+  & x = \frac{p}{q}, y = \frac{r}{s} & \\
+  & b^{x+y} = b^{\frac{p}{q} + \frac{r}{s}} = b^{\frac{sp+qr}{qs}} =
+  \sqrt[qs]{b^{(sp+qr)}} = \sqrt[qs]{b^{sp} b^{qr}} =
+  \sqrt[qs]{b^{sp}} \sqrt[qs]{b^{qr}} = b^{\frac{sp}{qs}} b^{\frac{qr}{qs}} =
+  b^{\frac{p}{q}} b^{\frac{r}{s}} = b^x b^y & \\
+\end{flalign*}
+
+
+Для доказательства $(b^x)^y = b^{xy}$ предварительно докажем, что $\sqrt[s]{\sqrt[q]{b}} = \sqrt[sq]{b}$. Для $s=1$ соотношение выполняется: $\sqrt[1]{\sqrt[q]{b}} = \sqrt[q]{b} = \sqrt[1 \cdot q]{b} $. Докажем, $P(n+1)$. Пусть $ v^{n+1} = v \cdot v^n = \sqrt[q]{b} $. Тогда
+
+\begin{flalign*}
+  & v = \sqrt[n+1]{\sqrt[q]{b}} & \\
+  & b = (v^{n+1})^q = v^{q(n+1)} & \\
+  &  v = \sqrt[q(n+1)]{b} & \\
+\end{flalign*}
+
+\begin{flalign*} 
+  & (b^x)^y = b^{xy} & \\
+  & x = \frac{p}{q}, y = \frac{r}{s} & \\
+  & (b^x)^y = (b^{\frac{p}{q}})^{\frac{r}{s}} = \sqrt[s]{(b^{\frac{p}{q}})^r} =
+  \sqrt[s]{(\sqrt[q]{b^p})^r} =
+  \sqrt[s]{\underbrace{\sqrt[q]{b^p} \sqrt[q]{b^p} \cdots \sqrt[q]{b^p}}_{r \textrm{ раз}}} =
+  \sqrt[s]{\sqrt[q]{\underbrace{b^p b^p \cdots b^p}_{r \textrm{ раз}}}} =
+  \sqrt[s]{\sqrt[q]{(b^p)^r}} = \sqrt[s]{\sqrt[q]{b^{pr}}} =
+  \sqrt[sq]{b^{pr}} = & \\
+  & b^{\frac{pr}{sq}} = b^{\frac{p}{q} \frac{r}{s}} = b^{xy} & \\
+\end{flalign*}
+
+
+\begin{flalign*}
+\end{flalign*}
+
 
 \subsection{Суммы и произведения}
 \subsection{Целочисленные функции и элементарная теория чисел }
