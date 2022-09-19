@@ -6,30 +6,41 @@ from tabulate import tabulate
 
 # 8.
 
-def power(n, m):
+def power(n, u, m):
     p = 1
     for i in range(m):
         p *= n
     return p
 
-def bin_search(u, m):
+def sqrt_cmp(u, m, sq, sq_next):
+    if u < sq:
+        return -1
+    if u >= sq_next:
+        return 1
+    return 0
+
+def bin_search(u, m, f_check, f_cmp):
     v = int(u)
     part = v
 
     while True:
-        sq = power(v, m)
-        sq_next = power(v+1, m)
-        if sq <= u and u < sq_next:
+        sq = f_check(v, u, m)
+        sq_next = f_check(v+1, u, m)
+        rel = f_cmp(u, m, sq, sq_next)
+        if rel == 0:
             return v
         if part > 1:
             part = part // 2
-        if u < sq:
+        if rel == -1:
             v -= part
         else:
             v += part
+
+def bin_search_sqrt(u, m):
+    return bin_search(u, m, power, sqrt_cmp)
         
 def check_bin_search(u, m, exp):
-    v = bin_search(u, m)
+    v = bin_search_sqrt(u, m)
     if v != exp:
         print(f'FAIL! bin_search({u}, {m}) = {v}, but {exp} expected')
     else:
@@ -51,11 +62,11 @@ def chop_0(digits):
         digits = digits[:-1]
     return digits
 
-def sqrt_seq(u, m, k=100):
-    n = bin_search(u, m)
+def seq_search(u, m, f_check, f_cmp, k=100):
+    n = bin_search(u, m, f_check, f_cmp)
     c = 1
     v, v_real, v_real_next = n, n, n
-    sq = power(v, m)
+    sq = f_check(v, u, m)
     digits = []
 
     for i in range(k):
@@ -64,8 +75,8 @@ def sqrt_seq(u, m, k=100):
         for i in range(10):
            v_next  = v + 1
            v_real_next = v_next / c
-           sq_next = power(v_real_next, m)
-           if sq <= u and u < sq_next:
+           sq_next = f_check(v_real_next, u, m)
+           if f_cmp(u, m, sq, sq_next) == 0:
                digits.append(str(i))
                break
            sq, v, v_real = sq_next, v_next, v_real_next
@@ -73,6 +84,9 @@ def sqrt_seq(u, m, k=100):
     digits = chop_0(digits)
     print(v_real, v_real_next, f'{n}.{"".join(digits)}')
     return v_real, v_real_next
+
+def sqrt_seq(u, m):
+    return seq_search(u, m, power, sqrt_cmp)
 
 def check_sqrt_seq(u, m, exp):
     v, v_next = sqrt_seq(u, m)
@@ -84,4 +98,34 @@ def check_sqrt_seq(u, m, exp):
 def test_sqrt_seq():
     check_sqrt_seq(10, 2, 3.1622776601683793007424583265674300491809844970703125)
 
-test_sqrt_seq()
+#test_sqrt_seq()
+
+# 11.
+
+def power2(v, u, m):
+    return math.pow(u, v)
+
+def log_cmp(b, c, sq, sq_next):
+    if c < sq:
+        return -1
+    if c >= sq_next:
+        return 1
+    return 0
+
+def log_seq(b, c, k):
+    return seq_search(b, c, power2, log_cmp, k)
+
+def print_log_10_2():
+    for i in range(20):
+        p, p_next = log_seq(10, 2, i)
+        print(math.pow(10, p), math.pow(10, p_next))
+
+    x = math.log10(2)
+    bx = math.pow(10, x)
+    xl = 0.3010299956639812
+    xu = 0.30102999566398129
+    bxl = math.pow(10, xl)
+    bxu = math.pow(10, xu)
+    print(f'x: {x}, bx: {bx}, bxl: {bxl}, bxu: {bxu}')
+
+print_log_10_2()
