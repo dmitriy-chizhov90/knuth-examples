@@ -758,6 +758,68 @@ P(1) выполняется:
 
 Остается сравнить $b^{1/10^k}-1$ и $(b-1)/10^k$. Обозначим $x=b-1$, $n=10^k$ и получим уже доказанное выражение: $(x+1)^{1/n}-1 = \sqrt[n]{x+1}-1 \leq x/n$.
 
+\subsubsection{14.}
+
+Докажите равенство $\log_{b}{(c^y)} = y \log_{b}{c}$, если $c>0$.
+
+Представим степень через произведение и докажем утверждение с помощью свойства логарифма произведения.
+\begin{flalign*}
+  & \log_{b}{(c^y)} =
+  \log_{b}{(\underbrace{c \cdot c \dots c}_{y \textrm{ раз}})}  =
+  \underbrace{\log_{b}{c}+\log_{b}{c}+\cdots+\log_{b}{c}}_{y \textrm{ раз}} =
+  y \log_{b}{c} & \\
+\end{flalign*}
+
+Другой вариант доказательства по определению логарифма. Пусть $\log_{b}{c} = x$, тогда
+\begin{flalign*}
+  & b^x = c & \\
+  & (b^x)^y = b^{xy} = c^y . & \\
+\end{flalign*}
+
+Отсюда $xy = \log_{b}{(c^y)} = y \log_{b}{c}$.
+
+\subsubsection{15.}
+
+Докажите или опровергните следующее равенство:
+
+\begin{flalign*}
+  \log_{b}{x/y}=\log_{b}{x}-\log_{b}{y} \textrm{ при } x,y > 0. \\
+\end{flalign*}
+
+Используя свойства логарифмов получаем доказательство:
+\begin{flalign*}
+  & \log_{b}{x/y} = \log_{b}{\Bigl (x(y)^{-1} \Bigl )} = \log_{b}{x} + \log_{b}{(y^{-1})} =\log_{b}{x}-\log_{b}{y} . & \\
+\end{flalign*}
+
+\subsubsection{16.}
+
+Как можно выразить $\log_{10}{x}$ через $\ln{x}$ и $\ln{10}$?
+
+\begin{flalign*}
+  & \log_{10}{x} = \frac{\ln{x}}{\ln{10}}, \textrm{ так как} & \\
+  & (\log_{10}{x}) (\ln{10}) =  \ln{10^{\log_{10}{x}}} = \ln{x} & \\
+\end{flalign*}
+
+\subsubsection{17.}
+
+Чему равны $\lg{32}$, $\log_{\pi}{\pi}$, $\ln{e}$, $\log_{b}{1}$ и $\log_{b}{(-1)}$?
+
+\begin{flalign*}
+  & \lg{32}=5, \ \ \log_{\pi}{\pi}=1, \ \ \ln{e}=1, \ \ \log_{b}{1}=0, & \\
+  & \log_{b}{(-1)} \textrm{ --- не существует. } & \\
+\end{flalign*}
+
+\subsubsection{18.}
+
+Докажите или опровергните следующее равенство: $\log_{8}{x}=\frac{1}{2}\lg{x}$.
+
+\begin{flalign*}
+  & \log_{8}{x} = \frac{\lg{x}}{\lg{8}} = \frac{\lg{x}}{3} = \frac{1}{3}\lg{x}
+  \neq \frac{1}{2}\lg{x} .& \\
+\end{flalign*}
+
+
+
 \subsection{Суммы и произведения}
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
