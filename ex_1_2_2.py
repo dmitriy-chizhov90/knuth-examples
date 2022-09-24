@@ -3,6 +3,7 @@
 import math
 import numpy as np
 from tabulate import tabulate
+from random import randrange
 
 # 8.
 
@@ -128,4 +129,23 @@ def print_log_10_2():
     bxu = math.pow(10, xu)
     print(f'x: {x}, bx: {bx}, bxl: {bxl}, bxu: {bxu}')
 
-print_log_10_2()
+#print_log_10_2()
+
+# 19. Оценка объема памяти для числа.
+def digits_count(n):
+    return int(math.floor(math.log10(n) + 1))
+
+def bits_count(n):
+    d = digits_count(n)
+    return math.ceil(d*10/3)
+
+numbers = [randrange(1000000) for i in range(100)]
+numbers = sorted(numbers + [1, 9, 10, 11, 99, 100, 101, 999, 1000, 1001])
+
+for n in numbers:
+    bits = bits_count(n)
+    upper = int(math.pow(2, bits))
+    lower = int(math.pow(2, bits-1))
+    print(f'{n}: {digits_count(n)} {bits}, [{lower}; {upper}]')
+
+
