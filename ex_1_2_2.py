@@ -278,5 +278,55 @@ def printHiper():
         dots=[(x,math.log(x)),(y,math.log(y)),(xy,math.log(xy))]
     )
         
-printHiper()
+# printHiper()
 
+# 24. Вычисление логарифма по основанию 10 log_{10}{n}.
+# Вычисление целой части логарифма
+def log10_floor(x):
+    n=0
+    bound=1.
+    while True:
+        if x >= (bound*10):
+            bound *= 10
+            n += 1
+        elif x < bound:
+            bound /= 10
+            n -= 1
+        else:
+            return n
+
+
+def log10(x):
+    e = 10
+    n = log10_floor(x)
+
+    x_prev = x/math.pow(10,n)
+    b = []
+    divisor = math.pow(2,e)
+    nominator = 0
+    power = 1
+    
+    for i in range(e):
+        x_prev=x_prev*x_prev
+        r=0
+        if x_prev >= 10:
+            r=1
+            x_prev /= 10
+        b.append(str(r))
+        power *= 2
+        k = divisor/power
+        nominator += r*k
+    
+    return n, n+nominator/divisor, ''.join(b)
+
+headers = ['x', 'floor(log{x})', 'log{x}', 'digits', 'check', 'eps(%)']
+table = []
+fx = lambda i: i/100
+for i in range(1,2001):
+    x=fx(i)
+    v_floor, v, digits = log10(x)
+    check = math.pow(10,v)
+    eps = abs(check-x)/x*100
+    table.append([x,v_floor,v,digits,check,eps])
+
+print(tabulate(table, headers, tablefmt='orgtbl'))
