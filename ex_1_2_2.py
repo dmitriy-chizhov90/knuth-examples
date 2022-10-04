@@ -282,25 +282,24 @@ def printHiper():
 
 # 24. Вычисление логарифма по основанию 10 log_{10}{n}.
 # Вычисление целой части логарифма
-def log10_floor(x):
+def logn_floor(x, base):
     n=0
     bound=1.
     while True:
-        if x >= (bound*10):
-            bound *= 10
+        if x >= (bound*base):
+            bound *= base
             n += 1
         elif x < bound:
-            bound /= 10
+            bound /= base
             n -= 1
         else:
             return n
 
-
-def log10(x):
+def logn(x, base):
     e = 10
-    n = log10_floor(x)
+    n = logn_floor(x, base)
 
-    x_prev = x/math.pow(10,n)
+    x_prev = x/math.pow(base,n)
     b = []
     divisor = math.pow(2,e)
     nominator = 0
@@ -309,9 +308,9 @@ def log10(x):
     for i in range(e):
         x_prev=x_prev*x_prev
         r=0
-        if x_prev >= 10:
+        if x_prev >= base:
             r=1
-            x_prev /= 10
+            x_prev /= base
         b.append(str(r))
         power *= 2
         k = divisor/power
@@ -319,14 +318,64 @@ def log10(x):
     
     return n, n+nominator/divisor, ''.join(b)
 
-headers = ['x', 'floor(log{x})', 'log{x}', 'digits', 'check', 'eps(%)']
-table = []
-fx = lambda i: i/100
-for i in range(1,2001):
-    x=fx(i)
-    v_floor, v, digits = log10(x)
-    check = math.pow(10,v)
-    eps = abs(check-x)/x*100
-    table.append([x,v_floor,v,digits,check,eps])
+def print_log_table(base):
+    headers = ['x', 'floor(log{x})', 'log{x}', 'digits', 'check', 'eps(%)']
+    table = []
+    fx = lambda i: i/100
+    for i in range(1,2001):
+        x=fx(i)
+        v_floor, v, digits = logn(x, base)
+        check = math.pow(base,v)
+        eps = abs(check-x)/x*100
+        table.append([x,v_floor,v,digits,check,eps])
 
-print(tabulate(table, headers, tablefmt='orgtbl'))
+    print(tabulate(table, headers, tablefmt='orgtbl'))
+
+def print_log_tables():
+    #print_log_table(10)
+    print_log_table(2)
+
+# 25. y = log_{base}{x}
+def rshift(x, n=1):
+    r = x
+    for i in range(n):
+        r/=2
+    return r
+
+def log_compute(x, base):
+    if x < 1 or x >= 2:
+        raise Exception(f"x={x}, expected 1 <= x < 2")
+    verbose=True
+    if verbose: print(f'x: {x}, base: {base}')
+    y=0;z=rshift(x);k=1
+    if verbose: print(f'y=0;z=x>>1;k=1 // y: {y}, z: {z}, k: {k}')
+    while x>1:
+        if verbose: print(f'while x({x})>1:')
+        while x-z < 1:
+            if verbose: print(f'    while x({x})-z({z}) ({x-z}) < 1:')
+            z=rshift(z); k+=1
+            if verbose: print(f'        z >>= 1 ({z}); k+=1 ({k})')
+        if verbose: print(f'    while x({x})-z({z}) ({x-z}) < 1: break')
+        x-=z; z=rshift(x,k); kp2=math.pow(2,k)
+        if verbose: print(f'    x-=z ({x}); z=int(x)>>k ({z}); kp2=math.pow(2,k) ({kp2})')
+        y+=math.log(kp2/(kp2-1), base)
+        if verbose: print(f'    y+=math.log(kp2/(kp2-1), base) ({y})')
+    if verbose: print(f'while x({x})>1: break')
+    return y
+
+def print_log_table_25(base):
+    headers = ['x', 'log{x}', 'check', 'eps(%)']
+    table = []
+    #for i in range(1,101):
+    i=1.5
+    if True:
+        x=i
+        y = log_compute(x, base)
+        check = math.log(x, base)
+        print(x,y,check)
+        eps = 0 if (check==0 and y==0) else (abs(check-y)/check*100)
+        table.append([x,y,check,eps])
+
+    print(tabulate(table, headers, tablefmt='orgtbl'))
+
+print_log_table_25(10)
