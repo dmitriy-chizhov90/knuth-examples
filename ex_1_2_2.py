@@ -380,5 +380,32 @@ def print_log_table_25(base):
 
 #print_log_table_25(10)
 
+# 29.
+
+def draw_logarithms_b():
+    t0 = 1.
+    x=100
+
+    ln = np.vectorize(lambda i, b: math.log(i, b))
+    lnb = np.vectorize(lambda i, b: b*math.log(i, b))
+    step = 0.001
+    i_x = np.arange(t0, x+step, step)
+
+    ln_str = lambda b: r'$ log_{' + str(b) + r'}(x)$'
+    lnb_str = lambda b: str(b) + r'$ log_{' + str(b) + r'}(x)$'
+    
+    def drLn(b): plt.plot(i_x, ln(i_x, b), 'r-', label=ln_str(b), linewidth=b*2)
+    def drLnb(b): plt.plot(i_x, lnb(i_x, b), 'b-', label=lnb_str(b), linewidth=b*2)
+    
+    drawPlot(
+        lambda: (drLn(1.5), drLnb(1.5), drLn(2), drLnb(2), drLn(math.e), drLnb(math.e), drLn(3), drLnb(3), drLn(5), drLnb(5)),
+        vlines=[],
+        hlines=[],
+        xtext=[],
+        ytext=[],
+        dots=[]
+    )
+
 
     
+draw_logarithms_b()
