@@ -1220,6 +1220,103 @@ A4. $1 \leq x<2$, $0 \leq z<1$, $k \geq 1$, $2^k \geq 2$, $1<\frac{2^k}{2^k-1} \
 Таким образом, при $b=4$ функция минимальна.
 
 \subsection{Суммы и произведения}
+
+\subsubsection{1.}
+
+Что означает запись $\sum_{1 \leq j \leq n}{a_j}$ для $n=3.14$?
+\begin{flalign*}
+  & \sum_{1 \leq j \leq 3.14}{a_j} = a_1 + a_2 + a_3. & \\
+\end{flalign*}
+
+\subsubsection{2.}
+
+Не пользуясь знаком $\sum$, запишите эквивалент выражения
+\begin{flalign*}
+  & \sum_{0 \leq n \leq 5}{\frac{1}{2n+1}}, & \\
+\end{flalign*}
+а также выражения
+\begin{flalign*}
+  & \sum_{0 \leq n^2 \leq 5}{\frac{1}{2n^2+1}}. & \\
+\end{flalign*}
+
+\begin{flalign*}
+  & \sum_{0 \leq n \leq 5}{\frac{1}{2n+1}} = \frac{1}{1} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \frac{1}{9} + \frac{1}{11} = 1 + \frac{4}{9} + \frac{12}{35}+\frac{1}{11} = 1 + \frac{4}{9} + \frac{167}{385} = 1 \frac{3043}{3465}; & \\
+  & \sum_{0 \leq n^2 \leq 5}{\frac{1}{2n^2+1}} = \sum_{-\sqrt{5} \leq n \leq \sqrt{5}}{\frac{1}{2n^2+1}} = \frac{1}{2(-2)^2+1}+\frac{1}{2(-1)^2+1}+\frac{1}{2(0)^2+1}+\frac{1}{2(1)^2+1}+\frac{1}{2(2)^2+1} = \frac{2}{9} + \frac{2}{3} + \frac{1}{1}. & \\
+\end{flalign*}
+
+\subsubsection{3.}
+
+Объясните, почему несмотря на правило (b) результаты предыдущего упражнения различны.
+
+Стоит отметить, что $\sum_{0 \leq n^2 \leq 5}{\frac{1}{2n^2+1}} \neq \sum_{0 \leq i \leq 5}{\frac{1}{2i+1}}$, т.к. $i = p(n)=n^2$ ($ n=\pm \sqrt{i} $) не является перестановкой в области суммирования.
+\begin{flalign*}
+  & R(p(n)) = [0 \leq n^2 \leq 5]; & \\
+  & R(i) = [0 \leq i \leq 5]; & \\
+  & i=0: \ \ \sum_{n}{[i=p(n)]} = \sum_{n=0}{[i=p(n)]} = 1; & \\
+  & i=1: \ \ \sum_{n}{[i=p(n)]} = \sum_{n=\pm 1}{[i=p(n)]} = 2; & \\
+  & i \in \{2,3,5\}: \ \ \sum_{n}{[i=p(n)]} = 0; & \\
+  & i=4: \ \ \sum_{n}{[i=p(n)]} = \sum_{n=\pm 2}{[i=p(n)]} = 2; & \\
+  & \sum_{0 \leq n^2 \leq 5}{\frac{1}{2n^2+1}} = \sum_{0 \leq i \leq 5}{\frac{1}{2i+1} \sum_{n}{[i=p(m)]}} = \frac{1}{2 \cdot 0+1}+\frac{2}{2 \cdot 1+1}+\frac{2}{2 \cdot 4+1} = \frac{2}{9} + \frac{2}{3} + \frac{1}{1}. & \\
+\end{flalign*}
+
+\subsubsection{4.}
+
+Не пользуясь знаком ``$\sum$'', запишите эквиваленты каждой части равенства (10) как суммы сумм для случая $n=3$.
+\begin{flalign*}
+  & \sum_{i=1}^{3}{\sum_{j=1}^{i}{a_{ij}}} = \sum_{j=1}^{3}{\sum_{i=j}^{3}{a_{ij}}}; & \\
+  & \sum_{i=1}^{3}{\sum_{j=1}^{i}{a_{ij}}} = \sum_{j=1}^{1}{a_{1j}} + \sum_{j=1}^{2}{a_{2j}} + \sum_{j=1}^{3}{a_{3j}} = (a_{11}) + (a_{21}+a_{22}) + (a_{31}+a_{32}+a_{33}); & \\
+  & \sum_{j=1}^{3}{\sum_{i=j}^{3}{a_{ij}}} = \sum_{i=1}^{3}{a_{i1}} + \sum_{i=2}^{3}{a_{i2}} + \sum_{i=3}^{3}{a_{i3}} = (a_{11}+a_{21}+a_{31})+(a_{22}+a_{32})+(a_{33}); & \\
+\end{flalign*}
+
+\subsubsection{5.}
+
+Докажите, что правило (a) справедливо для произвольного бесконечного ряда при условии, что этот ряд сходится.
+\begin{flalign*}
+  & \Bigl(\sum_{R(i)}{a_i}\Bigl)\Bigl(\sum_{S(j)}{b_j}\Bigl) = \sum_{R(i)}{\sum_{S(j)}{a_i b_j}}. & \\
+\end{flalign*}
+Если бесконечный ряд $a_i$ сходится, то
+\begin{flalign*}
+  & \sum_{i \geq 0}{a_i} = \lim_{n \rightarrow \infty}{\sum_{0 \leq i < n}{a_i}} = S_a & \\
+\end{flalign*}
+и данный предел существует. Аналогично для ряда $b_j$ существует предел
+\begin{flalign*}
+  & \sum_{j \geq 0}{b_j} = \lim_{n \rightarrow \infty}{\sum_{0 \leq j < n}{b_j}} = S_b. & \\
+\end{flalign*}
+Тогда
+\begin{flalign*}
+  & \Bigl(\sum_{R(i)}{a_i}\Bigl)\Bigl(\sum_{S(j)}{b_j}\Bigl)=S_a \cdot S_b=
+  \lim_{n \rightarrow \infty}{\sum_{0 \leq i < n}{a_i}} \cdot \lim_{n \rightarrow \infty}{\sum_{0 \leq j < n}{b_j}} =
+  \lim_{n \rightarrow \infty}{\Bigl(\sum_{0 \leq i < n}{a_i}\Bigl)\Bigl( \sum_{0 \leq j < n}{b_j}\Bigl)} =
+  \lim_{n \rightarrow \infty}{\sum_{0 \leq i < n}\Bigl({a_i} \sum_{0 \leq j < n}{b_j}\Bigl)} = & \\
+ & \lim_{n \rightarrow \infty}{\sum_{0 \leq i < n}{\sum_{0 \leq j < n}{a_i b_j}}}.& \\
+\end{flalign*}
+
+\subsubsection{6.}
+
+Докажите, что правило (d) справедливо для произвольного бесконечного ряда при условии, что сходятся любые три суммы из четырех.
+\begin{flalign*}
+  & \sum_{R(j)}{a_j} + \sum_{S(j)}{a_j} = \sum_{R(j) \textrm{ или } S(j)}{a_j} + \sum_{R(j) \textrm{ и } S(j)}{a_j}; & \\
+  & \lim{\sum_{R(j)}{a_j}} + \lim{\sum_{S(j)}{a_j}} = \lim{\Bigl(\sum_{R(j)}{a_j} + \sum_{S(j)}{a_j}\Bigl)}. & \\
+\end{flalign*}
+Возьмем один элемент $a_{j_1}$ из второй суммы, который не встречается в первой сумме, и перенесем его в первую сумму: 
+\begin{flalign*}
+  & \lim{\Bigl(\sum_{R(j) \textrm{ или } j \in \{j_1\}}{a_j} + \sum_{S(j) \textrm{ и } j \notin \{j_1\}}{a_j} \Bigl)}. & \\
+\end{flalign*}
+Продолжим переносить таким образом элементы до тех пор, пока во второй сумме останутся только те элементы, которые есть и в первой сумме:
+\begin{flalign*}
+  & \lim{\Bigl(\sum_{R(j) \textrm{ или } j \in \{j_1, j_2\}}{a_j} + \sum_{S(j) \textrm{ и } j \notin \{j_1, j_2\}}{a_j} \Bigl)}; & \\
+  & \cdots & \\
+  & \lim{\Bigl(\sum_{R(j) \textrm{ или } j \in \{j_1, j_2, \dots, j_k\}}{a_j} + \sum_{S(j) \textrm{ и } j \notin \{j_1, j_2, \dots, j_k\}}{a_j} \Bigl)}. & \\
+\end{flalign*}
+
+Утверждение $[R(j) \textrm{ или } j \in \{j_1, j_2, \dots, j_k\}]$ эквивалентно $[R(j) \textrm{ или } S(j)]$ т.к. все остальные элементы $j_{k+1}, j_{k+2}, \dots$ в $S(j)$ уже входят в $R(j)$. А утверждение $[S(j) \textrm{ и } j \notin \{j_1, j_2, \dots, j_k\}]$ эквивалентно $[R(j) \textrm{ и } S(j) ]$, т.к. все элементы $j_{k+1}, j_{k+2}, \dots$ входят и в $R(j)$, и в $S(j)$. Таким образом, мы получаем
+\begin{flalign*}
+  & \lim{\Bigl(\sum_{R(j)\textrm{ или }S(j)}{a_j}+\sum_{S(j)\textrm{ и }R(j)}{a_j} \Bigl)} = \lim{\sum_{R(j)\textrm{ или }S(j)}{a_j}}+\lim{\sum_{S(j)\textrm{ и }R(j)}{a_j}}. & \\
+\end{flalign*}
+
+\subsubsection{7.}
+Покажите, что если $c$ --- любое целое число, то $\sum_{R(j)}{a_j}=\sum_{R(c-j)}{a_{c-j}}$, даже если оба ряда бесконечны.
+
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
 
