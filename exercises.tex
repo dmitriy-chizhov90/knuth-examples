@@ -1421,6 +1421,84 @@ A4. $1 \leq x<2$, $0 \leq z<1$, $k \geq 1$, $2^k \geq 2$, $1<\frac{2^k}{2^k-1} \
   \frac{1}{2}(n(n+1)-m(m-1)). & \\
 \end{flalign*}
 
+\subsubsection{14.}
+Используя результат предыдущего упражнения, вычислите сумму $\sum_{j=m}^{n}{\sum_{k=r}^{s}{jk}}$.
+
+\begin{flalign*}
+  & \sum_{m \leq j \leq n}{\sum_{r \leq k \leq s}{jk}} =
+  \sum_{m \leq j \leq n}{j \sum_{r \leq k \leq s}{k}} =
+  \sum_{m \leq j \leq n}{j } =  & \\
+  & \frac{1}{2}(s(s+1)-r(r-1)) \frac{1}{2}(n(n+1)-m(m-1)) =
+  \frac{1}{4}(n(n+1)-m(m-1))(s(s+1)-r(r-1)). & \\
+\end{flalign*}
+
+\subsubsection{15.}
+Вычислите сумму $1 \times 2 + 2 \times 2^2 + 3 \times 2^3 + \cdots + n2^n$ для малых значений $n$. Заметили ли вы какую-либо закономерность в этих числах? Если нет, постарайтесь обнаружить ее с помощью действий, аналогичных тем, которые применялись при выводе формулы (14).
+
+\begin{flalign*}
+  & 1 \times 2=2; & \\
+  & 1 \times 2+2 \times 2^2=2+8=10; & \\
+  & 1 \times 2+2 \times 2^2+3 \times 2^3=2+8+24=34;  & \\
+  & 1 \times 2+2 \times 2^2+3 \times 2^3+4 \times 2^4=2+8+24+64=98;  & \\
+\end{flalign*}
+
+Сумма представляет собой смесь арифметической и геометрической прогрессии. Формулы для суммы арифметической прогрессии (15) и геометрической прогрессии (14) выводились с помощью выделения констант и последующего приведения к выражению, содержащему исходную сумму.
+\begin{flalign*}
+  & \sum_{0\leq j\leq n}{j2^j} = \sum_{1\leq j\leq n}{j2^j} =
+  2\sum_{1\leq j\leq n}{j2^{j-1}} = 2\sum_{1\leq j+1\leq n}{(j+1)2^{j+1-1}} =
+  2\sum_{0\leq j\leq n-1}{(j+1)2^{j}} = & \\
+  & 2\sum_{0\leq j\leq n-1}{j2^{j}} + 2\sum_{0\leq j\leq n-1}{2^{j}} =
+  2\Bigl(\sum_{0\leq j\leq n}{j2^{j}}-n2^n\Bigl)+\sum_{0\leq j\leq n-1}{2^{j+1}}=
+  2\sum_{0\leq j\leq n}{j2^{j}}-n2^{n+1}+\sum_{1\leq j\leq n}{2^{j}}=
+  \sum_{0\leq j\leq n}{j2^j}; & \\
+  & \sum_{0\leq j\leq n}{j2^{j}}=n2^{n+1}-\sum_{0\leq j\leq n}{2^{j}}+1=
+  n2^{n+1}-\frac{1-2^{n+1}}{1-2}+1 = n2^{n+1}+1-2^{n+1}+1 = (n-1)2^{n+1}+2. & \\
+\end{flalign*}
+
+\subsubsection{16.}
+Не применяя метод математической индукции, докажите, что
+\begin{flalign*}
+  & \sum_{j=0}^{n}{jx^j}=\frac{nx^{n+2}-(n+1)x^{n+1}+x}{(x-1)^2}, & \\
+\end{flalign*}
+если $x \neq 1$.
+\begin{flalign*}
+  & \sum_{1\leq j\leq n}{jx^j}=x\sum_{1\leq j\leq n}{jx^{j-1}} =
+  x\sum_{1\leq j+1\leq n}{(j+1)x^{j+1-1}}=x\sum_{0\leq j\leq n-1}{(j+1)x^{j}}= & \\
+  & x\sum_{0\leq j\leq n-1}{jx^{j}} + x\sum_{0\leq j\leq n-1}{x^{j}} =
+  x\Bigl(\sum_{0\leq j\leq n}{jx^{j}}-nx^n\Bigl)+\sum_{0\leq j\leq n-1}{x^{j+1}}=
+  x\sum_{0\leq j\leq n}{jx^{j}}-nx^{n+1}+\sum_{1\leq j\leq n}{x^{j}}=
+  \sum_{0\leq j\leq n}{jx^j}; & \\
+  & (x-1)\sum_{0\leq j\leq n}{jx^{j}}=nx^{n+1}-\sum_{0\leq j\leq n}{x^{j}}+1=
+  nx^{n+1}-\frac{1-x^{n+1}}{1-x}+1=\frac{nx^{n+1}(1-x)-1+x^{n+1}+1-x}{1-x} = &\\
+  &\frac{nx^{n+1}-nx^{n+2}+x^{n+1}-x}{1-x}=
+  \frac{-nx^{n+2}+(n+1)x^{n+1}-x}{1-x}=
+  \frac{nx^{n+2}-(n+1)x^{n+1}+x}{x-1}. & \\
+\end{flalign*}
+
+\subsubsection{17.}
+Пусть S --- множество целых чисел. Чему равна сумма $\sum_{j \in S}{1}$?
+
+Сумма равна числу элементов множества S. Если множество содержит бесконечное число элементов, то сумма представляет собой бесконечное число единиц, т.е. равна $\infty$.
+
+\subsubsection{18.}
+Покажите, как изменить порядок суммирования в равенстве (9), если $R(i)$ --- это соотношение ``$n$ кратно $i$'', а $S(i,j)$ --- это соотношение ``$1 \leq j<i$''.
+
+\begin{flalign*}
+  & \sum_{R(i)}{\sum_{S(i,j)}{a_{ij}}} = \sum_{S'(j)}{\sum_{R'(i,j)}{a_{ij}}}. & \\
+\end{flalign*}
+Если $n$ кратно $i$, то $i\leq n$. 
+\begin{flalign*}
+  & \sum_{n\textrm{ кратно }i}{\sum_{1\leq j<i}{a_{ij}}} =
+  \sum_{\substack{1\leq i\leq n\\n\textrm{ кратно }i}}{\sum_{1\leq j<i}{a_{ij}}}=
+  \sum_{i,j}{a_{ij}[1\leq i\leq n][i\textrm{ кратно }n][1\leq j<i]}= & \\
+  & \sum_{i,j}{a_{ij}[1\leq j\leq n][j<i\leq n][i\textrm{ кратно }n]}=
+  \sum_{1\leq j\leq n}{\sum_{\substack{j<i\leq n\\n\textrm{ кратно }i}}{a_{ij}}}=
+  \sum_{1\leq j\leq n}{\sum_{\substack{j<i\\n\textrm{ кратно }i}}{a_{ij}}}=& \\
+  &\sum_{1\leq j<n}{\sum_{\substack{j<i\\n\textrm{ кратно }i}}{a_{ij}}}.& \\
+\end{flalign*}
+Для $j=n$ внутренняя сумма обращается в $0$.
+
+
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
 
