@@ -1498,6 +1498,105 @@ A4. $1 \leq x<2$, $0 \leq z<1$, $k \geq 1$, $2^k \geq 2$, $1<\frac{2^k}{2^k-1} \
 \end{flalign*}
 Для $j=n$ внутренняя сумма обращается в $0$.
 
+\subsubsection{19.}
+Чему равна сумма $\sum_{j=m}^{n}{(a_j-a_{j-1})}$?
+\begin{flalign*}
+  & \sum_{m\leq j\leq n}{(a_j-a_{j-1})} =
+  \sum_{m\leq j\leq n}{a_j}-\sum_{m\leq j\leq n}{a_{j-1}}= & \\
+  & (a_m+a_{m+1}+\cdots+a_{n-2}+a_{n-1}+a_n)-& \\
+  & (a_{m-1}+a_m+a_{m+1}+\cdots+a_{n-2}+a_{n-1})=& \\
+  & a_n-a_{m-1}. & \\
+\end{flalign*}
+Но возможен и другой вариант решения:
+\begin{flalign*}
+  & \sum_{m\leq j\leq n}{a_j}-\sum_{m\leq j\leq n}{a_{j-1}}=
+  \sum_{m\leq j\leq n}{a_j}-\sum_{m\leq j+1\leq n}{a_{j+1-1}}=
+  \sum_{m\leq j\leq n}{a_j}-\sum_{m-1\leq j\leq n-1}{a_{j}}=& \\
+  & \sum_{m\leq j\leq n-1}{a_j}+a_n-a_{m-1}-\sum_{m\leq j\leq n-1}{a_{j}}=
+  a_n-a_{m-1}.& \\
+\end{flalign*}
+
+\subsubsection{20.}
+Д-р Матрица обнаружил удивительную закономерность:
+\begin{flalign*}
+  &9\times 1+2=11,\ 9\times 12+3=111,\ 9\times 123+4=1111,\ 9\times 1234+5=11111.&\\
+\end{flalign*}
+\begin{enumerate}[label=\alph*)]
+\item Запишите это великое открытие доктора с помощью знака суммы ``$\sum$''.
+  \begin{flalign*}
+    & 0:\ 1=1;\ 11=1+10;& \\
+    & 1:\ 12=1+11=1+(1+10);\ 111=1+10+100;& \\
+    & 2:\ 123=1+11+111=1+(1+10)+(1+10+100);\ 1111=1+10+100+1000;& \\
+    & 3:\ 1234=1+(1+10)+(1+10+100)+(1+10+100+1000);\ 11111=1+10+100+1000+10000;& \\
+    & \cdots & \\
+    & n:\ \sum_{0\leq i\leq n}{\sum_{0\leq j\leq i}{10^j}};
+    \ \sum_{-1\leq i\leq n}{10^{i+1}}=\sum_{0\leq i\leq n+1}{10^{i}}=;& \\
+  \end{flalign*}
+  Таким образом итоговая формула примет вид:
+  \begin{flalign*}
+    & 9\sum_{0\leq i\leq n}{\sum_{0\leq j\leq i}{10^j}}+n+2=\sum_{0\leq i\leq n+1}{10^{i}}. & \\
+  \end{flalign*}
+\item В вашем ответе у п. (a), без сомнения, фигурирует число $10$ как основание десятичной системы. Обобщите полученную формулу так, чтобы ее можно было применять для любого основания $b$.
+  \begin{flalign*}
+    & (b-1)\sum_{0\leq i\leq n}{\sum_{0\leq j\leq i}{b^j}}+n+2=\sum_{0\leq i\leq n+1}{b^{i}}. & \\
+  \end{flalign*}
+\item Докажите формулу из п. (b) с помощью формул, выведенных в тексте раздела или в упр. 16.
+  \begin{flalign*}
+    & \sum_{0\leq i\leq n}{\sum_{0\leq j\leq i}{b^j}}=
+    \sum_{0\leq j\leq n}{\sum_{j\leq i\leq n}{b^j}}=
+    \sum_{0\leq j\leq n}{\bigl((n-j+1)b^j\bigl)}=
+    (n+1)\sum_{0\leq j\leq n}{b^j}-\sum_{0\leq j\leq n}{jb^j};& \\
+    & \sum_{0\leq j\leq n}{jb^j}=\frac{nb^{n+2}-(n+1)b^{n+1}+b}{(1-b)^2}; & \\
+    & \sum_{0\leq j\leq n}{b^j} = \frac{1-b^{n+1}}{1-b}; & \\
+    & \sum_{0\leq j\leq n+1}{b^j} = \frac{1-b^{n+2}}{1-b}; & \\
+  \end{flalign*}
+  \begin{flalign*}
+    & -(1-b)\Bigl((n+1)\frac{1-b^{n+1}}{1-b}-\frac{nb^{n+2}-(n+1)b^{n+1}+b}{(1-b)^2}\Bigl)+n+2=\frac{1-b^{n+2}}{1-b}; & \\
+    &-(n+1)(1-b^{n+1})(1-b)+nb^{n+2}-(n+1)b^{n+1}+b+(1-b)(n+2)=1-b^{n+2}; & \\
+    &(n+1)b^{n+1}-(n+1)(1-b)-(n+1)b^{n+2}+(n+1)b^{n+2}-(n+1)b^{n+1}+(1-b)(n+1)=0;&\\
+    &b^{n+1}-b^{n+1}+b^{n+2}-b^{n+2}+(1-b)-(1-b)=0;&\\
+  \end{flalign*}
+\end{enumerate}
+Получаем верное тождество. Формула доказана.
+
+\subsubsection{21.}
+Выведите правило (d) из правил (a) и (c) с помощью обозначения Айверсона (16).
+
+Правила (a), (c) и (d):
+\begin{flalign*}
+  & \Bigl(\sum_{R(i)}{a_i}\Bigl)\Bigl(\sum_{S(j)}{b_j}\Bigl)=
+  \Bigl(\sum_{i}{a_i[R(i)]}\Bigl)\Bigl(\sum_{j}{b_j[S(j)]}\Bigl)=
+  \sum_{R(i)}{\sum_{S(j)}{a_ib_j}}=\sum_{i,j}{a_ib_j[R(i)][S(j)]}; & \\
+  & \sum_{R(i)}{\sum_{S(j)}{a_{ij}}}=\sum_{i,j}{a_{ij}[R(i)][S(j)]}=
+  \sum_{S(j)}{\sum_{R(i)}{a_{ij}}}=\sum_{i,j}{a_{ij}[S(j)][R(i)]}; & \\
+  & \sum_{R(j)}{a_j}+\sum_{S(j)}{a_j}=\sum_{R(j)\textrm{ или }S(j)}{a_j}+\sum_{R(j)\textrm{ и }S(j)}{a_j}. & \\
+\end{flalign*}
+Добавление $[R(j)\textrm{ или }S(j)]$ не меняет следующие суммы:
+\begin{flalign*}
+  &\sum_{R(j)}{a_j}=\sum_{j}{a_j[R(j)]}=
+  \sum_{j}{a_j[R(j)][R(j)\textrm{ или }S(j)]}; &\\
+  &\sum_{S(j)}{a_j}=\sum_{j}{a_j[S(j)]}=
+  \sum_{j}{a_j[S(j)][R(j)\textrm{ или }S(j)]}. &\\
+\end{flalign*}
+Сложив два выражения с помощью правила (a), получаем левую часть правила (d):
+\begin{flalign*}
+  & \sum_{j}{a_j[R(j)\textrm{ или }S(j)][R(j)]}+\sum_{j}{a_j[R(j)\textrm{ или }S(j)][S(j)]}=
+  \sum_{i,j}{a_{ij}[R(j)\textrm{ или }S(j)][T(i,j)]};& \\
+  & T(i,j)=R(j)\textrm{ при }i=0; & \\
+  & T(i,j)=S(j)\textrm{ при }i=1; & \\
+  & T(i,j)=0\textrm{ при }i<0,\ i>1. & \\
+\end{flalign*}
+С помощью правила (с) перейдем от суммирования по $i$ к суммированию по $j$. Введем функцию $P(j)$:
+\begin{flalign*}
+  &P(j) = 1,\textrm{ если }[R(j)\textrm{ и }S(j)]=0; & \\
+  &P(j) = 2,\textrm{ если }[R(j)\textrm{ и }S(j)]=1; & \\
+  &a_{0j}+a_{1j} = a_jP(j)& \\
+  &\sum_{i,j}{a_{ij}[R(j)\textrm{ или }S(j)][T(i,j)][0\leq i\leq 1]}=
+  \sum_{j,i}{a_{j}P(i)[R(j)\textrm{ или }S(j)][0\leq i\leq 1]}= & \\
+  &\sum_{j}{a_{j}[R(j)\textrm{ или }S(j)]}+\sum_{j}{a_{j}[R(j)\textrm{ и }S(j)][R(j)\textrm{ или }S(j)]}=& \\
+  &\sum_{j}{a_{j}[R(j)\textrm{ или }S(j)]}+\sum_{j}{a_{j}[R(j)\textrm{ и }S(j)]}=
+  \sum_{R(j)\textrm{ или }S(j)}{a_j}+\sum_{R(j)\textrm{ и }S(j)}{a_j}.&\\
+\end{flalign*}
 
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
