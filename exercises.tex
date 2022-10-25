@@ -1792,6 +1792,171 @@ A4. $1 \leq x<2$, $0 \leq z<1$, $k \geq 1$, $2^k \geq 2$, $1<\frac{2^k}{2^k-1} \
   \frac{1}{3}\sum_{0\leq i\leq n}{a_i^3}.&\\
 \end{flalign*}
 
+\subsubsection{30.}
+(Ж. Бине (J. Binet), 1812.) Не пользуясь индукцией, докажите тождество
+\begin{flalign*}
+  &\biggl(\sum_{j=1}^{n}{a_jx_j}\biggl)\biggl(\sum_{j=1}^{n}{b_jy_j}\biggl)=
+  \biggl(\sum_{j=1}^{n}{a_jy_j}\biggl)\biggl(\sum_{j=1}^{n}{b_jx_j}\biggl)+
+  \sum_{1\leq j<k\leq n}{(a_jb_k-a_kb_j)(x_jy_k-x_ky_j)}.&\\
+\end{flalign*}
+    [У этого тождества есть важный частный случай: если положить $a_j=w_j,\ b_j=\bar{z}_j,\ x_j=\bar{w}_j,\ y_j=z_j$, то для произвольных комплексных чисел $w_1,\ \dots,\ w_n,\ z_1,\ \dots,\ z_n$ выполняется равенство
+      \begin{flalign*}
+        &\biggl(\sum_{j=1}^{n}{|w_j|^2}\biggl)\biggl(\sum_{j=1}^{n}{|z_j|^2}\biggl)=
+        \biggl|\sum_{j=1}^{n}{w_jz_j}\biggl|^2+
+        \sum_{1\leq j<k\leq n}{|w_j\bar{z}_k-w_k\bar{z}_j|^2}.&\\
+      \end{flalign*}
+      Члены $|w_j\bar{z}_k-w_k\bar{z}_j|^2$ неотрицательны, поэтому знаменитой \emph{неравенство Коши-Шварца}
+      \begin{flalign*}
+        &\biggl(\sum_{j=1}^{n}{|w_j|^2}\biggl)\biggl(\sum_{j=1}^{n}{|z_j|^2}\biggl)
+        \geq
+        \biggl|\sum_{j=1}^{n}{w_jz_j}\biggl|^2&\\
+      \end{flalign*}
+      является следствием формулы Бине.]
+
+Нам даны четыре ряда чисел $A,\ B,\ X,\ Y$ по $n$ элементов в каждом:
+    
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $j$ & $A$   & $X$  & $B$  & $Y$   \\
+ \hline  $1$ & $a_1$ & $x_1$& $b_1$& $y_1$ \\
+ \hline  $2$ & $a_2$ & $x_2$& $b_2$& $y_2$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$& $\cdots$& $\cdots$ \\
+ \hline  $n$ & $a_n$ & $x_n$& $b_n$& $y_n$ \\
+ \hline
+\end{tabularx}
+
+\begin{flalign*}
+  &\biggl(\sum_{j=1}^{n}{a_jx_j}\biggl)\biggl(\sum_{j=1}^{n}{b_jy_j}\biggl)=
+  \sum_{1\leq j\leq n}{\sum_{1\leq k\leq n}{a_jx_jb_ky_k}}=
+  \sum_{j,k}{a_jx_jb_ky_k[1\leq j\leq n][1\leq k\leq n]}. &\\
+\end{flalign*}
+
+Выражение в левой части равенства представляет собой $n^2$ слагаемых:
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $j\backslash k$ & $1$   & $2$  & $\cdots$  & $n$   \\
+ \hline  $1$ & $a_1x_1b_1y_1$ & $a_1x_1b_2y_2$& $a_1x_1\cdots$& $a_1x_1b_ny_n$ \\
+ \hline  $2$ & $a_2x_2b_1y_1$ & $a_2x_2b_2y_2$& $a_2x_2\cdots$& $a_2x_2b_ny_n$ \\
+ \hline  $\cdots$ & $\cdots b_1y_1$ & $\cdots b_2y_2$& $\cdots$& $\cdots b_ny_n$ \\
+ \hline  $n$ & $a_nx_nb_1y_1$ & $a_nx_nb_2y_2$& $a_nx_n\cdots$& $a_nx_nb_ny_n$ \\
+ \hline
+\end{tabularx}
+
+\begin{flalign*}
+  &\biggl(\sum_{j=1}^{n}{a_jy_j}\biggl)\biggl(\sum_{j=1}^{n}{b_jx_j}\biggl)=
+  \sum_{1\leq j\leq n}{\sum_{1\leq k\leq n}{a_jy_jb_kx_k}}=
+  \sum_{j,k}{a_jy_jb_kx_k[1\leq j\leq n][1\leq k\leq n]}. &\\
+\end{flalign*}
+
+Первое слагаемое в правой части равенства также представляет собой сумму $n^2$ слагаемых:
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $j\backslash k$ & $1$   & $2$  & $\cdots$  & $n$   \\
+ \hline  $1$ & $a_1y_1b_1x_1$ & $a_1y_1b_2x_2$& $a_1y_1\cdots$& $a_1y_1b_nx_n$ \\
+ \hline  $2$ & $a_2y_2b_1x_1$ & $a_2y_2b_2x_2$& $a_2y_2\cdots$& $a_2y_2b_nx_n$ \\
+ \hline  $\cdots$ & $\cdots b_1x_1$ & $\cdots b_2x_2$& $\cdots$& $\cdots b_nx_n$ \\
+ \hline  $n$ & $a_ny_nb_1x_1$ & $a_ny_nb_2x_2$& $a_ny_n\cdots$& $a_ny_nb_nx_n$ \\
+ \hline
+\end{tabularx}
+
+Вычтем из левой части равенства первое слагаемое в правой части:
+
+\begin{flalign*}
+  &\sum_{j,k}{a_jx_jb_ky_k[1\leq j\leq n][1\leq k\leq n]}-
+  \sum_{j,k}{a_jy_jb_kx_k[1\leq j\leq n][1\leq k\leq n]}=&\\
+  &\sum_{j,k}{(a_jx_jb_ky_k-a_jy_jb_kx_k)[1\leq j\leq n][1\leq k\leq n]}=
+  \sum_{j,k}{a_jb_k(x_jy_k-x_ky_j)[1\leq j\leq n][1\leq k\leq n]}.&\\
+\end{flalign*}
+
+Мы получили также сумму $n^2$ слагаемых. Если представить её в виде таблицы, то диагональные элементы её будут равны $0$.
+
+\begin{tabularx}{1.1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $j\backslash k$ & $1$   & $2$  & $\cdots$  & $n$   \\
+ \hline  $1$ & $0$ & $a_1b_2(x_1y_2-x_2y_1)$& $\cdots$& $a_1b_n(x_1y_n-x_ny_1)$ \\
+ \hline  $2$ & $a_2b_1(x_2y_1-x_1y_2)$ & $0$& $\cdots$& $a_2b_n(x_2y_n-x_ny_2)$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$& $0$& $\cdots$ \\
+ \hline  $n$ & $a_nb_1(x_ny_1-x_1y_n)$ & $a_nb_2(x_ny_2-x_2y_n)$& $\cdots$& $0$ \\
+ \hline
+\end{tabularx}
+
+Рассмотрим элементы данной суммы, находящиеся выше диагонали:
+\begin{flalign*}
+  &\sum_{j,k}{a_jb_k(x_jy_k-x_ky_j)[1\leq j\leq n][j< k\leq n]}.&\\
+\end{flalign*}
+Рассмотрим элементы, находящиеся ниже диагонали:
+\begin{flalign*}
+  &\sum_{j,k}{a_jb_k(x_jy_k-x_ky_j)[1\leq j\leq n][0\leq k<j]}=
+  \sum_{j,k}{a_jb_k(x_jy_k-x_ky_j)[1\leq k\leq n][k<j\leq n]}=&\\
+  &\sum_{j,k}{a_kb_j(x_ky_j-x_jy_k)[1\leq j\leq n][j<k\leq n]}=
+  -\sum_{j,k}{a_kb_j(x_jy_k-x_ky_j)[1\leq j\leq n][j<k\leq n]}.&\\
+\end{flalign*}
+Две полусуммы (сверху и снизу от диагонали) составляют второе слагаемое в правой части равенства:
+\begin{flalign*}
+  &\sum_{j,k}{a_jb_k(x_jy_k-x_ky_j)[1\leq j\leq n][1\leq k\leq n]}=&\\
+  &\sum_{j,k}{a_jb_k(x_jy_k-x_ky_j)[1\leq j\leq n][j< k\leq n]}-
+  \sum_{j,k}{a_kb_j(x_jy_k-x_ky_j)[1\leq j\leq n][j<k\leq n]}=&\\
+  &\sum_{j,k}{(a_jb_k-a_kb_j)(x_jy_k-x_ky_j)[1\leq j\leq n][j< k\leq n]}=
+  \sum_{1\leq j<k\leq n}{(a_jb_k-a_kb_j)(x_jy_k-x_ky_j)}.&\\
+\end{flalign*}
+
+\subsubsection{31.}
+С помощью формулы Бине выразите сумму $\sum_{1\leq j<k\leq n}{(u_j-u_k)(v_j-v_k)}$ через $\sum_{j=1}^{n}{u_jv_j}$, $\sum_{j=1}^{n}{u_j}$ и $\sum_{j-1}^{n}{v_j}$.
+
+Обозначим в формуле Бине $a_j=u_j$, $a_k=u_k$, $x_j=v_j$, $x_k=v_k$, $b_k=b_j=y_k=y_j=1$:
+\begin{flalign*}
+  &\biggl(\sum_{j=1}^{n}{a_jx_j}\biggl)\biggl(\sum_{j=1}^{n}{b_jy_j}\biggl)=
+  \biggl(\sum_{j=1}^{n}{a_jy_j}\biggl)\biggl(\sum_{j=1}^{n}{b_jx_j}\biggl)+
+  \sum_{1\leq j<k\leq n}{(a_jb_k-a_kb_j)(x_jy_k-x_ky_j)};&\\
+  &\biggl(\sum_{j=1}^{n}{u_jv_j}\biggl)\biggl(\sum_{j=1}^{n}{1\cdot 1}\biggl)=
+  \biggl(\sum_{j=1}^{n}{u_j\cdot 1}\biggl)\biggl(\sum_{j=1}^{n}{1\cdot v_j}\biggl)+
+  \sum_{1\leq j<k\leq n}{(u_j-u_k)(v_j-v_k)};&\\
+  &\sum_{1\leq j<k\leq n}{(u_j-u_k)(v_j-v_k)}=n\sum_{j=1}^{n}{u_jv_j}-
+  \biggl(\sum_{j=1}^{n}{u_j}\biggl)\biggl(\sum_{j=1}^{n}{v_j}\biggl).&\\
+\end{flalign*}
+
+\subsubsection{32.}
+Докажите, что
+\begin{flalign*}
+  &\prod_{j=1}^{n}{\sum_{i=1}^{m}{a_{ij}}}=
+  \sum_{1\leq i_1,\dots,i_n\leq m}{a_{i_11} \dots a_{i_nn}}.&\\
+\end{flalign*}
+
+Ряд чисел из $m$ элементов умножается на другие ряды из $m$ элементов $n$ раз. При $n=1$ итоговая сумма должна иметь $m$ слагаемых, при $n=2$ --- $m^2$, при $n$ --- $m^n$ слагаемых. В сумме в правой части равенства как раз $m^n$ слагаемых.
+
+Для $n=1$:
+\begin{flalign*}
+  &\prod_{j=1}^{1}{\sum_{i=1}^{m}{a_{ij}}}=\sum_{i=1}^{m}{a_{i1}}=
+  \sum_{1\leq i_1\leq m}{a_{i_11}}.&\\
+\end{flalign*}
+
+Предполагая по индукции, что равенство справедливо для $n\in[1..n]$ докажем его для $n+1$:
+\begin{flalign*}
+  &\prod_{j=1}^{n+1}{\sum_{i=1}^{m}{a_{ij}}}=
+  \biggl(\sum_{1\leq i\leq m}{a_{i(n+1)}}\biggl)
+  \biggl(\sum_{1\leq i_1,\dots,i_n\leq m}{a_{i_11} \dots a_{i_nn}}\biggl)=
+  \sum_{1\leq i_1,\dots,i_n,i_{n+1}\leq m}{a_{i_11} \dots a_{i_nn}a_{i_{n+1}(n+1)}}.
+  &\\
+\end{flalign*}
+
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
 
