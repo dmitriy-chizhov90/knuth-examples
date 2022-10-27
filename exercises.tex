@@ -1957,6 +1957,176 @@ A4. $1 \leq x<2$, $0 \leq z<1$, $k \geq 1$, $2^k \geq 2$, $1<\frac{2^k}{2^k-1} \
   &\\
 \end{flalign*}
 
+\subsubsection{33.}
+Однажды вечером д-р Матрица открыл формулы, которые можно считать ещё более замечательными по сравнению с формлами, приведенными в упр. 20:
+\begin{flalign*}
+  &\frac{1}{(a-b)(a-c)}+\frac{1}{(b-a)(b-c)}+\frac{1}{(c-a)(c-b)}=0,&\\
+  &\frac{a}{(a-b)(a-c)}+\frac{b}{(b-a)(b-c)}+\frac{c}{(c-a)(c-b)}=0,&\\
+  &\frac{a^2}{(a-b)(a-c)}+\frac{b^2}{(b-a)(b-c)}+\frac{c^2}{(c-a)(c-b)}=1,&\\
+  &\frac{a^3}{(a-b)(a-c)}+\frac{b^3}{(b-a)(b-c)}+\frac{c^3}{(c-a)(c-b)}=a+b+c.&\\
+\end{flalign*}
+Докажите, что эти формулы являются частными случаями более общего закона. Покажите, что если $x_1,\ x_2,\ \dots,\ x_n$ --- различные числа, то
+\begin{flalign*}
+  &\sum_{j=1}^{n}{\left(
+    x_j^r \middle/ \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}\right)}=
+  \begin{cases}
+    0,& \textrm{если }0\leq r<n-1;\\
+    1,& \textrm{если }r=n-1;\\
+    \sum_{j=1}^{n}{x_j},& \textrm{если }r=n.
+  \end{cases}&\\
+\end{flalign*}
+
+Для $n=1$ имеем следующие соотношения:
+\begin{flalign*}
+  &\frac{1}{1}=1,&\\
+  &\frac{a}{1}=a.&\\
+\end{flalign*}
+
+Для $n=2$ имеем следующие соотношения:
+\begin{flalign*}
+  &\frac{1}{a-b}+\frac{1}{b-a}=0,&\\
+  &\frac{a}{a-b}+\frac{b}{b-a}=1,&\\
+  &\frac{a^2}{a-b}+\frac{b^2}{b-a}=a+b.&\\
+\end{flalign*}
+
+Рассмотрим все возможные комбинации чисел $x_1,\ x_2,\ \dots,\ x_n$ в произведении:
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $i\backslash j$ & $1$   & $2$  & $\cdots$  & $n$   \\
+ \hline  $1$ & $0$ & $x_1-x_2$& $\cdots$& $x_1-x_n$ \\
+ \hline  $2$ & $x_2-x_1$ & $0$& $\cdots$& $x_2-x_n$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$& $0$& $\cdots$ \\
+ \hline  $n$ & $x_n-x_1$ & $x_n-x_2$& $\cdots$& $0$ \\
+ \hline
+\end{tabularx}
+
+Элементы, симметричные относительно диагонали отличаются знаком $(x_i-x_j)=-(x_j-x_i)$. Между сомножителями, встречающимеся в знаменателе, и элементами, лежащими по одну из сторон от диагонали, существует взаимно однозначное соответствие с учетом знака.
+
+В знаменателе в каждом слагаемом находится произведение всех элементов соответствующей строки за исключением одного, обращающегося в $0$.
+
+Составим таблицу из первых слагаемых каждого элемента:
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $i\backslash j$ & $1$   & $2$  & $\cdots$  & $n$   \\
+ \hline  $1$ & $x_1$ & $x_1$& $\cdots$& $x_1$ \\
+ \hline  $2$ & $x_2$ & $x_2$& $\cdots$& $x_2$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$& $\cdots$& $\cdots$ \\
+ \hline  $n$ & $x_n$ & $x_n$& $\cdots$& $x_n$ \\
+ \hline
+\end{tabularx}
+
+Составим таблицу из вторых слагаемых каждого элемента:
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $i\backslash j$ & $1$   & $2$  & $\cdots$  & $n$   \\
+ \hline  $1$ & $-x_1$ & $-x_2$& $\cdots$& $-x_n$ \\
+ \hline  $2$ & $-x_1$ & $-x_2$& $\cdots$& $-x_n$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$& $\cdots$& $\cdots$ \\
+ \hline  $n$ & $-x_1$ & $-x_2$& $\cdots$& $-x_n$ \\
+ \hline
+\end{tabularx}
+
+Наибольшим общим кратным знаменателей всех слагаемых в левой части равенства является произведение всех элементов, лежащих выше диагонали: $\prod_{1\leq j\leq n}{\prod_{j<k\leq n}{(x_j-x_k)}}$. При сокращении дробей из произведения уходят элементы лежащие на соответствующей строке и соответствующем столбце.
+
+Все сомножители в знаменателе сокращаются с соответствующими сомножителями в числителе. При этом часть из них при сокращении должна дать $-1$.
+
+Количество таких сомножителей равно количеству сомножителей для которых $k<j$. В первом слагаемом таких сомножителей нет, во втором -- появляется одно слагаемое, во втором -- два и т.д. Таким образом, каждое слагаемое нужно домножить на $(-1)^{j+1}$.
+
+
+\begin{flalign*}
+  &\left(\prod_{1\leq i<k\leq n}{(x_i-x_k)} \middle/
+  \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}\right)=
+  (-1)^{j+1}\prod_{\substack{1\leq i<k\leq n\\i,k\neq j}}{(x_i-x_k)}=
+  (-1)^{j+1}\prod_{\substack{1\leq i<k\leq n\\i,k\neq j}}{\sum_{l\in{i,k}}{x_{lik}}};&\\
+  &x_{lik}=(-1)^{[l=k]}x_l;&\\
+\end{flalign*}
+
+Предполагая по индукции, что соотношения справедливы для всех $n\in[1..n]$, докажем их справедливость для случая $n+1$. Заметим, что с увеличением $n$ на единицу в левые части каждого соотношения добавляется по одному слагаемому, а количество соотношений также  увеличивается на единицу. Существующие слагаемые в левых частях соотношений видоизменяются следующим образом: $S_j'=\frac{S_j}{x_j-x_{n+1}}$.
+Возьмем соотношение для $n$ слагаемых при $r=n$ и поделим каждое слагаемое в левой части на $x_j-x_{n+1}$:
+\begin{flalign*}
+  &\sum_{j=1}^{n}{\left(x_j^n \middle/
+    \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}\right)}=
+  \sum_{j=1}^{n}{x_j};&\\
+  &\sum_{j=1}^{n}{\left(x_j^n \middle/
+    (x_j-x_{n+1})\prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}\right)}=
+  \sum_{j=1}^{n}{\left(x_j^n \middle/
+    \prod_{\substack{1\leq k\leq n+1\\k\neq j}}{(x_j-x_k)}\right)};&\\
+\end{flalign*}
+
+Идеи связанные с представлением произведения $\prod_{1\leq i<k\leq n}{(x_i-x_k)}$ в виде суммы произведений не дали нужного результата. Последуем подсказке в ответах:
+\begin{flalign*}
+  &\sum_{j=1}^{n}{\left(
+    x_j^r \middle/ \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}\right)}=
+  \frac{1}{x_n-x_{n-1}}\left(\sum_{j=1}^{n}{
+    \frac{x_j^r(x_n-x_{n-1})}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}\right)=&\\
+  &\frac{1}{x_n-x_{n-1}}\left(\sum_{j=1}^{n}{
+    \frac{x_j^rx_n}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}-
+  \sum_{j=1}^{n}{
+    \frac{x_j^rx_{n-1}}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}\right)=&\\
+  &\frac{1}{x_n-x_{n-1}}\left(\sum_{j=1}^{n}{
+    \frac{x_j^rx_j}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}-
+  \sum_{j=1}^{n}{
+    \frac{x_j^rx_j}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}+
+  \sum_{j=1}^{n}{
+    \frac{x_j^rx_n}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}-
+  \sum_{j=1}^{n}{
+    \frac{x_j^rx_{n-1}}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}\right)=&\\
+  &\frac{1}{x_n-x_{n-1}}\left(\sum_{j=1}^{n}{
+    \frac{x_j^r(x_j-x_{n-1})}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}-
+  \sum_{j=1}^{n}{
+    \frac{x_j^r(x_j-x_n)}{
+      \prod_{\substack{1\leq k\leq n\\k\neq j}}{(x_j-x_k)}}}\right).&\\
+\end{flalign*}
+...
+\subsubsection{34.}
+...
+\subsubsection{35.}
+Запись $\sup_{R(j)}{a_j}$ применяется для обозначения точной верхней грани элементов $a_j$; при этом используется тот же принцип, что и в случае применения знаков ``$\sum$'' и ``$\prod$''. (Если $R(j)$ выполняется только для конечного числа $j$, то вместо записи $\sup_{R(j)}{a_j}$ часто используется запись $\max_{R(j)}{a_j}$.) Покажите, как нужно видоизменить правила (a), (b), (c) и (d) для выполнения операций с \emph{этим} обозначением. В частности, рассмотрите аналог правила (a)
+\begin{flalign*}
+  (\sup_{R(i)}{a_i})+(\sup_{S(j)}{b_j})=\sup_{R(i)}{(\sup_{S(j)}{(a_i+b_j)})}
+\end{flalign*}
+и дайте соответствующее определение $\sup_{R(j)}{a_j}$ для случая, когда $R(j)$ не выполняется \emph{ни для одного} $j$.
+
+Правило (b):
+\begin{flalign*}
+  &\sup_{R(i)}{a_i}=\sup_{R(j)}{a_j}=\sup_{R(p(j))}{a_{p(j)}}.&\\
+\end{flalign*}
+
+Правило (c):
+\begin{flalign*}
+  &\sup_{R(i)}{(\sup_{S(j)}{(a_{ij})})}=\sup_{S(j)}{(\sup_{R(i)}{(a_{ij})})}.&\\
+\end{flalign*}
+
+Правило (d):
+\begin{flalign*}
+  &\sup{\left((\sup_{R(i)}{a_i}),(\sup_{S(j)}{a_j})\right)}=\sup_{R(j)\textrm{ или }S(j)}{a_j}.&\\
+\end{flalign*}
+Если $R(j)$ не удовлетворяет ни один элемент, то $\sup_{R(j)}{a_j}=-\infty$.
+
+
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
 
