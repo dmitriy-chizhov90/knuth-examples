@@ -2126,6 +2126,191 @@ A4. $1 \leq x<2$, $0 \leq z<1$, $k \geq 1$, $2^k \geq 2$, $1<\frac{2^k}{2^k-1} \
 \end{flalign*}
 Если $R(j)$ не удовлетворяет ни один элемент, то $\sup_{R(j)}{a_j}=-\infty$.
 
+\subsubsection{36.}
+Покажите, что определитель комбинаторной матрицы равен $x^{n-1}(x+ny)$.
+
+Комбинаторная матрица состоит из элементов $a_{ij}=y+\delta_{ij}x$ и имеет вид
+\begin{flalign*}
+  A=
+\begin{pmatrix}
+  x+y & y & \cdots & y \\
+  y & x+y & \cdots & y \\
+  \vdots & \vdots & \ddots & \vdots \\
+  y & y & \cdots & x+y
+\end{pmatrix}
+\end{flalign*}
+
+Для вычисления определителя попробуем привести матрицу к треугольному виду. Сначала будем последовательно, начиная с последней строки, вычитать из $i$-й строки $i-1$-ю. Затем будем последовательно, начиная с предпоследнего столбца, прибавлять к $j$-му столбцу $j+1$-й.
+
+\begin{flalign*}
+  & \Delta_A=
+  \begin{vmatrix}
+    x+y & y & y & \cdots &y&y& y \\
+    y & x+y & y &\cdots &y&y& y \\
+    y & y & x+y &\cdots &y&y& y \\
+    \vdots & \vdots & \vdots & \ddots &\vdots&\vdots& \vdots \\
+    y & y & y & \cdots & x+y& y& y \\
+    y & y & y & \cdots & y& x+y& y \\
+    y & y & y & \cdots & y& y& x+y
+  \end{vmatrix}=
+  \begin{vmatrix}
+    x+y & y & y & \cdots &y&y& y \\
+    y & x+y & y &\cdots &y&y& y \\
+    y & y & x+y &\cdots &y&y& y \\
+    \vdots & \vdots & \vdots & \ddots &\vdots&\vdots& \vdots \\
+    y & y & y & \cdots & x+y& y& y \\
+    y & y & y & \cdots & y& x+y& y \\
+    0 & 0 & 0 & \cdots & 0& -x& x
+  \end{vmatrix}=\cdots=
+  &\\
+  &
+  \begin{vmatrix}
+    x+y & y & y & \cdots &y&y& y \\
+    -x & x & 0 &\cdots &0&0& 0 \\
+    0 & -x & x &\cdots &0&0& 0 \\
+    \vdots & \vdots & \vdots & \ddots &\vdots&\vdots& \vdots \\
+    0 & 0 & 0 & \cdots & x& 0& 0 \\
+    0 & 0 & 0 & \cdots & -x& x& 0 \\
+    0 & 0 & 0 & \cdots & 0& -x& x
+  \end{vmatrix}=
+  \begin{vmatrix}
+    x+y & y & y & \cdots &y&2y& y \\
+    -x & x & 0 &\cdots &0&0& 0 \\
+    0 & -x & x &\cdots &0&0& 0 \\
+    \vdots & \vdots & \vdots & \ddots &\vdots&\vdots& \vdots \\
+    0 & 0 & 0 & \cdots & x& 0& 0 \\
+    0 & 0 & 0 & \cdots & -x& x& 0 \\
+    0 & 0 & 0 & \cdots & 0& 0& x
+  \end{vmatrix}=\cdots=
+  &\\
+  &
+  \begin{vmatrix}
+    x+ny   & (n-1)y & (n-2)y &\cdots &3y    &2y    & y      \\
+    0      & x      & 0      &\cdots &0     &0     & 0      \\
+    0      & 0      & x      &\cdots &0     &0     & 0      \\
+    \vdots & \vdots & \vdots &\ddots &\vdots&\vdots& \vdots \\
+    0      & 0      & 0      &\cdots &x     & 0    & 0      \\
+    0      & 0      & 0      &\cdots &0     & x    & 0      \\
+    0      & 0      & 0      &\cdots &0     & 0    & x
+  \end{vmatrix}=
+  (x+ny)x^{n-1}.&\\
+\end{flalign*}
+Матрица $A$ приведена к треугольному виду, при этом определитель равен произведению элементов, стоящих на главной диагонали. В $n-1$ строках, начиная со второй, соответствующие элементы равны $x$.
+
+\subsubsection{37.}
+Покажите, что определитель матрицы Вандермонда равен
+\begin{flalign*}
+  \prod_{1\leq j\leq n}{x_j\prod_{1\leq i<j\leq n}{(x_j-x_i)}}.
+\end{flalign*}
+Матрица Вандермонда состоит из элементов $a_{ij}=x_j^i$ и имеет вид
+\begin{flalign*}
+  A=
+\begin{pmatrix}
+  x_1 & x_2 & \cdots & x_n \\
+  x_1^2 & x_2^2 & \cdots & x_n^2 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  x_1^n & x_2^n & \cdots & x_n^n
+\end{pmatrix}
+\end{flalign*}
+
+\begin{flalign*}
+  &\Delta_A=
+  \begin{vmatrix}
+    x_1 & x_2 & \cdots & x_n \\
+    x_1^2 & x_2^2 & \cdots & x_n^2 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    x_1^n & x_2^n & \cdots & x_n^n
+  \end{vmatrix}=
+  x_1x_2\cdots x_n
+  \begin{vmatrix}
+    1 & 1 & \cdots & 1 \\
+    x_1^1 & x_2^1 & \cdots & x_n^1 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1}
+  \end{vmatrix}=
+  \left(\prod_{1\leq j\leq n}{x_j}\right)
+  \begin{vmatrix}
+    1 & x_1 & \cdots & x_1^{n-1} \\
+    1 & x_2 & \cdots & x_2^{n-1} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    1 & x_n & \cdots & x_n^{n-1}
+  \end{vmatrix}=
+  &\\
+  &
+  \left(\prod_{1\leq j\leq n}{x_j}\right)
+  \begin{vmatrix}
+    1 & x_1 & \cdots & x_1^{n-1} \\
+    0 & x_2-x_1 & \cdots & x_2^{n-1}-x_1^{n-1} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & x_n-x_1 & \cdots & x_n^{n-1}-x_1^{n-1}
+  \end{vmatrix}=\cdots;
+  &\\
+\end{flalign*}
+
+\begin{flalign*}
+  &\arraycolsep=0.01em
+\begin{array}{rrrrrrrr@{\,}r|l}
+b^n&-&a^n&&&&&&&\,b-a\\
+\cline{10-10}
+b^n&-&ab^{n-1}&&&&&&&\,b^{n-1}+ab^{n-2}+\cdots+a^{n-2}b+a^{n-1}\\
+\cline{1-4}
+&ab^{n-1}&-&a^n\\
+&ab^{n-1}&-&a^2b^{n-2}\\
+\cline{2-4}
+&&a^2b^{n-2}&-&a^n\\
+&&&&\cdots\\
+\cline{3-5}
+&&&&a^{n-2}b^2&-&a^n\\
+&&&&a^{n-2}b^2&-&a^{n-1}b\\
+\cline{4-6}
+&&&&&a^{n-1}b&-&a^n\\
+&&&&&a^{n-1}b&-&a^n\\
+\cline{5-7}
+&&&&&&0
+\end{array}&\\
+&b^n-a^n=(b-a)(b^{n-1}+ab^{n-2}+\cdots+a^{n-2}b+a^{n-1}).&\\
+\end{flalign*}
+
+Таким образом, получается, что элементы в каждой $j$-й строке, начиная со второй, делятся на $(x_j-x_1)$.
+\begin{flalign*}
+  &\cdots=
+  \left(\prod_{1\leq j\leq n}{x_j}\right)
+  \left(\prod_{2\leq j\leq n}{x_j-x_1}\right)
+  \begin{vmatrix}
+    1 & x_1 & \cdots & x_1^{n-1} \\
+    0 & 1 & \cdots & x_2^{n-2}+x_1x_2^{n-3}+\cdots+x_1^{n-3}x_2+x_1^{n-2} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 1 & \cdots & x_n^{n-2}+x_1x_n^{n-3}+\cdots+x_1^{n-3}x_n+x_1^{n-2}
+  \end{vmatrix}=
+  &\\
+  &
+  \left(\prod_{1\leq j\leq n}{x_j}\right)
+  \left(\prod_{2\leq j\leq n}{x_j-x_1}\right)
+  \begin{vmatrix}
+    1 & x_1 &x_1^2& \cdots & x_1^{n-1} \\
+    0 & 1 & x_2+x_1& \cdots & x_2^{n-2}+x_1x_2^{n-3}+\cdots+x_1^{n-3}x_2+x_1^{n-2} \\
+    0 & 0 & x_3-x_2& \cdots & x_3^{n-2}-x_2^{n-2}+x_1(x_3^{n-3}-x_2^{n-3})+\cdots+
+    x_1^{n-3}(x_3-x_2) \\
+    \vdots & \vdots &\vdots & \ddots & \vdots \\
+    0 & 0 & x_n-x_2& \cdots & x_n^{n-2}-x_2^{n-2}+x_1(x_n^{n-3}-x_2^{n-3})+\cdots+
+    x_1^{n-3}(x_n-x_2)
+  \end{vmatrix};
+  &\\
+\end{flalign*}
+Мы снова получили матрицу, в которой элементы в строках, начиная с третьей, делятся на $x_j-x_2$.
+
+Таким образом, последовательно применяя вынесение общего множителя и сложение строк, мы приходим к формуле
+\begin{flalign*}
+  &
+  \left(\prod_{1\leq j\leq n}{x_j}\right)
+  \left(\prod_{2\leq j\leq n}{x_j-x_1}\right)
+  \left(\prod_{3\leq j\leq n}{x_j-x_2}\right)
+  \cdots
+  \left(\prod_{n\leq j\leq n}{x_j-x_{n-1}}\right)=
+  &\\
+  &\left(\prod_{1\leq j\leq n}{x_j}\right)
+  \left(\prod_{1\leq i<j\leq n}{(x_j-x_i)}\right)&\\
+\end{flalign*}
 
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
