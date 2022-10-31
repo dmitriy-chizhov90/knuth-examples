@@ -2541,6 +2541,76 @@ b^n&-&ab^{n-1}&&&&&&&\,b^{n-1}+ab^{n-2}+\cdots+a^{n-2}b+a^{n-1}\\
 \end{flalign*}
 Так как $A*B=B*A=1$, $B=A^{-1}$.
 
+\subsubsection{40.}
+Покажите, что элементы матрицы, обратной матрице Вандермонда, имеют вид
+\begin{flalign*}
+  b_{ij}=\left.\left(\sum_{\substack{1\leq k_1<\cdots<k_{n-j}\leq n\\k_1,\cdots,k_{n-j}\neq i}}{(-1)^{j-1}x_{k_1}\cdots x_{k_{n-j}}}\right)\middle/x_i\prod_{\substack{1\leq k\leq n\\k\neq i}}{(x_k-x_i)}\right. .
+\end{flalign*}
+Пусть вас не пугает сложная сумма в числителе --- это просто коэффициент при $x^{j-1}$ в многочлене $(x_1-x)\cdots(x_n-x)/(x_i-x)$.
+
+\begin{flalign*}
+  &\frac{\prod_{1\leq k\leq n}{(x_k-x)}}{x_i-x}=
+  \prod_{\substack{1\leq k\leq n\\k\neq i}}{(x_k-x)}=
+  S_0+S_1x+S_2x^2+\cdots S_{n-1}x^{n-1}=\sum_{0\leq j<n}{S_jx^j}=
+  \sum_{1\leq j\leq n}{S_{j-1}x^{j-1}}.&\\
+\end{flalign*}
+
+Если вместо переменной $x$ подставить $x_1,\ x_2,\ \cdots,\ x_n$, то вместо $S_{0},\ S_{1},\ \cdots,\ S_{n-1}$ можно использовать $S_{10},\ S_{11},\ \cdots,\ S_{1n-1},\ S_{20},\ S_{21},\ \cdots,\ S_{2n-1},\ \cdots,\ S_{n0},\ S_{n1},\ \cdots,\ S_{nn-1}$. 
+
+Элементы матрицы $B$ имеют вид $b_{ij}=\frac{b_{c_{ij}}}{b_{r_i}}$.
+\begin{flalign*}
+  &b_{r_{1}}=x_1(x_2-x_1)(x_3-x_1)\cdots(x_n-x_1)=
+  x_1\prod_{1<k\leq n}{(x_k-x_1)}=x_1P_1; &\\
+  &b_{r_{2}}=x_2(x_1-x_2)(x_3-x_2)\cdots(x_n-x_2)=
+  x_2\prod_{\substack{1\leq k\leq n\\k\neq 2}}{(x_k-x_2)}=x_2P_2; &\\
+  &\cdots&\\
+  &b_{r_{n-1}}=x_{n-1}(x_1-x_{n-1})(x_2-x_{n-1})\cdots(x_{n}-x_{n-1})=
+  x_{n-1}\prod_{\substack{1\leq k\leq n\\k\neq n-1}}{(x_k-x_{n-1})}=x_{n-1}P_{n-1};
+  &\\
+  &b_{r_{n}}=x_n(x_1-x_n)(x_2-x_n)\cdots(x_{n-1}-x_n)=
+  x_n\prod_{1\leq k<n}{(x_k-x_n)}=x_nP_n. &\\
+\end{flalign*}
+
+Мы знаем, что $\sum_{\substack{1\leq k_1<\cdots<k_{n-j}\leq n\\k_1,\cdots,k_{n-j}\neq i}}{(-1)^{j-1}x_{k_1}\cdots x_{k_{n-j}}}$ --- коэффициент при $x_i^{j-1}$ в многочлене $\prod_{\substack{1\leq k\leq n\\k\neq i}}{(x_k-x_i)}$, т.е. $S_{ij-1}$.
+
+\begin{flalign*}
+  &b_{c_{11}}=S_{10}; && b_{c_{12}}=S_{11}; && \cdots && b_{c_{1n}}=S_{1n-1}; &\\
+  &b_{c_{21}}=S_{20}; && b_{c_{22}}=S_{21}; && \cdots && b_{c_{2n}}=S_{2n-1}; &\\
+  &\cdots&\\
+  &b_{c_{n1}}=S_{n0}; && b_{c_{n2}}=S_{n1}; && \cdots && b_{c_{nn}}=S_{nn-1}. &\\
+\end{flalign*}
+
+Таким образом, матрица $B$ имеет вид:
+\begin{flalign*}
+  &B=
+  \begin{pmatrix}
+    \frac{S_{10}}{x_1P_1}&\frac{S_{11}}{x_1P_1}&\cdots&\frac{S_{1n-1}}{x_1P_1}\\
+    \frac{S_{20}}{x_2P_2}&\frac{S_{21}}{x_2P_2}&\cdots&\frac{S_{2n-1}}{x_2P_2}\\
+    \vdots&\vdots&\ddots&\vdots\\
+    \frac{S_{n0}}{x_nP_n}&\frac{S_{n1}}{x_nP_n}&\cdots&\frac{S_{nn-1}}{x_nP_n}\\
+  \end{pmatrix}
+  &\\
+\end{flalign*}
+
+Рассмотрим произведение $B$ на $A$. Диагональные элементы обращаются в $1$:
+\begin{flalign*}
+  &\frac{S_{i0}}{x_iP_i}x_i+\frac{S_{i1}}{x_iP_i}x_i^2+\cdots+\frac{S_{in-1}}{x_iP_i}x_i^n=\frac{x_i(S_{i0}+S_{i1}x_i+\cdots+S_{in-1}x_i^{n-1})}{x_iP_i}=
+  \frac{P_i}{P_i}=1.&\\
+\end{flalign*}
+Остальные элементы обращаются в $0$:
+\begin{flalign*}
+  &\frac{S_{i0}}{x_iP_i}x_l+\frac{S_{i1}}{x_iP_i}x_l^2+\cdots+\frac{S_{in-1}}{x_iP_i}x_l^n=\frac{x_l(S_{i0}+S_{i1}x_l+\cdots+S_{in-1}x_l^{n-1})}{x_iP_i}=
+  \frac{x_l\prod_{\substack{1\leq k\leq n\\k\neq i}}{(x_k-x_l)}}{x_iP_i}=0,&\\
+\end{flalign*}
+так как $l\neq i$ и $1\leq l\leq n$.
+
+Произведение $A$ на $B$ подобным образом не сокращается. Например, диагональные элементы:
+\begin{flalign*}
+  &\frac{S_{1j-1}}{x_1P_1}x_1^j+\frac{S_{2j-1}}{x_2P_2}x_2^j+\cdots+\frac{S_{nj-1}}{x_nP_n}x_n^j=
+  \frac{S_{1j-1}}{P_1}x_1^{j-1}+\frac{S_{2j-1}}{P_2}x_2^{j-1}+\cdots+\frac{S_{nj-1}}{P_n}x_n^{j-1}.&\\
+\end{flalign*}
+
+
 \subsection{Целочисленные функции и элементарная теория чисел }
 \subsection{Перестановки и факториалы}
 
