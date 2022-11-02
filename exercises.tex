@@ -2866,6 +2866,74 @@ $\lfloor x \rfloor$ --- целое число, следовательно $\bigl
   \left\lfloor -\frac{1}{2}\right\rfloor=-1.&\\
 \end{flalign*}
 
+\subsubsection{6.}
+Какие из следующих равенств верны для всех положительных дейсвительных чисел $x$: (a) $\left\lfloor\sqrt{\lfloor x\rfloor}\right\rfloor=\left\lfloor\sqrt{x}\right\rfloor$; (b) $\left\lceil\sqrt{\lceil x\rceil}\right\rceil=\left\lceil\sqrt{x}\right\rceil$; (c) $\left\lceil\sqrt{\lfloor x\rfloor}\right\rceil=\left\lceil\sqrt{x}\right\rceil$?
+
+(a) Рассмотрим значения функций в левой и правой частях равенства для различных значений $x$:
+
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $x$ & $\left\lfloor\sqrt{\lfloor x\rfloor}\right\rfloor$ & $\left\lfloor\sqrt{x}\right\rfloor$ \\
+ \hline  $0.5$ & $0$ & $0$ \\
+ \hline  $1$ & $\left\lfloor\sqrt{1}\right\rfloor=\lfloor\pm 1\rfloor=\pm 1$ & $\lfloor\pm 1\rfloor=\pm 1$ \\
+ \hline  $1.21$ & $\left\lfloor\sqrt{1}\right\rfloor=\lfloor\pm 1\rfloor=\pm 1$ & $\lfloor\pm 1.1\rfloor=\{1;\ -2\}$ \\
+ \hline
+\end{tabularx}
+
+(b) Рассмотрим значения функций в левой и правой частях равенства для различных значений $x$:
+
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $x$ & $\left\lceil\sqrt{\lceil x\rceil}\right\rceil$ & $\left\lceil\sqrt{x}\right\rceil$ \\
+ \hline  $0.04$ & $\left\lceil\sqrt{1}\right\rceil=\lceil\pm 1\rceil=\pm 1$ & $\lceil\pm 0.2\rceil=\{1;\ 0\}$ \\
+ \hline  $1.21$ & $\left\lceil\sqrt{2}\right\rceil=\lceil\pm 1.4142\rceil=\{2; -1\}$ & $\lceil\pm 1.1\rceil=\{2;\ -1\}$ \\
+ \hline  $99.1$ & $\left\lceil\sqrt{100}\right\rceil=\lceil\pm 10\rceil=\pm 10$ & $\lceil\pm 9.95\rceil=\{10;\ -9\}$ \\
+ \hline  $100.99$ & $\left\lceil\sqrt{101}\right\rceil=\lceil\pm 10.05\rceil=\{11;\ -10\}$ & $\lceil\pm 10.05\rceil=\{11;\ -10\}$ \\
+ \hline
+\end{tabularx}
+
+(c) Рассмотрим значения функций в левой и правой частях равенства для различных значений $x$:
+
+\begin{tabularx}{1\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $x$ & $\left\lceil\sqrt{\lfloor x\rfloor}\right\rceil$ & $\left\lceil\sqrt{x}\right\rceil$ \\
+ \hline  $0.04$ & $\left\lceil\sqrt{0}\right\rceil=\lceil0\rceil=0$ & $\lceil\pm 0.2\rceil=\{1;\ 0\}$ \\
+ \hline  $1.21$ & $\left\lceil\sqrt{1}\right\rceil=\lceil\pm 1\rceil=\pm 1$ & $\lceil\pm 1.1\rceil=\{2;\ -1\}$ \\
+ \hline
+\end{tabularx}
+
+Для случая (c) при $x=1.21$ функции дают различные значения даже для абсолютных значений квадратного корня. Равенства (a) и (b) выполняются для всех действительных $x$ если рассматривать только положительные значения квадратного корня. Для отрицательных значений соотношения не выполняются. Докажем это.
+
+\begin{flalign*}
+  &\sqrt{x}=\sqrt{\lfloor x\rfloor+ x\mod 1}=n \Longrightarrow
+  x=\lfloor x\rfloor+ x\mod 1=n^2 \Longrightarrow
+  \lfloor x\rfloor=n^2-x\mod 1;&\\
+  &\sqrt{n^2-x\mod 1}\leq\sqrt{n^2};&\\
+  &\sqrt{\lfloor x\rfloor}\leq n;&\\
+  &\left\lfloor\sqrt{x}\right\rfloor=\lfloor n \rfloor \Longrightarrow
+  (\lfloor n \rfloor)^2\leq x< (\lfloor n \rfloor+1)^2 \Longrightarrow
+  (\lfloor n\rfloor)^2\leq\lfloor x\rfloor<(\lfloor n\rfloor+1)^2;&\\
+\end{flalign*}
+Если $x$ лежит между целой частью квадратного корня из $y$, возведенной в квадрат, и квадратом следующего целого числа, то целая часть корня из $y$ равна целой части корня из $x$.
+\begin{flalign*}
+  &\left\lfloor\sqrt{x}\right\rfloor=\lfloor n \rfloor \Longleftrightarrow
+  (\lfloor n \rfloor)^2\leq x< (\lfloor n \rfloor+1)^2 \Longleftrightarrow
+  (\lfloor n\rfloor)^2\leq\lfloor x\rfloor<(\lfloor n\rfloor+1)^2\Longleftrightarrow
+  \lfloor n\rfloor=\left\lfloor\sqrt{\lfloor x\rfloor}\right\rfloor.&\\
+\end{flalign*}
+Аналогично
+\begin{flalign*}
+  &\left\lceil\sqrt{x}\right\rceil=n\Longleftrightarrow
+  (n-1)^2<x\leq n^2\Longleftrightarrow
+  (n-1)^2<\lceil x\rceil\leq n^2\Longleftrightarrow
+  n=\left\lceil\sqrt{\lceil x\rceil}\right\rceil.&\\
+\end{flalign*}
 
 \subsection{Перестановки и факториалы}
 
