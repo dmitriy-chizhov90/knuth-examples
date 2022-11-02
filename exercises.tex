@@ -2766,6 +2766,105 @@ b^n&-&ab^{n-1}&&&&&&&\,b^{n-1}+ab^{n-2}+\cdots+a^{n-2}b+a^{n-1}\\
 
 \subsection{Целочисленные функции и элементарная теория чисел }
 
+\subsubsection{1.}
+Чему равны $\lfloor 1.1 \rfloor,\ \lfloor -1.1 \rfloor,\ \lceil -1.1 \rceil,\ \lfloor 0.99999 \rfloor$ и $\lfloor \lg{35} \rfloor$?
+
+\begin{flalign*}
+  &\lfloor 1.1 \rfloor = 1;&\\
+  &\lfloor -1.1 \rfloor = -2;&\\
+  &\lceil -1.1 \rceil = -1;&\\
+  &\lfloor 0.99999 \rfloor = 0;&\\
+  &\lfloor \lg{35} \rfloor = 5.&\\
+\end{flalign*}
+
+\subsubsection{2.}
+Чему равно $\bigl \lceil \lfloor x \rfloor \bigl \rceil$?
+
+$\lfloor x \rfloor$ --- целое число, следовательно $\bigl \lceil \lfloor x \rfloor \bigl \rceil = \lfloor x \rfloor$.
+
+\subsubsection{3.}
+Пусть $n$ --- целое, а $x$ --- действительное число. Докажите, что:
+\begin{enumerate}[label=\alph*)]
+  \item $\lfloor x\rfloor<n$ тогда и только тогда, когда $x<n$;
+  \item $n\leq\lfloor x\rfloor$ тогда и только тогда, когда $n\leq x$;
+  \item $\lceil x\rceil\leq n$ тогда и только тогда, когда $x\leq n$;
+  \item $n<\lceil x\rceil$ тогда и только тогда, когда $n<x$;
+  \item $\lfloor x\rfloor=n$ тогда и только тогда, когда $x-1<n\leq x$, а также тогда и только тогда, когда $n\leq x<n+1$;
+  \item $\lceil x\rceil=n$ тогда и только тогда, когда $x\leq n<x+1$, а также тогда и только тогда, когда $n-1<x\leq n$.
+\end{enumerate}
+[\textit{Эти формулы являются самыми важными инструментами доказательства утверждений, касающихся $\lfloor x \rfloor$ и $\lceil x \rceil$}. ]
+
+\begin{enumerate}[label=\alph*)]
+\item
+  Если $x<n$, то $\lfloor x\rfloor\leq x<n$.
+  Если $x=n$, то $x$ --- целое число, следовательно $\lfloor x\rfloor=x=n$.
+  Если $n<x<n+1$, то $\lfloor x\rfloor=n$.
+  Если $n+1\leq x$, то $n<n+1\leq\lfloor x\rfloor$.
+
+  Если $\lfloor x\rfloor<n$, то $\lfloor x\rfloor\leq x<\lfloor x\rfloor+1\leq n$, т.е. $x<n$.
+  Если $\lfloor x\rfloor=n$, значит $n\leq x<n+1$.
+  Если $\lfloor x\rfloor>n$, значит $n<\lfloor x\rfloor\leq x$, т.е. $x>n$.
+\item Мы уже показали, что $n\leq x\Longleftrightarrow n\leq\lfloor x\rfloor$.
+\item
+  Если $x<n$, то $\lceil x\rceil\leq n$.
+  Если $x=n$, то $x$ --- целое число и $\lceil x\rceil=n$.
+  Если $x>n$, то $\lceil x\rceil>n$.
+  
+  Если $\lceil x\rceil=n$, то $n-1<x\leq n$.
+  Если $\lceil x\rceil<n$, то $x\leq\lceil x\rceil<n$.
+  Если $\lceil x\rceil>n$, то $x>n$.
+\item Мы уже показали, что $n<x\Longleftrightarrow n<\lceil x\rceil$.
+\item
+  Если $x-1<n\leq x$, то возможны два случая.
+  Либо $x=n$, тогда $\lfloor x\rfloor=n$.
+  Либо $x>n$. В этом случае $x<n+1$, т.к. в противном случае имели бы противоречие $x\geq n+1 \Rightarrow x-1\geq n$, хотя по условию $x-1<n$.
+  Следовательно $\lfloor x\rfloor=n$.
+
+  Если $n\leq x<n+1$, то соотношение $\lfloor x\rfloor=n$ очевидно.
+
+  Если $\lfloor x\rfloor=n$, то, очевидно, $n\leq x<n+1$, отсюда $x-1<n$, т.е. $x-1<n\leq x$.
+\item
+  Если $x\leq n<x+1$, то возможны два случая.
+  Либо $x=n$, тогда $\lceil x\rceil=n$.
+  Либо $x<n$. В этом случае $x>n-1$, т.к. в противном случае имели бы противоречие $x\leq n-1\Rightarrow x+1\leq n$, хотя по условию $x+1>n$.
+  Следовательно $\lceil x\rceil=n$.
+
+  Если $n-1<x\leq n$, то соотношение $\lceil x\rceil=n$ очевидно.
+
+  Если $\lceil x\rceil=n$, то, очевидно $n-1<x\leq n$, отсюда $n<x+1$, т.е. $x\leq n<x+1$.
+\end{enumerate}
+
+\subsubsection{4.}
+Используя предыдущее упражнение, докажите, что $\lfloor -x\rfloor =-\lceil x\rceil$.
+
+Пусть $n=\lceil x\rceil$. Тогда
+\begin{flalign*}
+  &n-1<x\leq n<x+1;&\\
+  &-n+1>-x\geq -n>-x-1;&\\
+  &-x-1<-n\leq -x<-n+1;&\\
+  &m\leq y<m+1 \Rightarrow \lfloor y\rfloor=m;&\\
+  &m=-n;\ y=-x;&\\
+  &\lfloor -x\rfloor=-n=-\lceil x\rceil.&\\
+\end{flalign*}
+
+\subsubsection{5.}
+Пусть $x$ --- положительное действительное число. Найдите простую формулу \emph{округления $x$ до ближайшего целого числа}. Искомое правило округления должно давать $\lfloor x\rfloor$ в случае, если $x\mod 1<\frac{1}{2}$, и $\lceil x\rceil$, если $x\mod 1\geq\frac{1}{2}$. Вы должны получить единую формулу, включающую в себя оба случая. Рассмотрите, как ваша формула будет выполнять округление для отрицательного $x$.
+
+Будем использовать функцию \emph{floor}, для округления. Если $\lfloor x \rfloor=n$, то $x-1<n\leq x<n+1$. Обозначим через $n'=\lfloor x+\frac{1}{2}\rfloor$, тогда $x+\frac{1}{2}-1=x-\frac{1}{2}<n'\leq x+\frac{1}{2}<n'+1$.
+
+Переход функции $\lfloor x+\frac{1}{2}\rfloor$ к следющему значению происходит, если $x\mod 1=\frac{1}{2}$.
+
+Из формулы $0\leq\frac{x}{y}-\left\lfloor\frac{x}{y}\right\rfloor=\frac{x\mod y}{y}<1$ для отрицательных $x$ $0\leq x\mod1<1$ (как и для положительных чисел), однако $(-x)\mod 1=1-(x\mod 1)$. Т.е. $x\mod 1<\frac{1}{2}$ выполняется, например, для $-1\leq x<-\frac{1}{2}$, а $x\mod 1\geq\frac{1}{2}$ --- для $-\frac{1}{2}\leq x<0$. Поэтому, предложенная функция работает в соответствии с условиями и для отрицательных чисел, например:
+\begin{flalign*}
+  &f\left(-\frac{1}{3}\right)=\left\lfloor -\frac{1}{3}+\frac{1}{2}\right\rfloor=
+  \left\lfloor \frac{1}{6}\right\rfloor=0;&\\
+  &f\left(-\frac{2}{3}\right)=\left\lfloor -\frac{2}{3}+\frac{1}{2}\right\rfloor=
+  \left\lfloor -\frac{1}{6}\right\rfloor=-1;&\\
+  &f\left(-\frac{1}{2}\right)=\left\lfloor -\frac{1}{2}+\frac{1}{2}\right\rfloor=
+  \left\lfloor 0\right\rfloor=0\textrm{ (а не $-1$)};&\\
+  &f\left(-1\right)=\left\lfloor -1+\frac{1}{2}\right\rfloor=
+  \left\lfloor -\frac{1}{2}\right\rfloor=-1.&\\
+\end{flalign*}
 
 
 \subsection{Перестановки и факториалы}
