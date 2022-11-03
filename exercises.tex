@@ -2935,6 +2935,92 @@ $\lfloor x \rfloor$ --- целое число, следовательно $\bigl
   n=\left\lceil\sqrt{\lceil x\rceil}\right\rceil.&\\
 \end{flalign*}
 
+\subsubsection{7.}
+
+Покажите, что $\lfloor x\rfloor + \lfloor y\rfloor\leq\lfloor x+y\rfloor$ и что это соотношение становится равенством тогда и только тогда, когда $x\mod 1+y\mod1<1$. Выполняется ли аналогичная формула для функции ``потолок''?
+
+\begin{flalign*}
+  &\lfloor\ x+y\rfloor=\lfloor\ \lfloor x\rfloor+x\mod 1+\lfloor y\rfloor+y\mod 1\rfloor=&\\
+  &\lfloor x\rfloor+\lfloor y\rfloor+\lfloor x\mod 1+y\mod 1\rfloor\geq
+  \lfloor x\rfloor+\lfloor y\rfloor;&\\
+  &0\leq x\mod 1<1;&\\
+  &0\leq y\mod 1<1;&\\
+  &0\leq x\mod 1+y\mod 1<2;&\\
+  &\lfloor x\mod 1+y\mod 1\rfloor=\begin{cases}
+    0,& \textrm{если }0\leq x\mod 1+y\mod1<1;\\
+    1,& \textrm{если }1\leq x\mod 1+y\mod1<2.
+  \end{cases}&\\
+\end{flalign*}
+
+Для функции ``потолок'' анлогичная фомула выглядит следующим образом:
+$\lceil x\rceil + \lceil y\rceil\geq\lceil x+y\rceil$. Она обращается в равенство, если $x$ и $y$ --- целые числа, а также если $1\leq x\mod 1+y\mod1<2$.
+
+\subsubsection{8.}
+Чему равно $100\mod 3$, $100\mod 7$, $-100\mod 7$, $-100\mod 0$?
+
+\begin{flalign*}
+  &100\mod 3=1;&\\
+  &100\mod 7=2;&\\
+  &\lfloor-100/7\rfloor=\left\lfloor-14\frac{2}{7}\right\rfloor=-15;&\\
+  &-100\mod 7=-100-(-15*7)=-100+105=5;&\\
+  &-100\mod 0=-100.&\\
+\end{flalign*}
+
+\subsubsection{9.}
+Чему равно $5\mod-3$, $18\mod-3$, $-2\mod-3$?
+
+\begin{flalign*}
+  &\lfloor 5/-3\rfloor=\left\lfloor-1\frac{2}{3}\right\rfloor=-2;&\\
+  &5\mod-3=5-(-2*(-3))=-1;&\\
+  &\lfloor 18/-3\rfloor=\left\lfloor-6\right\rfloor=-6;&\\
+  &18\mod-3=18-(-6*(-3))=0;&\\
+  &\lfloor -2/-3\rfloor=\left\lfloor\frac{2}{3}\right\rfloor=0;&\\
+  &-2\mod-3=-2-(0*(-3))=-2.&\\
+\end{flalign*}
+
+\subsubsection{10.}
+Чему равно $1.1\mod 1$, $0.11\mod .1$, $0.11\mod-.1$?
+
+\begin{flalign*}
+  &\lfloor 1.1/1\rfloor=\left\lfloor 1.1\right\rfloor=1;&\\
+  &1.1\mod 1=1.1-1*1=0.1;&\\
+  &\lfloor 0.11/.1\rfloor=\left\lfloor 1.1\right\rfloor=1;&\\
+  &0.11\mod .1=0.11-1*.1=0.01;&\\
+  &\lfloor 0.11/-.1\rfloor=\left\lfloor -1.1\right\rfloor=-2;&\\
+  &0.11\mod-.1=0.11-(-2*(-.1))=0.11-0.2=-0.09.&\\
+\end{flalign*}
+
+\subsubsection{11.}
+Что означает выражение ``$x\equiv y\ (\textrm{по модулю }0)$'' согласно принятому нами определению?
+
+$x\equiv y\ (\textrm{по модулю }m)$, если $x\mod m=y\mod m$. $x\mod 0=x$, отсюда выражение можно переписать как ``$x=y$.
+
+\subsubsection{12.}
+Какие целые числа взаимно просты с $1$?
+
+Взаимно простыми называются числа, которые не имеют общих множителей (отличных от $1$). По другому, это числа, наибольший общий делитель которых равен $1$. Получается, что все целые числа взаимно просты с $1$. Также можно воспользоваться приемом сокращения дробей: дробь, в числителе или знаменателе которой стоит $1$, несократима.
+
+\subsubsection{13.}
+Будем считать, что наибольший общий делитель чисел $0$ и $n$ равен $|n|$. Какие целые числа взаимно просты с $0$?
+
+По нашему определению наибольший общий делитель двух взаимнопростых чисел должен быть равен $1$. Значит, только $1$ и $-1$ взаимно просты с $0$.
+
+\subsubsection{14.}
+Если $x\mod 3=2$ и $x\mod 5=3$, чему равно $x\mod 15$?
+
+Условие $x\mod 3=2$ задает множество чисел $A=\{\cdots,\ -4, -1,\ 2,\ 5,\ 8,\ 11,\ 14, 17,\ 20,\ 23,\ \cdots\} = 3n+2$.
+
+Условие $x\mod 5=3$ задает множество чисел $B=\{\cdots,\ -7, -2,\ 3,\ 8,\ 13,\ 18,\ 23,\ 28,\ \cdots\} = 5m+3$.
+
+$x$ удовлетворяет как первому, так и второму условиям, т.е. входит в пересечение двух множеств: $A\cap B=\{\cdots,\ 8,\ 23,\ \cdots\}=15k+8$. Число $8$ можно получить следующим образом:
+
+\begin{flalign*}
+  &3n+2=5m+3;&\\
+  &n=\frac{5m+1}{3};&\\
+  &3*2+2=5*1+3=8.&\\
+\end{flalign*}
+Для целых $m$ и $n$ соотношение выполняется  при $m=1$ и $n=2$. Отсюда $x\mod 15=8$.
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}
