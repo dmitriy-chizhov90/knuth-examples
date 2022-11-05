@@ -3122,7 +3122,7 @@ $x$ удовлетворяет как первому, так и второму �
   &\frac{a-b}{s}=r\left(\left\lfloor\frac{a}{rs}\right\rfloor-\left\lfloor\frac{b}{rs}\right\rfloor\right).&\\
 \end{flalign*}
 
-Если умножить $\left\lfloor\frac{a}{rs}\right\rfloor$ на $r$, то получится $\left\lfloor\frac{a}{!s}\right\rfloor$, отсюда получаем, что $a\equiv b\ (\textrm{по модулю }s)$.
+Т.к. разность чисел $a$ и $b$ кратна $r$, то $a\mod r=b\mod r$, т.к. только тогда $\frac{a}{r}-\frac{b}{r}=\left\lfloor\frac{a}{r}\right\rfloor-\left\lfloor\frac{b}{r}\right\rfloor+\frac{a\mod r}{r}-\frac{b\mod r}{r}$ может дать целое число. Отсюда получаем, что $a\equiv b\ (\textrm{по модулю }r)$.
 
 \subsection{Перестановки и факториалы}
 
