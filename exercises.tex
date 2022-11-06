@@ -3124,6 +3124,62 @@ $x$ удовлетворяет как первому, так и второму �
 
 Т.к. разность чисел $a$ и $b$ кратна $r$, то $a\mod r=b\mod r$, т.к. только тогда $\frac{a}{r}-\frac{b}{r}=\left\lfloor\frac{a}{r}\right\rfloor-\left\lfloor\frac{b}{r}\right\rfloor+\frac{a\mod r}{r}-\frac{b\mod r}{r}$ может дать целое число. Отсюда получаем, что $a\equiv b\ (\textrm{по модулю }r)$.
 
+\subsubsection{18.}
+С помощью свойства B докажите вторую половину свойства D: если $a\equiv b\ (\textrm{по модую }r)$ и $a\equiv b\ (\textrm{по модую }s)$, то $a\equiv b\ (\textrm{по модую }rs)$ при условии, что $r\perp s$.
+
+Согласно свойству B, если $ax\equiv by$ и $a\equiv b$ и если $a\perp m$, то $x\equiv y\ (\textrm{по модулю }m)$.
+
+\begin{flalign*}
+  &\frac{a}{s}=\left\lfloor\frac{a}{s}\right\rfloor+\frac{a\mod s}{s};&&
+  \frac{b}{s}=\left\lfloor\frac{b}{s}\right\rfloor+\frac{b\mod s}{s};&\\
+  &\frac{a}{r}=\left\lfloor\frac{a}{r}\right\rfloor+\frac{a\mod r}{r};&&
+  \frac{b}{r}=\left\lfloor\frac{b}{r}\right\rfloor+\frac{b\mod r}{r};&\\
+  &s\equiv s\ (\textrm{по модулю }r);&&
+  r\equiv r\ (\textrm{по модулю }s);&\\
+\end{flalign*}
+Применяя свойство B, получаем
+\begin{flalign*}
+  &\frac{a}{s}\equiv\frac{b}{s}\ (\textrm{по модулю }r);&&
+  \frac{a}{r}\equiv\frac{b}{r}\ (\textrm{по модулю }s);&\\
+  &\frac{a}{s}-r\left\lfloor\frac{a}{rs}\right\rfloor=\frac{b}{s}-r\left\lfloor\frac{b}{rs}\right\rfloor;&&
+  \frac{a}{s}-s\left\lfloor\frac{a}{rs}\right\rfloor=\frac{b}{s}-s\left\lfloor\frac{b}{rs}\right\rfloor;&\\
+  &a-rs\left\lfloor\frac{a}{rs}\right\rfloor=b-rs\left\lfloor\frac{b}{rs}\right\rfloor;&&
+  a\mod rs=b\mod rs;&\\
+  &a\equiv b\ (\textrm{по модулю }rs).&&&\\
+\end{flalign*}
+
+\subsubsection{19.}
+(\emph{Закон существования обратного элемента.}) Если $n\perp m$, то существует такое целое $n'$, что $nn'\equiv 1\ (\textrm{по модулю }m)$. Докажите это с помощью обощенного алгоритма Евклида (алгоритм 1.2.1E).
+
+Обобщенный алгоритм Евклида находит НОД $d$ двух целых положительных чисел $m$ и $n$, а также числа $a$ и $b$ такие, что $am+bn=d$. В нашем случае $d=1$, т.к. $m\perp n$.
+
+Разделим обе части равенства на $m$ и найдем остатки от деления на $m$ частей равенства:
+\begin{flalign*}
+  &\frac{am+bn}{m}=a+\frac{bn}{m}=a+\left\lfloor\frac{bn}{m}\right\rfloor+\frac{bn\mod m}{m};&\\
+  &\frac{1}{m}=\begin{cases}
+  1+\frac{1\mod m}{m}=\frac{1\mod 1}{1}=0,\ &\textrm{если }m=1;\\
+  0+\frac{1\mod m}{m},\ &\textrm{если }m>1.\end{cases}&\\
+\end{flalign*}
+
+Для того, чтобы равенство не нарушилось после деления, дробные части, а следовательно и остатки от деления на $m$, должны быть равны. Для $m\geq 1$:
+\begin{flalign*}
+  &bn\mod m=1\mod m\Longrightarrow bn\equiv 1\ (\textrm{по модулю }m)\Longrightarrow n'=b.&\\
+\end{flalign*}
+
+\subsubsection{20.}
+Докажите свойство B с помощью свойства A и закона существования обратного элемента.
+
+Требуется доказать, что, если $ax\equiv by$ и $a\equiv b$ и если $a\perp m$, то $x\equiv y\ (\textrm{по модулю }m)$.
+
+Согласно свойству A, если $a\equiv b$ и $x\equiv y$, то $ax\equiv by\ (\textrm{по модулю }m)$.
+
+По закону существования обратного элемента, если $a\perp m$, то существует $a'$ такое, что $aa'\equiv 1\ (\textrm{по модулю }m)$.
+
+\begin{flalign*}
+  &a\equiv b\Longrightarrow aa'\equiv a'b\equiv 1\ (\textrm{по модулю })m;&\\
+  &ax\equiv by\Longrightarrow aa'x\equiv a'by\Longrightarrow x\equiv y\ (\textrm{по модулю }m).&\\
+\end{flalign*}
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}
