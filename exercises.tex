@@ -3326,14 +3326,72 @@ $\varphi(r)$ --- есть количество чисел меньших $r$ и 
 
 Предположим, для $r$ существуют числа $r_1,r_2,\ldots,r_n$, такие что $r_i<r$ и $r_i\perp r$, а для $s$ --- числа $s_1,s_2,\ldots,s_m$, такие что $s_j<s$ и $s_j\perp s$. Соответственно, существуют числа $r_1,r_2,\ldots,r_n,r_1+r,r_2+r,\ldots,r_n+r,\ldots,r_1+(s-1)r,r_2+(s-1)r,\ldots,r_n+(s-1)r$, взаимно простых с $r$ и меньших $rs$, и $s_1,s_2,\ldots,s_m,s_1+s,s_2+s,\ldots,s_m+s,\ldots,s_1+(r-1)s,s_2+(r-1)s,\ldots,s_m+(r-1)s$. Для того, чтобы число было взаимно простым для $rs$ оно должно входить в оба этих множества.
 
-Рассмотрим числа $r_i,r_i+r,r_i+2r,\ldots,r_i+(s-1)r$. Все они взаимно просты с $r$. 
+Рассмотрим числа $r_i,r_i+r,r_i+2r,\ldots,r_i+(s-1)r$. Их количество равно $s$ и все они взаимно просты с $r$. Среди чисел $0,1,2,\ldots,s-1$ есть $\varphi(s)$ чисел взаимно простых с $s$. Т.к. $r\perp s$, то среди чисел $0r,1r,2r,\ldots,(s-1)r$ также $\varphi(s)$ чисел взаимнопростых с $s$. Причем все числа $s_ir\mod s$ различны, т.к. если $s_ir\equiv s_jr\ (\textrm{по модулю }s)$, то $s_i=s_j$, чего быть не может. Следовательно, все числа $r_i\mod s,(r_i+r)\mod s,(r_i+2r)\mod s,\ldots,(r_i+(s-1)r)\mod s$ также различны. Поэтому среди них есть также $\varphi(s)$ чисел взаимно простых с $s$.
 
-% 6: 1, 5: 2
-% 5: 1,2,3,4: 4
-% 5*6:
-%     6: 1!, 5,| 7!, 11!,| 13!, 17!,| 19!, 23!,| 25, 29!|
-%     5: 1!,2,3,4,|6,7!,8,9,|11!,12,13!,14,|16,17!,18,19!,|21,22,23!,24,|26,27,28,29!|
-% 5 10 15 20 25
+Получается, что для каждого из $\varphi(r)$ чисел взаимнопростых с $r$ есть $\varphi(s)$ чисел, меньших $rs$ и взаимно простых как с $r$, так и с $s$. Общее число таких чисел равно $\varphi(r)\varphi(s)$ и это и есть $\varphi(rs)$.
+
+$1000000=10^6=2^6 5^6$. Числа $2^6$ и $5^6$ взаимно простые. $\varphi(p^e)=p^e-p^{e-1}$. Таким образом, $\varphi(1000000)=\varphi(2^6)\varphi(5^6)=(2^6-2^5)(5^6-5^5)=2^5(2-1)5^5(5-1)=4\cdot 10^5$.
+
+Пусть число $n$ разложено на простые множители $p_1^{e_1}p_2^{e_2}\ldots p_n^{e_n}$. Тогда $\varphi(n)=p_1^{e_1-1}p_2^{e_2-1}\ldots p_n^{e_n-1}(p_1-1)(p_2-1)\ldots(p_n-1)=\frac{n(p_1-1)(p_2-1)\ldots(p_n-1)}{p_1p_2\ldots p_n}$.
+
+\subsubsection{31.}
+Докажите, что если функция $f(n)$ мультипликативна, то $g(n)=\sum_{d\setminus n}{f(d)}$ также мультипликативна.
+
+Пусть $s\perp r$. Нас интересуют не только простые числа, но все возможные делители $r$ и $s$. Пусть множество $C$ содержит все возможные делители $r$ и имеет размер $n$, а $D$ --- все возможные делители $s$ и содержит $m$ элементов. Множество $CD$ должно содержать $m\times n$ чисел $c_id_j$. Элементы множеств $C$ и $D$ также входят в $CD$, т.к. $c_1=d_1=1$.
+\begin{flalign*}
+  &g(r)=\sum_{1\leq i\leq n}{f(p_i)};\ g(s)=\sum_{1\leq j\leq m}{f(q_j)};&\\
+  &g(rs)=\sum_{1\leq i\leq n}{\sum_{1\leq j\leq m}{f(p_iq_j)}}=\sum_{1\leq i\leq n}{\sum_{1\leq j\leq m}{f(p_i)f(q_j)}}=\left(\sum_{1\leq i\leq n}{f(p_i)}\right)\left(\sum_{1\leq j\leq m}{f(q_j)}\right)=g(r)g(s).&\\
+\end{flalign*}
+
+\subsubsection{32.}
+Докажите, что для любой функции $f(x,y)$ выполняется тождество
+\begin{flalign*}
+  \sum_{d\setminus n}{\sum_{c\setminus d}{f(c,d)}}=\sum_{c\setminus n}{\sum_{d\setminus (n/c)}{f(c,cd)}}.
+\end{flalign*}
+
+Рассмотрим все делители числа $n$. Любое число делится на $1$, которая также делится на $1$. Для $n=1$
+\begin{flalign*}
+  &\sum_{d=1}{\sum_{c=1}{f(c,d)}}=f(1,1);\ \sum_{c=1}{\sum_{d=1}{f(1,1)}}=f(1,1).&\\
+\end{flalign*}
+
+Если $n$ --- простое, то оно делится на $1$ и на само себя. Тогда
+\begin{flalign*}
+  &\sum_{d\in\{1,n\}}{\sum_{c\setminus d}{f(c,d)}}=\sum_{c\setminus 1}{f(c,1)}+\sum_{c\setminus n}{f(c,n)}=f(1,1)+f(1,n)+f(n,n);&\\
+  &\sum_{c\in\{1,n\}}{\sum_{d\setminus (n/c)}{f(c,cd)}}=\sum_{d\setminus n}{f(1,d)}+\sum_{d\setminus 1}{f(n,nd)}=f(1,1)+f(1,n)+f(n,n).&\\
+\end{flalign*}
+
+В общем случае имеем множество $D=\{d_1,d_2,\ldots,d_n\}$ делителей числа $n$, и множество делителей для каждого делителя $C=\{\{c_{11},c_{12},\ldots,c_{1m_1}\},\{c_{21},c_{22},\ldots,c_{2m_2}\},\dots,\{c_{n1},c_{n2},\ldots,c_{nm_n}\}\}$. Обратим внимание, что все элементы множеств $C_1,C_2,\ldots,C_n$ входят в $D$. Тогда
+\begin{flalign*}
+  &\sum_{d\setminus n}{\sum_{c\setminus d}{f(c,d)}}=&&&\\
+  &&&f(c_{11},d_1)+f(c_{12},d_1)+\ldots+f(c_{1m_1},d_1)+&\\
+  &&&f(c_{21},d_2)+f(c_{22},d_2)+\ldots+f(c_{2m_2},d_2)+\ldots+&\\
+  &&&f(c_{n1},d_n)+f(c_{n2},d_n)+\ldots+f(c_{nm_n},d_n);&\\
+\end{flalign*}
+\begin{flalign*}
+  &\sum_{c\setminus n}{\sum_{d\setminus (n/c)}{f(c,cd)}}=
+  \sum_{c\setminus n}{\sum_{e\setminus (n/c)}{f(c,ce)}}=
+  \sum_{d\setminus n}{\sum_{e\setminus (n/d)}{f(d,de)}}=
+  \sum_{d\setminus n}{\sum_{c\setminus (n/d)}{f(d,dc)}};&\\
+\end{flalign*}
+В правой части равенства получаем, что внешняя сумма выполняется по тому же индексу, что и внешняя сумма в левой части равенства. Числа $\{\frac{n}{d_1},\frac{n}{d_2},\ldots,\frac{n}{d_n}\}$ также являются делителями числа $n$. Пусть $d_n=\frac{n}{d_1},d_{n-1}=\frac{n}{d_2},\ldots,d_1=\frac{n}{d_n}$, т.е. $d_i=\frac{n}{d_{n-i+1}}$. Таким образом получаем
+\begin{flalign*}
+  &\sum_{d\setminus n}{\sum_{c\setminus (n/d)}{f(d,dc)}}=&&&\\
+  &&&f(d_1,d_1c_{n1})+f(d_1, d_1c_{n2})+\ldots+f(d_1, d_1c_{nm_n})+&\\
+  &&&f(d_2,d_2c_{(n-1)1})+f(d_2, d_2c_{(n-1)2})+\ldots+f(d_2, d_2c_{(n-1)m_{n-1}})+\ldots+&\\
+  &&&f(d_n,d_nc_{11})+f(d_n, d_nc_{12})+\ldots+f(d_n, d_nc_{1m_1}).&\\
+\end{flalign*}
+
+Получили сумму с таким же числом слагаемых, в каждом слагаемом аргумент $x$ является делителем $y$. Теперь нужно докажать, что эти слагаемые идентичны слагаемым в левой части равенства.
+
+$d_ic_{(n-i+1)j}=\frac{nc_{(n-i+1)j}}{d_{n-i+1}}$. Тогда $f(d_i,d_ic_{(n-i+1)j})=f(\frac{n}{d_k},\frac{nc_{kj}}{d_k})$, где $k=n-i+1$. Тогда 
+
+\begin{flalign*}
+  &\sum_{d\setminus n}{\sum_{c\setminus (n/d)}{f(d,dc)}}=&&&\\
+  &&&f(\frac{n}{d_n},\frac{nc_{n1}}{d_n})+f(\frac{n}{d_n}, \frac{nc_{n2}}{d_n})+\ldots+f(\frac{n}{d_n}, \frac{nc_{nm_n}}{d_n})+\ldots+&\\
+  &&&f(\frac{n}{d_2},\frac{nc_{21}}{d_2})+f(\frac{n}{d_2}, \frac{nc_{22}}{d_2})+\ldots+f(\frac{n}{d_2}, \frac{nc_{2m_2}}{d_2})+&\\
+  &&&f(\frac{n}{d_1},\frac{nc_{11}}{d_1})+f(\frac{n}{d_1}, \frac{nc_{12}}{d_1})+\ldots+f(\frac{n}{d_1}, \frac{nc_{1m_1}}{d_1}).&\\
+\end{flalign*}
+
 
 
 \subsection{Перестановки и факториалы}
