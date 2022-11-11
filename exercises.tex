@@ -3383,16 +3383,102 @@ $1000000=10^6=2^6 5^6$. Числа $2^6$ и $5^6$ взаимно простые.
 
 Получили сумму с таким же числом слагаемых, в каждом слагаемом аргумент $x$ является делителем $y$. Теперь нужно докажать, что эти слагаемые идентичны слагаемым в левой части равенства.
 
-$d_ic_{(n-i+1)j}=\frac{nc_{(n-i+1)j}}{d_{n-i+1}}$. Тогда $f(d_i,d_ic_{(n-i+1)j})=f(\frac{n}{d_k},\frac{nc_{kj}}{d_k})$, где $k=n-i+1$. Тогда 
+Рассмотрим ещё раз сумму $\sum_{c\setminus n}{\sum_{d\setminus (n/c)}{f(c,cd)}}$. В отличие от суммы в левой части равенства здесь мы для каждого делителя числа $n$ находим не его делители, а делители частного $n/c$. При умножении этих чисел на $c$ получаем все возможные кратные для этого делителя. 
 
+\subsubsection{33.}
+Для целых чисел $m$ и $n$ вычислите:
 \begin{flalign*}
-  &\sum_{d\setminus n}{\sum_{c\setminus (n/d)}{f(d,dc)}}=&&&\\
-  &&&f(\frac{n}{d_n},\frac{nc_{n1}}{d_n})+f(\frac{n}{d_n}, \frac{nc_{n2}}{d_n})+\ldots+f(\frac{n}{d_n}, \frac{nc_{nm_n}}{d_n})+\ldots+&\\
-  &&&f(\frac{n}{d_2},\frac{nc_{21}}{d_2})+f(\frac{n}{d_2}, \frac{nc_{22}}{d_2})+\ldots+f(\frac{n}{d_2}, \frac{nc_{2m_2}}{d_2})+&\\
-  &&&f(\frac{n}{d_1},\frac{nc_{11}}{d_1})+f(\frac{n}{d_1}, \frac{nc_{12}}{d_1})+\ldots+f(\frac{n}{d_1}, \frac{nc_{1m_1}}{d_1}).&\\
+  &(a)\ \left\lfloor\frac{1}{2}(n+m)\right\rfloor+\left\lfloor\frac{1}{2}(n-m+1)\right\rfloor;\ (b)\ \left\lceil\frac{1}{2}(n+m)\right\rceil+\left\lceil\frac{1}{2}(n-m+1)\right\rceil.&\\
 \end{flalign*}
+(Обратите внимание на частный случай $m=0$.)
 
+(a) Если $n$ и $m$ --- оба четные или оба нечетные, то $\left\lfloor\frac{1}{2}(n+m)\right\rfloor=\frac{1}{2}(n+m)$. Если одно число четное, а другое нечетное, то $\left\lfloor\frac{1}{2}(n+m)\right\rfloor=\frac{1}{2}(n+m-1)$.
 
+Если $n$ и $m$ --- оба четные или оба нечетные, то $\left\lfloor\frac{1}{2}(n-m+1)\right\rfloor=\frac{1}{2}(n-m)$. Если одно число четное, а другое нечетное, то $\left\lfloor\frac{1}{2}(n-m+1)\right\rfloor=\frac{1}{2}(n-m+1)$.
+
+Складывая оба выражения и в первом, и во втором случае получаем $n$.
+
+(b) Если $n$ и $m$ --- оба четные или оба нечетные, то $\left\lceil\frac{1}{2}(n+m)\right\rceil=\frac{1}{2}(n+m)$. Если одно число четное, а другое нечетное, то $\left\lceil\frac{1}{2}(n+m)\right\rceil=\frac{1}{2}(n+m+1)$.
+
+Если $n$ и $m$ --- оба четные или оба нечетные, то $\left\lceil\frac{1}{2}(n-m+1)\right\rceil=\frac{1}{2}(n-m+2)$. Если одно число четное, а другое нечетное, то $\left\lceil\frac{1}{2}(n-m+1)\right\rceil=\frac{1}{2}(n-m+1)$.
+
+Складывая оба выражения и в первом, и во втором случае получаем $\frac{2n+2}{2}=n+1$.
+
+\subsubsection{34.}
+Какие необходимые и достаточные условия нужно наложить на действительное число $b>1$, чтобы равенство $\left\lfloor\log_{b}{x}\right\rfloor=\left\lfloor\log_{b}{\lfloor x\rfloor}\right\rfloor$ выполнялось для всех действительных $x\geq 1$?
+
+Рассмотрим утверждения $A$ и $B$. Если из утверждения $A$ следует утверждение $B$ ($A\Longrightarrow B$), то утверждение $A$ называется достаточным условием для утверждения $B$. Если из утвержения $B$ не следует утверждение $A$ ($B\not\Longrightarrow A$), то $B$ называется необходимым (но недостаточным) условием для $A$. Если же из $B$ также следует $A$ ($A\Longleftrightarrow B$), то утверждения $A$ и $B$ являются необходимыми и достаточными условиями друг друга.
+
+Например, если $x$ --- целое число, то это достаточное условие для утверждения $\left\lfloor\log_{b}{x}\right\rfloor=\left\lfloor\log_{b}{\lfloor x\rfloor}\right\rfloor$, т.к. в этом случае $\lfloor x\rfloor=x$. Но нас просят рассмотреть условия, которые относятся к основанию логарифма $b$.
+
+Рассмотрим функцию $\log_{2}{x}$.
+
+\begin{tabularx}{1\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X | }
+ \hline  $x$ & $y=\log_{2}{x}$ & $\left\lfloor\log_{2}{x}\right\rfloor$ & $y=\log_{2}{\lfloor x\rfloor}$ & $\left\lfloor\log_{2}{\lfloor x\rfloor}\right\rfloor$ \\
+ \hline  $1$ & $0$ & $0$ & $0$ & $0$ \\
+ \hline  $1<x<2$ & $0<y<1$ & $0$& $0$ & $0$ \\
+ \hline  $2$ & $1$ & $1$& $1$ & $1$ \\
+ \hline  $2<x<3$ & $1<y<2$ & $1$& $1$ & $1$ \\
+ \hline  $3\leq x<4$ & $1<y<2$ & $1$& $1<y<2$ & $1$ \\
+ \hline  $2^2=4$ & $2$ & $2$& $2$ & $2$ \\
+ \hline  $4<x<5$ & $2<y<3$ & $2$& $2$ & $2$ \\
+ \hline  $5\leq x<8$ & $2<y<3$ & $2$& $2<y<3$ & $2$ \\
+ \hline  $2^3=8$ & $3$ & $3$& $3$ & $3$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ \\
+ \hline
+\end{tabularx}
+ 
+Функция $\log_{2}{x}$ монотонно возрастает с ростом значений $x$. Функция $\left\lfloor\log_{2}{x}\right\rfloor$ изменяется ступеньками при переходе $x$ через степени числа $2$. Поведение функции $y=\log_{2}{\lfloor x\rfloor}$ похоже на поведение обычного логарифма, за исключением областей, где $2^n<x<2^n-1$, на которых график функции представляет собой горизонтальную прямую. Однако, это не оказывает никакого влияния на значения $\left\lfloor\log_{2}{\lfloor x\rfloor}\right\rfloor$, которые всегда совпадают со значениями $\left\lfloor\log_{2}{x}\right\rfloor$. Подобная ситуация должна наблюдаться для всех целых $b$. Таким образом для выполнения утверждения \emph{достаточно}, чтобы $b$ было целым числом и $>1$.
+
+Если $b$ не является целым числом, то $b^n$ также не является целым, для любого целого $n$. Для того, чтобы получить целое число, необходимо, чтобы степень была действительным нецелым числом. Следовательно, $\log_{b}{x}$ может принимать целые значения для некоторых нецелых $x$, равных $b^n$, а $\log_{b}{\lfloor x\rfloor}$ целые значения не принимает никогда. Итак, для $x=\{b^1,b^2,b^3,\ldots,b^n,\ldots\}$ $\log_{b}{x}$ и $\left\lfloor\log_{b}{x}\right\rfloor$ принимают значения $\{1,2,3,\ldots,n,\ldots\}$. В этих точках функция $\log_{b}{\lfloor x\rfloor} < \log_{b}{x}$, следовательно, т.к. $\log_{b}{x}$ --- целое, $\left\lfloor\log_{b}{x}\right\rfloor<\left\lfloor\log_{b}{\lfloor x\rfloor}\right\rfloor$. Отсюда условие ``$b$ --- целое'' являтся также \emph{необходимым}.
+
+\subsubsection{35.}
+Пусть $m$ и $n$ --- целые числа и $n>0$. Докажите, что равенство
+\begin{flalign*}
+  \lfloor(x+m)/n\rfloor=\left\lfloor(\lfloor x\rfloor+m)/n\right\rfloor
+\end{flalign*}
+выполняется для всех действительных $x$. (Заметим, что $m=0$ --- это очень важный частный случай.) Будет ли справедливо аналогичное равенство для фукнции ``потолок''?
+
+Функция $(x+m)/n$ является целой не для всех целых $x$, однако, для того, чтобы функция была целой $x$ также должно быть целым. Очевидно $n$ столько же целых раз помещается в целом числе $(\lfloor x\rfloor + m)/n$, сколько в дробном $(x+m)/n$. Иначе 
+\begin{flalign*}
+  &\lfloor(x+m)/n\rfloor=\left\lfloor(\lfloor x\rfloor+m)/n\right\rfloor;&\\
+  &\lfloor(x+m)/n\rfloor=\begin{cases}
+  \lfloor x/n\rfloor+\lfloor m/n\rfloor,\ x\mod n+m\mod n<1, \\
+  \lfloor x/n\rfloor+\lfloor m/n\rfloor+1,\ x\mod n+m\mod n\geq 1;
+  \end{cases}&\\
+  &\lfloor(\lfloor x\rfloor+m)/n\rfloor=\begin{cases}
+  \lfloor \lfloor x\rfloor/n\rfloor+\lfloor m/n\rfloor,\ \lfloor x\rfloor\mod n+m\mod n<1, \\
+  \lfloor \lfloor x\rfloor/n\rfloor+\lfloor m/n\rfloor+1,\ \lfloor x\rfloor\mod n+m\mod n\geq 1;
+  \end{cases}&\\
+  &\begin{cases}
+     x/n+m/n-x\mod n-m\mod n=\lfloor x\rfloor/n+m/n-\lfloor x\rfloor\mod n-m\mod n,\\
+    x/n+m/n-x\mod n-m\mod n+1=\lfloor x\rfloor/n+m/n-\lfloor x\rfloor\mod n-m\mod n+1;\\ 
+   \end{cases}&\\
+  &x/n+m/n-x\mod n-m\mod n=\lfloor x\rfloor/n+m/n-\lfloor x\rfloor\mod n-m\mod n;&\\
+  &x/n-x\mod n=\lfloor x\rfloor/n-\lfloor x\rfloor\mod n;\ \Longrightarrow
+  \left\lfloor x/n\right\rfloor=\left\lfloor\lfloor x\rfloor/n\right\rfloor.&\\
+\end{flalign*}
+Итак, для доказательства всего утверждения достаточно доказать последний частный случай.
+\begin{flalign*}
+  &0\leq \lfloor x\rfloor\mod n\leq x\mod n<1;&\\
+  &\lfloor x\rfloor\leq x<\lfloor x\rfloor+1;\ \Longrightarrow
+  \lfloor x\rfloor/n\leq x/n<\lfloor x\rfloor/n+1;\ \Longrightarrow
+  0\leq x/n-\lfloor x\rfloor/n<1;&\\
+  &\left\lfloor \lfloor x\rfloor/n\right\rfloor \leq \lfloor x\rfloor/n <
+  \left\lfloor \lfloor x\rfloor/n\right\rfloor+1;&\\
+  &\left\lfloor x/n\right\rfloor \leq x/n<\left\lfloor x/n\right\rfloor+1;&\\
+  &\left\lfloor x/n\right\rfloor-\left\lfloor \lfloor x\rfloor/n\right\rfloor-1
+  <x/n-\lfloor x\rfloor/n<
+  \left\lfloor x/n\right\rfloor+1-\left\lfloor \lfloor x\rfloor/n\right\rfloor;&\\
+  &y=\left\lfloor x/n\right\rfloor-\left\lfloor \lfloor x\rfloor/n\right\rfloor;\ y\ \textrm{--- целое};\ &\\
+  &y-1<x/n-\lfloor x\rfloor/n<y+1;\ \Longrightarrow y=0;\ \Longrightarrow
+  \left\lfloor x/n\right\rfloor=\left\lfloor \lfloor x\rfloor/n\right\rfloor.&\\
+\end{flalign*}
 
 \subsection{Перестановки и факториалы}
 
