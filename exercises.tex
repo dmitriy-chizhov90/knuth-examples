@@ -3484,7 +3484,50 @@ $x\mod 1$ может быть $0$, только если $x$ --- целое. $x\
 \end{flalign*}
 
 \subsubsection{36.}
+Докажите, что $\sum_{k=1}^{n}{\lfloor k/2\rfloor}=\lfloor n^2/4\rfloor$; вычислите также сумму $\sum_{k=1}^{n}{\lceil k/2\rceil}$.
 
+По формуле суммы арифметической прогрессии:
+\begin{flalign*}
+  &\sum_{k=1}^{n}{k/2}=\frac{1}{2}\sum_{k=0}^{n}{k}=\frac{1}{2}\frac{1}{2}n(n+1)=\frac{n(n+1)}{4}.&\\
+\end{flalign*}
+
+$k$ --- целое число. Для четных $k$ $\lfloor k/2 \rfloor=k/2$. Для нечетных $k$ $\lfloor k/2 \rfloor = k/2-1/2=(k-1)/2$. Обозначим через $m$ количество нечетных слагаемых в сумме. Тогда $m=\lceil n/2\rceil=\lfloor (n+1)/2\rfloor$:
+
+\begin{tabularx}{0.6\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline  $n$ & $m$ \\
+ \hline  $0$ & $0$ \\
+ \hline  $1$ & $1$ \\
+ \hline  $2$ & $1$ \\
+ \hline  $3$ & $2$ \\
+ \hline  $4$ & $2$ \\
+ \hline  $5$ & $3$ \\
+ \hline
+\end{tabularx}
+
+Таким образом искомая сумма равна $\frac{n(n+1)}{4}-\left\lfloor\frac{n+1}{2}\right\rfloor\frac{1}{2}$.
+\begin{flalign*}
+  &\left\lfloor\frac{n+1}{2}\right\rfloor=\begin{cases}
+  \frac{n}{2},\ \textrm{если $n$---четное},\\
+  \frac{n+1}{2},\ \textrm{если $n$---нечетное};
+  \end{cases}&\\
+  &\sum=\begin{cases}
+  \frac{n(n+1)}{4}-\frac{n}{4}=\frac{n^2+n-n}{4}=\frac{n^2}{4}=\left\lfloor\frac{n^2}{4}\right\rfloor,\ \textrm{если $n$---четное},\\
+  \frac{n(n+1)}{4}-\frac{n+1}{4}=\frac{(n-1)(n+1)}{4}=\frac{n^2}{4}-\frac{1}{4},\ \textrm{если $n$---нечетное}.
+  \end{cases}&\\
+\end{flalign*}
+
+В случае нечетного $n$ выражение $\frac{(n-1)(n+1)}{4}$ представляет собой целое число, которое меньше $\frac{n^2}{2}$ на $\frac{1}{4}$. Следовательно $\frac{n^2}{4}-\frac{1}{4}=\left\lfloor\frac{n^2}{4}\right\rfloor$.
+
+\begin{flalign*}
+  &\sum_{k=1}^{n}{\lceil k/2\rceil}=\frac{n(n+1)}{4}+\left\lfloor\frac{n+1}{2}\right\rfloor\frac{1}{2}=\begin{cases}
+  \frac{n(n+1)}{4}+\frac{n}{4}=\frac{n^2+2n}{4}=\frac{(n+1)^2}{4}-\frac{1}{4}\,\ \textrm{если $n$---четное},\\
+  \frac{n(n+1)}{4}+\frac{n+1}{4}=\frac{(n+1)^2}{4},\ \textrm{если $n$---нечетное}.
+  \end{cases}&\\
+\end{flalign*}
+
+В любом случае получаем целые числа, равные округленному значению $\left\lfloor\frac{(n+1)^2}{4}\right\rfloor$. Заметим, что это выражение равно $\left\lceil\frac{n(n+2)}{4}\right\rceil$.
 
 \subsection{Перестановки и факториалы}
 
