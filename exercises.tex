@@ -3529,6 +3529,61 @@ $k$ --- целое число. Для четных $k$ $\lfloor k/2 \rfloor=k/2$
 
 В любом случае получаем целые числа, равные округленному значению $\left\lfloor\frac{(n+1)^2}{4}\right\rfloor$. Заметим, что это выражение равно $\left\lceil\frac{n(n+2)}{4}\right\rceil$.
 
+\subsubsection{37.}
+Пусть $m$ и $n$ --- целые числа, $n>0$. Покажите, что
+\begin{flalign*}
+  \sum_{0\leq k<n}{\left\lfloor\frac{mk+x}{n}\right\rfloor}=\frac{(m-1)(n-1)}{2}+\frac{d-1}{2}+d\lfloor x/d\rfloor,
+\end{flalign*}
+где $d$---наибольший общий делитель $m$ и $n$, а $x$ --- любое действительное число.
+
+По формуле суммы арифметической прогрессии
+\begin{flalign*}
+  &\sum_{0\leq k<n}{\frac{mk+x}{n}}=\sum_{0\leq k\leq n-1}{\left(\frac{x}{n}+\frac{m}{n}k\right)}=\frac{x}{n}n+\frac{1}{2}\frac{m}{n}(n-1)n=x+\frac{1}{2}m(n-1).&\\
+\end{flalign*}
+Как было показано в предыдущих упражнениях, $\left\lfloor\frac{\lfloor x\rfloor}{n}\right\rfloor=\left\lfloor\frac{x}{n}\right\rfloor$. В нашем случае, $\left\lfloor\frac{mk+x}{n}\right\rfloor=\left\lfloor\frac{mk+\lfloor x\rfloor}{n}\right\rfloor$, т.к. $mk$ --- целое число. $\sum_{0\leq k<n}{\frac{mk+\lfloor x\rfloor}{n}}$ меньше $\sum_{0\leq k<n}{\frac{mk+x}{n}}$ на $n\frac{x\mod 1}{n}=x\mod 1$.
+
+Для того, чтобы получить результат, необходимо вычесть сумму дробных частей каждого слагаемого. Пусть $\{y\}=y\mod 1$. Т.е. требуется вычесть значение
+\begin{flalign*}
+  &S=\sum_{0\leq k<n}{\left\{\frac{mk+x}{n}\right\}}.&\\
+\end{flalign*}
+
+Если $d$ --- наибольший общий делитель чисел $m$ и $n$, то $m=\frac{m}{d}d$ и $n=\frac{n}{d}d$:
+\begin{flalign*}
+  &\frac{mk+x}{n}=
+  \frac{\frac{m}{d}dk+\frac{x}{d}d}{\frac{n}{d}d}=
+  \frac{\frac{m}{d}k+\frac{x}{d}}{\frac{n}{d}}=
+  \frac{\frac{m}{d}k}{\frac{n}{d}}+\frac{x}{n};&\\
+\end{flalign*}
+
+$k$ принимает $n$ значений в интервале $[0..n)$, поэтому числа $0\mod n,\ 1\mod n,\ldots,\ n-1\mod n$ различны. Рассмотрим числа $mk\mod n$. $k\perp n$, $m\not\perp n$. Тогда
+\begin{flalign*}
+  &\sum_{0\leq k<n}{k}=\sum_{0\leq i<d}{\sum_{0\leq j<\frac{n}{d}}{i\frac{n}{d}+j}}.&\\
+\end{flalign*}
+
+Для любого фиксированного $i$ числа $\left(i\frac{n}{d}+j\right)\mod \frac{n}{d}$ различны, а
+\begin{flalign*}
+  &\sum_{0\leq j<\frac{n}{d}}{\left(\left(i\frac{n}{d}+j\right)\mod \frac{n}{d}\right)}=\sum_{0\leq j<\frac{n}{d}}{j}=\frac{1}{2}\frac{n}{d}\left(\frac{n}{d}-1\right)=
+  \frac{n(n-d)}{2d^2}.&\\
+\end{flalign*}
+Числа $\frac{n}{d}$ и $\frac{m}{d}$ являются взаимнопростыми. Поэтому числа $j\frac{m}{d}\mod\frac{n}{d}$, а следовательно и $\frac{m}{d}\left(i\frac{n}{d}+j\right)\mod \frac{n}{d}$, также являются различными. Следовательно, различными являются и числа $\left(\frac{m}{d}k+\frac{x}{d}\right)\mod\frac{n}{d}$.
+
+Видим, что данная сумма не зависит от $i$, т.е. каждые $d$ остатков от деления на $\frac{n}{d}$ повторяются. Но тогда повторяются и соответствующие дробные части этих слагаемых. Теперь нужно вычислить $\sum_{0\leq k<\frac{n}{d}}{\left\{\frac{\frac{m}{d}k}{\frac{n}{d}}+\frac{x}{n}\right\}}$. Из ответов к упражнению берем соотношение
+\begin{flalign*}
+  &\sum_{0\leq k<\frac{n}{d}}{\left\{\frac{\frac{m}{d}k}{\frac{n}{d}}+\frac{x}{n}\right\}}=\left\{\frac{x\mod d}{n}\right\}+\left\{\frac{x\mod d}{n}+\frac{1}{\frac{n}{d}}\right\}+\cdots+\left\{\frac{x\mod d}{n}+\frac{\frac{n}{d}-1}{\frac{n}{d}}\right\}.&\\
+\end{flalign*}
+Заметим, что $\frac{x\mod d}{n}<\frac{d}{n}=1/\frac{n}{d}$. Т.е. каждое слагаемое не превышает $1$. Следовательно, скобки, обозначающие отбрасывание целой части можно опустить. По формуле суммы арифметической прогрессии
+\begin{flalign*}
+  &S=d\left(\frac{\frac{n}{d}(x\mod d)}{n}+\frac{\frac{n}{d}-1}{2}\right)=
+  d\left(\frac{(x\mod d)}{d}+\frac{n-d}{2d}\right)=(x\mod d)+\frac{1}{2}(n-d).&\\
+\end{flalign*}
+Итоговая сумма равна
+\begin{flalign*}
+  &x+\frac{1}{2}m(n-1)-(x\mod d)-\frac{1}{2}(n-d)=
+  \frac{(m-1)(n-1)}{2}+\frac{n-1}{2}-\frac{n-d}{2}+d\left(\frac{x}{d}-\frac{x\mod d}{d}\right)=&\\
+  &\frac{(m-1)(n-1)}{2}+\frac{d-1}{2}+d\left\lfloor\frac{x}{d}\right\rfloor.&\\
+\end{flalign*}
+
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}
