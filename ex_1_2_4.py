@@ -51,3 +51,19 @@ def printLogarithms():
     plt.plot(t, np.floor(np.log10(t)), 'r-', t, np.floor(np.log10(np.floor(t))), 'g-')
     plt.plot(t, np.floor(np.log(t)), 'm-', t, np.floor(np.log(np.floor(t))), 'b-')
     plt.show()
+
+# 38.
+def sum_38(x, y):
+    s = 0
+    n = math.ceil(y)
+    for k in range(n):
+        s+=int(math.floor(x+float(k)/y))
+    st=math.floor(x)*math.ceil(y)+math.ceil(y)-math.ceil(y*(1-x+math.floor(x)))
+    print(f"sum_38(x: {x}, y: {y})={s} or {st}")
+    return s
+
+def print_sum_38():
+    sum_38(10,2)
+    sum_38(10.5,2.5)
+    sum_38(10.5,9.5)
+

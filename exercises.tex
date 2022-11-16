@@ -3583,6 +3583,97 @@ $k$ принимает $n$ значений в интервале $[0..n)$, по
   &\frac{(m-1)(n-1)}{2}+\frac{d-1}{2}+d\left\lfloor\frac{x}{d}\right\rfloor.&\\
 \end{flalign*}
 
+\subsubsection{38.}
+(Е. Буше (E. Busche), 1909.) Докажите, что для всех действительных чисел $x$ и $y$, причем $y>0$:
+\begin{flalign*}
+  \sum_{0\leq k<y}{\left\lfloor x+\frac{k}{y}\right\rfloor}=\lfloor xy+\lfloor x+1\rfloor(\lceil y\rceil-y)\rfloor.
+\end{flalign*}
+В частности, если $y$---целое положительное число, то, обозначив его через $n$, получим важную формулу:
+\begin{flalign*}
+  \left\lfloor x\right\rfloor+\left\lfloor x+\frac{1}{n}\right\rfloor+\cdots+\left\lfloor x+\frac{n-1}{n}\right\rfloor=\left\lfloor nx\right\rfloor.
+\end{flalign*}
+
+По формуле арифметической прогрессии
+\begin{flalign*}
+  &\sum_{0\leq k<y}{x+\frac{k}{y}}=\sum_{0\leq k<\lceil y\rceil}{x+\frac{k}{y}}=x\lceil y\rceil+\frac{1}{2}\frac{\lceil y\rceil-1}{y}\lceil y\rceil.&\\
+\end{flalign*}
+
+Это значение нужно уменьшить на сумму, состоющую из дробных частей каждого слагаемого
+\begin{flalign*}
+  &\sum_{0\leq k<\lceil y\rceil}{\left\{x+\frac{k}{y}\right\}}=
+  \sum_{0\leq k<\lceil y\rceil}{\left\{x-\lfloor x\rfloor+\frac{k}{y}\right\}};&\\
+  &0\leq x-\lfloor x\rfloor<1;\ 0\leq\frac{k}{y}<1;&\\
+  &0\leq x-\lfloor x\rfloor+\frac{k}{y}<2;&\\
+\end{flalign*}
+Для того, чтобы число $x-\lfloor x\rfloor+\frac{k}{y}<1$, должно выполняться
+\begin{flalign*}
+  &y(x-\lfloor x\rfloor)+k<y\Longrightarrow k<y(1-x+\lfloor x\rfloor)\leq\lceil y(1-x+\lfloor x\rfloor)\rceil.&\\
+\end{flalign*}
+
+Тогда $\lceil y\rceil-\lceil y(1-x+\lfloor x\rfloor)\rceil$ слагаемых в сумме $\sum_{0\leq k<\lceil y\rceil}{\left\{x+\frac{k}{y}\right\}}$ больше $1$.
+\begin{flalign*}
+  &\sum_{0\leq k<\lceil y\rceil}{\left\{x-\lfloor x\rfloor+\frac{k}{y}\right\}}=
+  \sum_{0\leq k<\lceil y\rceil}{\left(x-\lfloor x\rfloor+\frac{k}{y}\right)}-\lceil y\rceil+\lceil y(1-x+\lfloor x\rfloor)\rceil=&\\
+  &(x-\lfloor x\rfloor)\lceil y\rceil+\frac{1}{2}\frac{\lceil y\rceil-1}{y}\lceil y\rceil-\lceil y\rceil+\lceil y(1-x+\lfloor x\rfloor)\rceil.&\\
+\end{flalign*}
+
+Вычтем из значения полной суммы сумму дробных частей каждого слагаемого:
+\begin{flalign*}
+  &\sum_{0\leq k<y}{x+\frac{k}{y}}-\sum_{0\leq k<\lceil y\rceil}{\left\{x-\lfloor x\rfloor+\frac{k}{y}\right\}}=\lfloor x\rfloor\lceil y\rceil+\lceil y\rceil-\lceil y(1-x+\lfloor x\rfloor)\rceil=&\\
+  &\lceil y\rceil+\lceil y\rceil\lfloor x\rfloor-\lceil y+y\lfloor x\rfloor-yx\rceil=\lceil y\rceil+\lceil y\rceil\lfloor x\rfloor+\lfloor-y-y\lfloor x\rfloor+yx\rfloor=&\\
+  &\lfloor\lceil y\rceil+\lceil y\rceil\lfloor x\rfloor-y-y\lfloor x\rfloor+yx\rfloor=
+  \lfloor xy+\lceil y\rceil(1+\lfloor x\rfloor)-y(1+\lfloor x\rfloor)\rfloor=&\\
+  &\lfloor xy+(1+\lfloor x\rfloor)(\lceil y\rceil-y)\rfloor=
+  \lfloor xy+\lfloor x+1\rfloor(\lceil y\rceil-y)\rfloor.&\\
+\end{flalign*}
+
+\subsubsection{39.}
+Функция $f$, для которой $f(x)+f(x+\frac{1}{n})+\cdots+f(x+\frac{n-1}{n})=f(nx)$, где $n$---любое положительное целое число, называется \emph{репликативной функцией}. Из предыдущего упражнения следует, что функция $\lfloor x\rfloor$ репликативна. Покажите, что репликативны следующие функции:
+\begin{enumerate}[label=\alph*)]
+\item $f(x)=x-\frac{1}{2}$;
+\item $f(x)=[x\textrm{--- целое число}]$;
+\item $f(x)=[x\textrm{--- положительное целое число}]$;
+\item $f(x)=[\textrm{существует рациональное число $r$ и целое $m$, такие, что $x=r\pi+m$}]$;
+\item ещё три функции, аналогичные функции (d), для которых $r$ и/или $m$ рассматриваются только на множестве положительных чисел;
+\item $f(x)=\log{|2\sin{\pi x}|}$, если допускается значение $f(x)=-\infty$;
+\item сумма любых двух репликативных функций;
+\item произведение репликативной функции на константу;
+\item функция $g(x)=f(x-\lfloor x\rfloor)$, где $f(x)$ репликативна.
+\end{enumerate}
+
+\begin{flalign*}
+  &\textrm{(a) }\sum_{0\leq k<n}{x+\frac{k}{n}-\frac{1}{2}}=nx-\frac{n}{2}+\frac{1}{2}\frac{n-1}{n}n=nx+\frac{n^2-n-n^2}{2n}=nx-\frac{1}{2}.&\\
+\end{flalign*}
+
+\begin{flalign*}
+  &\textrm{(b) }\sum_{0\leq k<n}{\left[x+\frac{k}{n}\textrm{---целое число}\right]}.&\\
+\end{flalign*}
+Рассмотрим числа $x,x+\frac{1}{n},x+\frac{2}{n},\ldots,x+\frac{n-1}{n}$. Все они лежат на интервале $[x;\ x+1)$. Внутри данного интервала может лежать только одно целое число равное $\lceil x\rceil$. Если среди всех слагаемых данной суммы есть одно целое число, то вся сумма будет равна $1$, а $x$ можно представить в виде $\lceil x-1\rceil+\frac{n-k}{n}$, где $0\leq k<n$. В этом случае $nx=n\left(\lceil x-1\rceil+\frac{n-k}{n}\right)=n\lceil x-1\rceil+n-k$ является целым числом, следовательно $f(nx)$ также равняется $1$.
+
+\begin{flalign*}
+  &\textrm{(c) }\sum_{0\leq k<n}{\left[x+\frac{k}{n}\textrm{---положительное целое число}\right]}&\\
+\end{flalign*}
+Мы выяснили, что все слагаемые данной суммы лежат на интервале $[x;\ x+1)$ и что внутри него есть только одно целое число $x\leq m<x+1$. Если $x\leq 0$, то $m<1$. Т.е. для того, чтобы это число было $>0$ необходимо, чтобы $x>0$, так как в противном случае в интервале может лежать либо 0, либо отрицательное целое число.
+
+Итак, если сумма равна $1$, значит $x>0$ и $nx$ --- целое число, откуда $f(nx)=1$.
+\begin{flalign*}
+  &\textrm{(d) }\sum_{0\leq k<n}{\left[\textrm{существует рациональное число $r=\frac{p}{q}$ и целое $m$, такие, что $x+\frac{k}{n}=r\pi+m$}\right]};&\\
+  &\textrm{Предположим, что такие числа существуют: }\frac{nx+k}{n}=r\pi+m,&\\
+  &\textrm{тогда }nx=(nr)\pi+(nm-k);&\\
+  &\pi=\frac{q(nx+k-mn)}{np}=\frac{q}{p}x-\frac{qm}{p}+\frac{qk}{np};&\\
+  &p\pi-qx=q\frac{k}{n}-qm;&\\
+  &np\pi-nqx=qk-nqm;&\\
+  &np\pi-qk=nqx-nqm.&\\
+\end{flalign*}
+Предположим, что существуют целые числа $0\leq k_1<k_2<n$ для которых
+\begin{flalign*}
+  &np_1\pi-q_1k_1=nq_1x-nq_1m_1\Longrightarrow k_1q_1=n(p_1\pi-q_1x+q_1m_1)
+  \Longrightarrow k_1=n(r_1\pi-x+m_1);&\\
+  &np_2\pi-q_2k_2=nq_2x-nq_2m_2\Longrightarrow k_2q_2=n(p_2\pi-q_2x+q_2m_2)
+  \Longrightarrow k_2=n(r_2\pi-x+m_2);&\\
+  &c=k_2-k_1=n(\pi(r_2-r_1)+(m_2-m_1))\textrm{---целое положительное число, }1<c<n.&
+\end{flalign*}
+Последнее невозможно, т.к. $\pi$---нерациональное число. Следовательно, если такие числа существуют, то только для одного слагаемого данной суммы.
 
 \subsection{Перестановки и факториалы}
 
