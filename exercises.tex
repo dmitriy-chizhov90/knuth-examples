@@ -3675,6 +3675,38 @@ $k$ принимает $n$ значений в интервале $[0..n)$, по
 \end{flalign*}
 Последнее невозможно, т.к. $\pi$---нерациональное число. Следовательно, если такие числа существуют, то только для одного слагаемого данной суммы.
 
+(e) В случае, если $r$ и/или $m$ являются положительными, доказательство репликативности остается аналогичным случаю (d). Действительно, для выражения $nx=(nr)\pi+(nm-k)$ $nr$ является положительным, если $r$ положительно, и $nm-k$ положительно при положительном целом $m$, т.к. $n>k$.
+
+\begin{flalign*}
+  &\textrm{(f) }
+  \sum_{0\leq k<n}{\log{\left|2\sin{\pi\left(x+\frac{k}{n}\right)}\right|}}=
+  \log{\prod_{0\leq k<n}{\left|2\sin{\pi\left(x+\frac{k}{n}\right)}\right|}}=\ldots&\\
+\end{flalign*}
+
+(g) Пусть $g(x)$ и $h(x)$ --- репликативные функции. Тогда
+\begin{flalign*}
+  &\sum_{0\leq k<n}{g\left(x+\frac{k}{n}\right)}=g(nx);&\\
+  &\sum_{0\leq k<n}{h\left(x+\frac{k}{n}\right)}=h(nx);&\\
+  &f(x)=g(x)+h(x);&\\
+  &f(nx)=g(nx)+h(nx)=\sum_{0\leq k<n}{\left(g\left(x+\frac{k}{n}\right)+h\left(x+\frac{k}{n}\right)\right)}=\sum_{0\leq k<n}{f\left(x+\frac{k}{n}\right)}.&\\
+\end{flalign*}
+
+(h) Пусть $g(x)$ --- репликативная функция, а $f(x)=cg(x)$.
+\begin{flalign*}
+  &f(nx)=cg(nx)=\sum_{0\leq k<n}{cg\left(x+\frac{k}{n}\right)}=
+  \sum_{0\leq k<n}{f\left(x+\frac{k}{n}\right)}.&\\
+\end{flalign*}
+
+\begin{flalign*}
+  &\textrm{(i) }y(x)=x-\lfloor x\rfloor;&\\
+  &\sum_{0\leq k<n}{f\left(x-\lfloor x\rfloor+\frac{k}{n}\right)}=
+  \sum_{0\leq k<n}{f\left(y+\frac{k}{n}\right)}=f(ny)=f(n(x-\lfloor x\rfloor)).&\\
+\end{flalign*}
+
+\subsubsection{40.}
+\subsubsection{41.}
+Пусть $a_1,a_2,a_3,\ldots$ --- последовательность $1,2,2,3,3,3,4,4,4,4,\ldots$. Выразите $a_n$ как функцию от $n$ с помощью функции ``пол'' и/или ``потолок''.
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}
