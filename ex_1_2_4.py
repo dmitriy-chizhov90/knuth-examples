@@ -67,3 +67,15 @@ def print_sum_38():
     sum_38(10.5,2.5)
     sum_38(10.5,9.5)
 
+# 41.
+# Функция возвращает k для суммы арифметической прогрессии Sk=1+2+...+k.
+def revert_arithmetic(sk):
+    return (math.sqrt(8*sk+1)-1)/2
+
+def print_revert_arithmetic():
+    for i in range(1,16):
+        k=revert_arithmetic(i)
+        print(f'{i}: {math.ceil(k)}')
+
+print_revert_arithmetic()
+
