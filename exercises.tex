@@ -3785,6 +3785,53 @@ $k$ принимает $n$ значений в интервале $[0..n)$, по
   &(n+1)\left\lfloor\log_{b}{n}\right\rfloor-\frac{1-b^{\lfloor\log_{b}{n}\rfloor+1}}{1-b}\ (\textrm{по формуле суммы геометрической прогрессии}).&\\
 \end{flalign*}
 
+\subsubsection{43.}
+Вычислите сумму $\sum_{k=1}^{n}{\lfloor\sqrt{k}\rfloor}$.
+Рассмотрим значения слагаемых данной суммы при различных значениях $k$:
+
+\begin{tabularx}{0.6\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline  $k$ & $\lfloor\sqrt{k}\rfloor$ \\
+ \hline  $1$ & $1$ \\
+ \hline  $2$ & $1$ \\
+ \hline  $3$ & $1$ \\
+ \hline  $4$ & $2$ \\
+ \hline  $\cdots$ & $\cdots$ (всего 5 двоек) \\
+ \hline  $8$ & $2$ \\
+ \hline  $9$ & $3$ \\
+ \hline  $\cdots$ & $\cdots$ (всего 7 троек) \\
+ \hline  $15$ & $3$ \\
+ \hline  $16$ & $4$ \\
+ \hline  $\cdots$ & $\cdots$ (всего 9 четверок) \\
+ \hline
+\end{tabularx}
+
+\begin{flalign*}
+  &\lfloor\sqrt{k}\rfloor=
+  \begin{cases}
+    1,\ 1\leq k<4,\\
+    2,\ 4\leq k<9,\\
+    \cdots,\\
+    \lfloor\sqrt{n}\rfloor-1, (\lfloor\sqrt{n}\rfloor-1)^2\leq k<(\lfloor\sqrt{n}\rfloor)^2,\\
+    \lfloor\sqrt{n}\rfloor, (\lfloor\sqrt{n}\rfloor)^2\leq k\leq n<(\lfloor\sqrt{n}\rfloor+1)^2;
+  \end{cases}&\\
+  &S=\sum_{k=1}^{n}{\lfloor\sqrt{k}\rfloor}=n\lfloor\sqrt{n}\rfloor-\sum_{k=1}^{n-1}{k(\lfloor\sqrt{k+1}\rfloor-\lfloor\sqrt{k}\rfloor)};&\\
+  &(\lfloor\sqrt{k+1}\rfloor-\lfloor\sqrt{k}\rfloor)=[\sqrt{k+1}\textrm{---целое число}];&\\
+  &-\sum_{k=1}^{n-1}{k(\lfloor\sqrt{k+1}\rfloor-\lfloor\sqrt{k}\rfloor)}=
+  -(2^2-1)-(3^2-1)-\ldots-(\lfloor\sqrt{n}\rfloor^2-1)=&\\
+  &(\lfloor\sqrt{n}\rfloor-1)-\sum_{k=2}^{\lfloor\sqrt{n}\rfloor}{k^2}=
+  (\lfloor\sqrt{n}\rfloor-1+1)-\left(1+\sum_{k=2}^{\lfloor\sqrt{n}\rfloor}{k^2}\right)=
+  \lfloor\sqrt{n}\rfloor-\sum_{k=0}^{\lfloor\sqrt{n}\rfloor}{k^2}=&\\
+  &\lfloor\sqrt{n}\rfloor-\frac{\lfloor\sqrt{n}\rfloor(\lfloor\sqrt{n}\rfloor+1)(2\lfloor\sqrt{n}\rfloor+1)}{6}&\\
+  &S=n\lfloor\sqrt{n}\rfloor+\lfloor\sqrt{n}\rfloor-\frac{\lfloor\sqrt{n}\rfloor(\lfloor\sqrt{n}\rfloor+1)(2\lfloor\sqrt{n}\rfloor+1)}{6}=&\\
+  &\frac{\lfloor\sqrt{n}\rfloor}{6}(6n+6-(\lfloor\sqrt{n}\rfloor+1)(2\lfloor\sqrt{n}\rfloor+1))=
+  \lfloor\sqrt{n}\rfloor(n+1-\frac{1}{6}(\lfloor\sqrt{n}\rfloor+1)(2\lfloor\sqrt{n}\rfloor+1))=&\\
+  &\lfloor\sqrt{n}\rfloor(n+1-\frac{1}{6}(2\lfloor\sqrt{n}\rfloor^2+3\lfloor\sqrt{n}\rfloor+1))=
+  \lfloor\sqrt{n}\rfloor(n-\frac{1}{6}(2\lfloor\sqrt{n}\rfloor^2+3\lfloor\sqrt{n}\rfloor-5))=&\\
+  &\lfloor\sqrt{n}\rfloor(n-\frac{1}{6}(\lfloor\sqrt{n}\rfloor-1)(2\lfloor\sqrt{n}\rfloor+5)).&\\
+\end{flalign*}
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}
