@@ -3832,6 +3832,124 @@ $k$ принимает $n$ значений в интервале $[0..n)$, по
   &\lfloor\sqrt{n}\rfloor(n-\frac{1}{6}(\lfloor\sqrt{n}\rfloor-1)(2\lfloor\sqrt{n}\rfloor+5)).&\\
 \end{flalign*}
 
+\subsubsection{44.}
+Покажите, что $\sum_{k\geq 0}{\sum_{1\leq j<b}{\lfloor(n+jb^k)/b^{k+1}\rfloor}}=n$, если $b$ и $n$ --- целые числа, $n\geq 0$ и $b\geq 2$. Чему равна эта сумма при $n<0$?
+
+\begin{flalign*}
+  &\sum_{k\geq 0}{\sum_{1\leq j<b}{\lfloor(n+jb^k)/b^{k+1}\rfloor}}=
+  \sum_{1\leq j<b}{\sum_{k\geq 0}{\lfloor(n+jb^k)/b^{k+1}\rfloor}}.&\\
+\end{flalign*}
+
+\begin{tabularx}{1\textwidth} { 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline  $j\backslash k$   & $0$ & $1$ & $2$ & $\cdots$ & $k$ & $\cdots$ \\
+ \hline  $1$      & $\left\lfloor\frac{n+1}{b}\right\rfloor$ & $\left\lfloor\frac{n+b}{b^{2}}\right\rfloor$ & $\left\lfloor\frac{n+b^2}{b^{3}}\right\rfloor$ & $\cdots$ & $\left\lfloor\frac{n+b^k}{b^{k+1}}\right\rfloor$ & $\cdots$ \\
+ \hline  $2$       & $\left\lfloor\frac{n+2}{b}\right\rfloor$ & $\left\lfloor\frac{n+2b}{b^{2}}\right\rfloor$ & $\left\lfloor\frac{n+2b^2}{b^{3}}\right\rfloor$ & $\cdots$ & $\left\lfloor\frac{n+2b^k}{b^{k+1}}\right\rfloor$ & $\cdots$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ \\
+ \hline  $j$      & $\left\lfloor\frac{n+j}{b}\right\rfloor$ & $\left\lfloor\frac{n+jb}{b^{2}}\right\rfloor$  & $\left\lfloor\frac{n+jb^2}{b^{3}}\right\rfloor$ & $\cdots$ & $\left\lfloor\frac{n+jb^k}{b^{k+1}}\right\rfloor$ & $\cdots$ \\
+ \hline  $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$ & $\cdots$  \\
+ \hline  $b-1$    & $\left\lfloor\frac{n+(b-1)}{b}\right\rfloor$ & $\left\lfloor\frac{n+(b-1)b}{b^{2}}\right\rfloor$ & $\left\lfloor\frac{n+(b-1)b^2}{b^{3}}\right\rfloor$ & $\cdots$ & $\left\lfloor\frac{n+(b-1)b^k}{b^{k+1}}\right\rfloor$ & $\cdots$ \\
+ \hline
+\end{tabularx}
+
+Каждое слагаемое в свою очередь состоит из двух слагаемых $\frac{n}{b^{k+1}}$ и $\frac{jb^k}{b^{k+1}}=\frac{j}{b}$.
+
+Данная сумма является конечной, т.к. существует такое $k$, при котором
+\begin{flalign*}
+  &\frac{n}{b^{k+1}}+\frac{b-1}{b} < 1;\Longrightarrow n+b^k(b-1) < b^{k+1};\Longrightarrow n<b^k;\Longrightarrow\log_{b}{n}<\log_{b}{b^k}=k;&\\
+  &\frac{n}{b^{k+1}}+\frac{b-2}{b} < 1;\Longrightarrow n+b^k(b-2) < b^{k+1};\Longrightarrow n<2b^k;\Longrightarrow\log_{b}{\frac{n}{2}}<\log_{b}{b^k}=k;&\\
+  &\cdots&\\
+  &\frac{n}{b^{k+1}}+\frac{2}{b} < 1\Longrightarrow n<b^k(b-2)\Longrightarrow \log_{b}{n}<k+\log_{b}{(b-2)}\Longrightarrow \log_{b}{\frac{n}{b-2}}<k;&\\
+  &\frac{n}{b^{k+1}}+\frac{1}{b} < 1\Longrightarrow n<b^k(b-1)\Longrightarrow \log_{b}{n}<k+\log_{b}{(b-1)}\Longrightarrow \log_{b}{\frac{n}{b-1}}<k;&\\
+\end{flalign*}
+
+Рассмотрим суммы $\sum_{1\leq j<b}{\lfloor(n+jb^k)/b^{k+1}\rfloor}$ для различных фиксированных $k$. В каждой сумме по $b$ слагаемых. $0<\frac{j}{b}<1$. Все слагаемые $\left\lfloor\frac{n}{b^{k+1}}\right\rfloor\leq a_j\leq \left\lceil\frac{n}{b^{k+1}}\right\rceil$.
+
+\begin{flalign*}
+  &\sum_{j=1}^{b-1}{\left\lfloor\frac{n}{b^{k+1}}+\frac{j}{b}\right\rfloor}=
+  (b-1)\left\lfloor\frac{n}{b^{k+1}}+\frac{b-1}{b}\right\rfloor-\sum_{j=1}^{b-2}{j\left(\left\lfloor\frac{n}{b^{k+1}}+\frac{j+1}{b}\right\rfloor-\left\lfloor\frac{n}{b^{k+1}}+\frac{j}{b}\right\rfloor\right)}.&\\
+\end{flalign*}
+
+Найдем слагаемое в сумме в правой части, которое не равно нулю. Пусть
+\begin{flalign*}
+  &p_k=\left\lfloor\frac{n}{b^{k+1}}\right\rfloor=\frac{p_kb^{k+1}}{b^{k+1}};&\\
+  &\frac{n-p_kb^{k+1}}{b^{k+1}}+\frac{j}{b}<1\leq \frac{n-p_kb^{k+1}}{b^{k+1}}+\frac{j+1}{b};&\\
+  &n-p_kb^{k+1}+jb^k<b^{k+1}\leq n-p_kb^{k+1}+jb^k+b^k;&\\
+  &n-(p_k+1)b^{k+1}<-jb^k\leq n-(p_k+1)b^{k+1}+b^k;&\\
+  &-\frac{n}{b^k}+(p_k+1)b-1\leq j<-\frac{n}{b^k}+(p_k+1)b;&\\
+  &\left(\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+1\right)b-\frac{n}{b^k}-1\leq j<\left(\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+1\right)b-\frac{n}{b^k}<b-1;&\\
+  &b\left(\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+1-\frac{n}{b^{k+1}}\right)-1\leq j<b\left(\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+1-\frac{n}{b^{k+1}}\right)<b-1;&\\
+  &j=\left\lceil b\left(\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+1-\frac{n}{b^{k+1}}\right)-1\right\rceil=b\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+b-1+\left\lceil -b\frac{n}{b^{k+1}}\right\rceil=b\left\lfloor\frac{n}{b^{k+1}}\right\rfloor+b-1-\left\lfloor b\frac{n}{b^{k+1}}\right\rfloor=&\\
+  &b-1-\left\lfloor b\frac{n}{b^{k+1}}-b\left\lfloor\frac{n}{b^{k+1}}\right\rfloor\right\rfloor=
+  b-1-\left\lfloor b\left(\frac{n}{b^{k+1}}-\left\lfloor\frac{n}{b^{k+1}}\right\rfloor\right)\right\rfloor=
+  b-1-\left\lfloor\frac{n\mod b^{k+1}}{b^k}\right\rfloor.&\\
+\end{flalign*}
+
+В последнем выражении правая часть не превышает $b-1$ и не может быть отрицательной. Нас интересуют $j<b-1$. Если $j=b-1$, то сумма в правой части обращается в $0$.
+
+\begin{flalign*}
+  &\sum_{j=1}^{b-1}{\left\lfloor\frac{n}{b^{k+1}}+\frac{j}{b}\right\rfloor}=
+  (b-1)\left\lfloor\frac{n}{b^{k+1}}+\frac{b-1}{b}\right\rfloor-\left(b-1-\left\lfloor\frac{n\mod b^{k+1}}{b^k}\right\rfloor\right)\mod(b-1).&\\
+\end{flalign*}
+
+Как мы выяснили выше, первое слагаемое обращается в $0$ при $k>\log_{b}{n}$. Второе слагаемое также обращается в $0$:
+\begin{flalign*}
+  &\frac{n\mod b^{k+1}}{b^k}<1\Longrightarrow n\mod b^{k+1}<b^k\Longrightarrow
+  n<b^k\Longrightarrow\log_{b}{n}<k.&\\
+\end{flalign*}
+
+Заметим, что при $k=\log_{b}{n}+1$, которое не обязательно является целым числом:
+\begin{flalign*}
+  &(b-1)\left\lfloor\frac{n}{b^{\log_{b}{n}+2}}+\frac{b-1}{b}\right\rfloor-\left(b-1-\left\lfloor\frac{n\mod b^{\log_{b}{n}+2}}{b^{\log_{b}{n}+1}}\right\rfloor\right)\mod(b-1)=&\\
+  &(b-1)\left\lfloor\frac{n}{nb^2}+\frac{b-1}{b}\right\rfloor-\left(b-1-\left\lfloor\frac{n\mod nb^2}{nb}\right\rfloor\right)\mod(b-1)=&\\
+  &(b-1)\left\lfloor\frac{b^2-b+1}{b^2}\right\rfloor-(b-1)\mod(b-1)=0-0=0.&\\
+\end{flalign*}
+
+Заметим, что при $k=\log_{b}{n}$, которое не обязательно является целым числом:
+\begin{flalign*}
+  &(b-1)\left\lfloor\frac{n}{b^{\log_{b}{n}+1}}+\frac{b-1}{b}\right\rfloor-\left(b-1-\left\lfloor\frac{n\mod b^{\log_{b}{n}+1}}{b^{\log_{b}{n}}}\right\rfloor\right)\mod(b-1)=&\\
+  &(b-1)\left\lfloor\frac{n}{nb}+\frac{b-1}{b}\right\rfloor-\left(b-1-\left\lfloor\frac{n\mod nb}{nb}\right\rfloor\right)\mod(b-1)=&\\
+  &(b-1)-0=b-1.&\\
+\end{flalign*}
+
+Следовательно, внешняя сумма имеет вид
+\begin{flalign*}
+  &\sum_{k=0}^{\lfloor\log_{b}{n}\rfloor}{(b-1)\left\lfloor\frac{n}{b^{k+1}}+\frac{b-1}{b}\right\rfloor-\left(b-1-\left\lfloor\frac{n\mod b^{k+1}}{b^k}\right\rfloor\right)\mod(b-1)}&\\
+\end{flalign*}
+
+Рассмотрим первое слагаемое:
+\begin{flalign*}
+  &b^{\lfloor\log_{b}{n}\rfloor}\leq n<b^{\lfloor\log_{b}{n}\rfloor+1}\Longrightarrow
+  \frac{1}{b}\leq\frac{n}{b^{\lfloor\log_{b}{n}\rfloor+1}}<1\Longrightarrow
+  1\leq\frac{n}{b^{\lfloor\log_{b}{n}\rfloor+1}}+\frac{b-1}{b}<1+\frac{b-1}{b}<1+1;&\\
+  &1\leq\frac{n}{b^{\lfloor\log_{b}{n}\rfloor}}<b\Longrightarrow
+  2-\frac{1}{b}<1+1\leq\frac{n}{b^{\lfloor\log_{b}{n}\rfloor+1}}+\frac{b-1}{b}<b+1-\frac{1}{b}<b+1;&\\
+  &b+1\leq\frac{n}{b^{\lfloor\log_{b}{n}\rfloor-1}}+\frac{b-1}{b}<b^2+1;&\\
+  &\cdots&\\
+  &b^{\lfloor\log_{b}{n}\rfloor-1}+1\leq\frac{n}{b}+\frac{b-1}{b}<b^{\lfloor\log_{b}{n}\rfloor}+1;&\\
+\end{flalign*}
+\begin{flalign*}
+  &\left\lfloor\frac{n}{b^{k+1}}+\frac{b-1}{b}\right\rfloor=\left\lfloor1+\frac{n-b^k}{b^{k+1}}\right\rfloor=
+  \begin{cases}
+    \left\lfloor\frac{n}{b^{k+1}}\right\rfloor,\ \frac{n}{b^{k+1}}-\left\lfloor\frac{n}{b^{k+1}}\right\rfloor<\frac{1}{b},\\
+    \left\lfloor\frac{n}{b^{k+1}}\right\rfloor+1,\ \frac{n}{b^{k+1}}-\left\lfloor\frac{n}{b^{k+1}}\right\rfloor\geq\frac{1}{b};
+  \end{cases}&\\
+\end{flalign*}
+
+В первом случае выражение можно интерпретировать как число целых раз, которое $b^k+1$ входит в $n$. Второе слагаемое обращается в $0$.
+Во втором случае к этому числу прибавляется $1$ с тем, чтобы затем произведения на $(b-1)$ уменьшить так, чтобы в оставшейся части числа $n$ уместилось $b^k-1$. Получаем результат, идентичный формуле
+\begin{flalign*}
+  &n=\sum_{k=0}^{\log_{b}{n}}{b^k\left\lfloor\frac{n}{b^k}\right\rfloor}.&\\
+\end{flalign*}
+
+Последнее заключение получено без вывода. Для отрицательных $n$ получаем $n-1$ (также без вывода).
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}

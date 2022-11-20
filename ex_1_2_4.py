@@ -3,6 +3,7 @@
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+from tabulate import tabulate
 
 def printFloorCeil():
     printExp("math.floor(1.1)", 1)
@@ -77,5 +78,89 @@ def print_revert_arithmetic():
         k=revert_arithmetic(i)
         print(f'{i}: {math.ceil(k)}')
 
-print_revert_arithmetic()
+#print_revert_arithmetic()
 
+#44.
+def first_frac_44(n, b, k):
+    return n/math.pow(b, k+1)
+
+def second_frac_44(j, b):
+    return j/b
+
+def item_44(n, j, b, k):
+    return first_frac_44(n, b, k)+second_frac_44(j, b)
+
+def item_floor_44(n,j,b,k):
+    return int(math.floor(item_44(n,j,b,k)))
+
+def sum_j_44(n,b,k):
+    s=0
+    for j in range(1, b):
+       s+=item_floor_44(n,j,b,k)
+    return s
+
+def first_approx_44(n,b,k):
+    return item_floor_44(n,b-1,b,k)
+
+def print_sums_j_44(n, b, kmax):
+    print(f'n: {n}, b: {b}, log_{{b}}{{n}}: {math.log(n, b) if n>0 else 0:.3f}')
+    headers = ["j\k"]
+    rows=[[f"{i+1}"] for i in range(b-1)]
+    sums=["s"]
+    part_sums=["part_s"]
+    j_lower=["j_lower"]
+    j_upper=["j_upper"]
+    first_approx=["first_approx"]
+    for k in range(kmax):
+        headers.append(k)
+        for j in range(1,b):
+            rows[j-1].append(f"{item_floor_44(n,j,b,k)} is {item_44(n,j,b,k):.3f} is {first_frac_44(n,b,k):.3f}+{second_frac_44(j,b):.3f}")
+        sums.append(sum_j_44(n,b,k))
+        part_sums.append((b-1)*item_floor_44(n,b-1,b,k))
+        jl=(int(math.floor(first_frac_44(n,b,k)))+1)*b-n/math.pow(b,k)-1
+        j_lower.append(f"{math.ceil(jl):.3f}")
+        j_upper.append(f"{-math.floor(-jl):.3f}")
+        first_approx.append(f"{first_approx_44(n,b,k):.3f}")
+    rows.append(sums)
+    rows.append(part_sums)
+    rows.append(j_lower)
+    rows.append(j_upper)
+    rows.append(first_approx)
+
+    print(tabulate(rows, headers=headers, tablefmt='orgtbl'))
+def print_tables_44():
+    print_sums_j_44(10, 7, 5)
+    print_sums_j_44(81, 9, 5)
+    print_sums_j_44(80, 9, 5)
+    print_sums_j_44(79, 9, 5)
+    print_sums_j_44(78, 9, 5)
+    print_sums_j_44(77, 9, 5)
+    print_sums_j_44(76, 9, 5)
+    print_sums_j_44(75, 9, 5)
+    print_sums_j_44(74, 9, 5)
+    print_sums_j_44(73, 9, 5)
+    print_sums_j_44(72, 9, 5)
+    print_sums_j_44(71, 9, 5)
+    print_sums_j_44(-71, 9, 5)
+    
+def check_44(n, b):
+    l=int(math.floor(math.log(n,b)))
+    d=[]
+    s=f'{n}='
+    c=0
+    for i in range(l):
+        p=l-i
+        pp=math.pow(b,p)
+        q,r=int(n/pp), n%pp
+        n=r
+        d.append(q)
+        s+=f'{q}*{b}^{p}+'
+        c+=q*pp
+    s+=f'{n}'
+    c+=n
+    print(s, c)
+
+
+check_44(73, 9)
+    
+        
