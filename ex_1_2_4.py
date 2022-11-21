@@ -4,6 +4,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 from tabulate import tabulate
+from random import randrange
 
 def printFloorCeil():
     printExp("math.floor(1.1)", 1)
@@ -161,6 +162,18 @@ def check_44(n, b):
     print(s, c)
 
 
-check_44(73, 9)
-    
+#check_44(73, 9)
+
+#45.
+def check_floor_revertion(m,n):
+    for j in range(n):
+        r=int(math.floor(m*j/n))
+        jc=int(math.ceil(n*r/m))
+        print(f'{"SUCC" if j==jc else "FAIL"}: m: {m}, n: {n}, j: {j}, r: {r}, j\': {jc}')
+
+def random_check():
+    for i in range(10):
+        check_floor_revertion(randrange(100)+1, randrange(100)+1)
+            
+random_check()
         

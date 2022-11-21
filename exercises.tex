@@ -3950,6 +3950,60 @@ $k$ принимает $n$ значений в интервале $[0..n)$, по
 
 Последнее заключение получено без вывода. Для отрицательных $n$ получаем $n-1$ (также без вывода).
 
+\subsubsection{45.}
+Результат упр. 37 несколько удивляет, т.к. из него следует, что
+\begin{flalign*}
+  \sum_{0\leq k<n}{\left\lfloor\frac{mk+x}{n}\right\rfloor}=
+  \sum_{0\leq k<m}{\left\lfloor\frac{nk+x}{m}\right\rfloor}.
+\end{flalign*}
+Это ``соотношение взаимности'' --- только один пример из множества подобных формул (см. раздел 3.3.3). Покажите, что для любой функции $f$
+\begin{flalign*}
+  \sum_{0\leq j<n}{f\left(\left\lfloor\frac{mj}{n}\right\rfloor\right)}=
+  \sum_{0\leq r<m}{\left\lceil\frac{rn}{m}\right\rceil(f(r-1)-f(r))}+nf(m-1).
+\end{flalign*}
+В частности, докажите, что
+\begin{flalign*}
+  \sum_{0\leq j<n}{\binom{\lfloor mj/n\rfloor+1}{k}}+
+  \sum_{0\leq j<m}{\left\lceil\frac{jn}{m}\right\rceil\binom{j}{k-1}}=
+  n\binom{m}{k}.
+\end{flalign*}
+[\emph{Указание.} Выполните замену переменных $r=\lfloor mj/n\rfloor$. Биномиальные коэффициенты $\binom{m}{k}$ обсуждаются в разделе 1.2.6.]
+
+\begin{flalign*}
+  &\sum_{0\leq j<n}{f\left(\left\lfloor\frac{mj}{n}\right\rfloor\right)}=
+  f(0)+
+  f\left(\left\lfloor\frac{m}{n}\right\rfloor\right)+\ldots+
+  f\left(\left\lfloor\frac{2m}{n}\right\rfloor\right)+\ldots+
+  f\left(\left\lfloor\frac{(n-1)m}{n}\right\rfloor\right)=&\\
+  &\sum_{1\leq k=j+1\leq n}{f\left(\left\lfloor\frac{m(k-1)}{n}\right\rfloor\right)}=
+  nf\left(\left\lfloor\frac{m(n-1)}{n}\right\rfloor\right)-\sum_{1\leq k<n}{k\left({f\left(\left\lfloor\frac{mk}{n}\right\rfloor\right)}-{f\left(\left\lfloor\frac{m(k-1)}{n}\right\rfloor\right)}\right)};&\\
+  &f\left(\left\lfloor\frac{m(n-1)}{n}\right\rfloor\right)=
+  f\left(\left\lfloor m-\frac{1}{n}\right\rfloor\right)=f(m-1);&\\
+  &r'=\frac{mj}{n}\Longrightarrow j=\frac{nr'}{m};\ r=\left\lfloor\frac{mj}{n}\right\rfloor;&\\
+\end{flalign*}
+\begin{flalign*}
+  &-\sum_{1\leq k<n}{k\left({f\left(\left\lfloor\frac{mk}{n}\right\rfloor\right)}-{f\left(\left\lfloor\frac{m(k-1)}{n}\right\rfloor\right)}\right)}=
+  \sum_{0\leq j<n-1}{(j+1)\left({f\left(\left\lfloor\frac{mj}{n}\right\rfloor\right)}-{f\left(\left\lfloor\frac{m(j+1)}{n}\right\rfloor\right)}\right)};&\\
+  &0\leq j<n\Longrightarrow 0\leq \frac{mj}{n}<m\Longrightarrow 0\leq r<m;&\\
+  &0\leq j<n-1\Longrightarrow 0\leq \frac{mj}{n}<\frac{m(n-1)}{n}<m\Longrightarrow 0\leq r<m;&\\
+\end{flalign*}
+Если $m<=n$, то формула $\sum_{0\leq j<n-1}{(j+1)\left({f\left(\left\lfloor\frac{mj}{n}\right\rfloor\right)}-{f\left(\left\lfloor\frac{m(j+1)}{n}\right\rfloor\right)}\right)}=\sum_{1\leq r<m}{\left\lceil\frac{rn}{m}\right\rceil(f(r-1)-f(r))}=\sum_{0\leq r<m}{\left\lceil\frac{rn}{m}\right\rceil(f(r-1)-f(r))}$ справедлива в силу того, что одному целому $r$ соответствует одно или несколько целых $j$, и
+\begin{flalign*}
+  &p=f\left(\left\lfloor\frac{mj}{n}\right\rfloor\right)-
+  f\left(\left\lfloor\frac{m(j+1)}{n}\right\rfloor\right)=\begin{cases}
+  0,\ \left\lfloor\frac{m(j+1)}{n}\right\rfloor-\left\lfloor\frac{mj}{n}\right\rfloor=0,\\
+  f(r-1)-f(r)=,\ \left\lfloor\frac{m(j+1)}{n}\right\rfloor-\left\lfloor\frac{mj}{n}\right\rfloor=1;
+  \end{cases}&\\
+  &j=\left\lceil\frac{rn}{m}\right\rceil\ (\textrm{если }p\neq 0);&\\
+\end{flalign*}
+
+Если $m>n$, то одному целому $j$ соответствует несколько $r$. Но $j=\left\lceil\frac{rn}{m}\right\rceil$ для всех $j$. Если существует такие $r_1, r_2, \ldots, r_l$, что им соответствует одно число $j$, то 
+\begin{flalign*}
+  &\left\lceil\frac{r_1n}{m}\right\rceil=\left\lceil\frac{r_2n}{m}\right\rceil=\ldots=\left\lceil\frac{r_ln}{m}\right\rceil;&\\
+  &\sum_{1\leq i\leq l}{f(r_{i-1})-f(r_i)}=f(r_{i-1})-f(r_l).&\\
+\end{flalign*}
+К доказательству частного случая можно вернуться при рассмотрении биномиальных коэффициентов.
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}
