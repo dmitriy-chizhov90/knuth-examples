@@ -4004,6 +4004,58 @@ $k$ принимает $n$ значений в интервале $[0..n)$, по
 \end{flalign*}
 К доказательству частного случая можно вернуться при рассмотрении биномиальных коэффициентов.
 
+%TODO%
+
+\subsubsection{46.}
+(\emph{Обобщенный закон взаимности}.) Обобщите формулу из упр. 45 таким образом, чтобы получить выражение для суммы $\sum_{0\leq j<\alpha n}{f(\lfloor mj/n\rfloor)}$, где $\alpha$ --- \emph{любое} положительное действительное число.
+%TODO%
+\subsubsection{47.}
+%TODO%
+\subsubsection{48.}
+Пусть $m$ и $n$ --- целые числа. Докажите или опровергните следующие тождества:
+\begin{flalign*}
+  \textrm{(a) }\left\lfloor\frac{m+n-1}{n}\right\rfloor=\left\lceil\frac{m}{n}\right\rceil;\ \ \ \ \textrm{(b) }\left\lfloor\frac{n+2-\lfloor n/25\rfloor}{3}\right\rfloor=\left\lfloor\frac{8n+24}{25}\right\rfloor.
+\end{flalign*}
+
+\begin{flalign*}
+  &\textrm{a) }\left\lfloor\frac{m}{n}+\frac{n-1}{n}\right\rfloor=\begin{cases}
+  \left\lfloor\frac{m}{n}\right\rfloor+\left\lfloor\frac{n-1}{n}\right\rfloor=\left\lfloor\frac{m}{n}\right\rfloor,\textrm{ если }\frac{m\mod n+n-1}{n}<1,\\
+  \left\lfloor\frac{m}{n}\right\rfloor+\left\lfloor\frac{n-1}{n}\right\rfloor+1=
+  \left\lfloor\frac{m}{n}\right\rfloor+1,\textrm{ если }\frac{m\mod n+n-1}{n}\geq1;
+  \end{cases}&\\
+  &0\leq m\mod n<n.&
+\end{flalign*}
+Для того, чтобы выполнялось первое условие
+\begin{flalign*}
+  &m\mod n+n-1<n;&\\
+  &m\mod n<1.&\\
+\end{flalign*}
+Т.е первое условие выполняется только при $m$ кратном $n$, тогда $\left\lfloor\frac{m}{n}\right\rfloor=\left\lceil\frac{m}{n}\right\rceil$.
+Второе условие выполняется при $m$ некратном $n$:
+\begin{flalign*}
+  &m\mod n+n-1\geq n;&\\
+  &m\mod n\geq 1.&\\
+\end{flalign*}
+И тогда $\left\lfloor\frac{m}{n}\right\rfloor+1=\left\lceil\frac{m}{n}\right\rceil$.
+
+\begin{flalign*}
+  &\textrm{b) }\left\lfloor\frac{8n+24}{25}\right\rfloor=
+  \left\lceil\frac{8n}{25}\right\rceil;&\\
+  &\left\lfloor\frac{n+2-\lfloor n/25\rfloor}{3}\right\rfloor=
+  \left\lceil\frac{n-\lfloor n/25\rfloor}{3}\right\rceil;&\\
+  &\frac{8n}{25}=\frac{n}{3+\frac{1}{8}}=\frac{n}{3(1+\frac{1}{24})}=
+  \frac{n}{3(\frac{25}{24})}=\frac{\frac{24n}{25}}{3}=\frac{n-\frac{n}{25}}{3}.&\\
+\end{flalign*}
+Если $n/25$ целое, то получаем верное тождество. В противном случае
+\begin{flalign*}
+  &\frac{n-\frac{n}{25}}{3}<\frac{n-\lfloor\frac{n}{25}\rfloor}{3};&\\
+  &\left\lfloor\frac{n}{25}\right\rfloor\leq\frac{n}{25}<\left\lfloor\frac{n}{25}\right\rfloor+1;&\\
+  &-\left\lfloor\frac{n}{25}\right\rfloor-1<-\frac{n}{25}\leq-\left\lfloor\frac{n}{25}\right\rfloor;&\\
+  &n-\left\lfloor\frac{n}{25}\right\rfloor-1<n-\frac{n}{25}\leq n-\left\lfloor\frac{n}{25}\right\rfloor;&\\
+  &\frac{n-\left\lfloor\frac{n}{25}\right\rfloor}{3}-\frac{1}{3}<\frac{n-\frac{n}{25}}{3}\leq \frac{n-\left\lfloor\frac{n}{25}\right\rfloor}{3}.&\\
+\end{flalign*}
+Таким образом, получаем, что разница между неокругленными дробями меньше $\frac{1}{3}$. Большая дробь может быть целой или иметь дробную часть $\frac{1}{3}$ или $\frac{2}{3}$. Если большая дробь целая, то меньшая округляется до неё в большую сторону. Если большая дробь дробная, то меньшая имеет ту же целую часть и тоже не является целой. Следовательно, при округлении они дают одно и тоже целое число.
+
 \subsection{Перестановки и факториалы}
 
 \subsection{Биномиальные коэффициенты}

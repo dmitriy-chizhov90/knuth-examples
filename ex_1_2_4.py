@@ -175,5 +175,11 @@ def random_check():
     for i in range(10):
         check_floor_revertion(randrange(100)+1, randrange(100)+1)
             
-random_check()
+#random_check()
+
+#48.
+def check_48():
+    for n in range(-1000, 1000):
+        if math.floor((n+2-math.floor(n/25))/3) != math.floor((8*n+24)/(25)):
+            print(f'Not equal at {n}')
         
