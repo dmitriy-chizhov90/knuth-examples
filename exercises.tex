@@ -4119,6 +4119,61 @@ $52!$
   &\delta=\frac{2}{40320}*100\%\approx 0.005\%.&\\
 \end{flalign*}
 
+\subsubsection{6.}
+Используя формулу (8), запишите $20!$ в виде произведения простых сомножителей.
+
+\begin{flalign*}
+  &\mu_{2}=\left\lfloor\frac{20}{2}\right\rfloor+\left\lfloor\frac{20}{4}\right\rfloor+\left\lfloor\frac{20}{8}\right\rfloor+\left\lfloor\frac{20}{16}\right\rfloor=10+5+2+1=18;&\\
+  &\mu_{3}=\left\lfloor\frac{20}{3}\right\rfloor+\left\lfloor\frac{20}{9}\right\rfloor=6+2=8;&\\
+  &\mu_{5}=\left\lfloor\frac{20}{5}\right\rfloor=4;&\\
+  &\mu_{7}=2;&\\
+  &\mu_{11}=\mu_{13}=\mu_{17}=\mu_{19}=1;&\\
+  &20!=2^{18}\cdot 3^{8}\cdot 5^{4}\cdot 7^{2}\cdot 11\cdot 13\cdot 17\cdot 19.&\\
+\end{flalign*}
+
+\subsubsection{7.}
+Покажите, что ``обощенная терминальная'' функция, определенная формулой (10), удовлетворяет тождеству $x?=x+(x-1)?$ для всех действительных $x$.
+
+\begin{flalign*}
+  &x?=\frac{1}{2}x(x+1)=\frac{1}{2}x^2+\frac{1}{2}x;&\\
+  &(x-1)?=\frac{1}{2}(x-1)x=\frac{1}{2}x^2-\frac{1}{2}x;&\\
+  &x+(x-1)?=\frac{1}{2}(x-1)x=\frac{1}{2}x^2-\frac{1}{2}x+\frac{2}{2}x=
+  \frac{1}{2}x^2+\frac{1}{2}x=x?.&\\
+\end{flalign*}
+
+\subsubsection{8.}
+Покажите, что предел в формуле (13) равен $n!$ и в том случае, если $n$ --- неотрицательное целое число.
+
+\begin{flalign*}
+  &\lim_{m\rightarrow\infty}{\frac{m^nm!}{(n+1)(n+2)\ldots(n+m)}}=
+  \lim_{m\rightarrow\infty}{\frac{m^n(m(m-1)(m-2)\ldots(n+2)(n+1)n(n-1)\ldots 2\ 1)}{(n+m)(n+m-1)\ldots(m+1)m(m-1)(m-2)\ldots(n+2)(n+1)}}=&\\
+  &\lim_{m\rightarrow\infty}{\frac{m^n(n(n-1)\ldots 2\ 1)}{(n+m)(m+n-1)\ldots(m+1)}}=\lim_{m\rightarrow\infty}{n(n-1)\ldots 2\ 1}=n(n-1)\ldots 2\ 1=n!&\\
+\end{flalign*}
+
+\subsubsection{9.}
+Определите значения $\Gamma\left(\frac{1}{2}\right)$ и $\Gamma\left(-\frac{1}{2}\right)$ на основании того, что $\left(\frac{1}{2}\right)!=\sqrt{\pi}/2$.
+
+\begin{flalign*}
+  &\Gamma(x)=\frac{x!}{x};\Longrightarrow\Gamma\left(\frac{1}{2}\right)=\frac{\left(\frac{1}{2}\right)!}{\frac{1}{2}}=\frac{2\sqrt{\pi}}{2}=\sqrt{\pi}.&\\
+\end{flalign*}
+\begin{flalign*}
+  &(-z!)\Gamma(z)=\frac{\pi}{\sin{\pi z}};\Longrightarrow\Gamma(-z)=-\frac{\pi}{z!\sin{\pi z}};&\\
+  &\Gamma\left(-\frac{1}{2}\right)=-\frac{\pi}{\left(\frac{1}{2}\right)!\sin{\frac{\pi}{2}}}=-2\sqrt{\pi}.&\\
+\end{flalign*}
+
+\subsubsection{10.}
+Справедливо ли тождество $\Gamma(x+1)=x\Gamma(x)$ для всех действительных чисел $x$ (см. упр. 7)?
+\begin{flalign*}
+  &\Gamma(x)=\lim_{m\rightarrow\infty}{\frac{m^xm!}{x(x+1)(x+2)\ldots(x+m)}};&\\
+  &\Gamma(x+1)=\lim_{m\rightarrow\infty}{\frac{m^{x+1}m!}{(x+1)(x+2)\ldots(x+m)(x+1+m)}};&\\
+  &x\Gamma(x)=\lim_{m\rightarrow\infty}{\frac{xm^xm!}{x(x+1)(x+2)\ldots(x+m)}}=
+  \lim_{m\rightarrow\infty}{\frac{xm^xm!}{x(x+1)(x+2)\ldots(x+m)}\frac{m}{x+1+m}}=&\\
+  &\lim_{m\rightarrow\infty}{\frac{m^{x+1}m!}{(x+1)(x+2)\ldots(x+m)(x+1+m)}}=
+  \Gamma(x+1).&\\
+\end{flalign*}
+
+Данные построения не выполняются в случае отрицательных целых $x$ или $x=0$.
+
 \subsection{Биномиальные коэффициенты}
 
 \subsubsection{10.}
