@@ -4185,6 +4185,29 @@ $52!$
 
 Для $r=r$ $\mu=(2^{e_1-1}+2^{e_1-2}+\ldots+2^{e_1-e_1+1}+2^{e_1-e_1})+(2^{e_2-1}+2^{e_2-2}+\ldots+2^{e_2-e_2+1}+2^{e_2-e_2})+\ldots+(2^{e_r-1}+2^{e_r-2}+\ldots+2^{e_r-e_r+1}+2^{e_r-e_r})=2^{e_1}-1+2^{e_2}-1+\ldots+2^{e_r}-1=n-r$.
 
+\subsubsection{12.}
+(А. Лежандр, 1808.) Обобщим результата предыдущего упражнения. Пусть $p$ --- простое число и представление $n$ в системе счисления с основанием $p$ имеет вид $n=a_kp^k+a_{k-1}p^{k-1}+\ldots+a_1p+a_0$. Найдите простую формулу, выражающую число $\mu$ из формулы (8) через $n$, $p$ и  коэффициенты $a_k$.
+
+\begin{flalign*}
+  &\left\lfloor\frac{a_kp^k+a_{k-1}p^{k-1}+\ldots+a_1p+a_0}{p}\right\rfloor=
+  a_kp^{k-1}+a_{k-1}p^{k-2}+\ldots+a_2p+a_1;&\\
+  &\left\lfloor\frac{a_kp^k+a_{k-1}p^{k-1}+\ldots+a_1p+a_0}{p^2}\right\rfloor=
+  a_kp^{k-2}+a_{k-1}p^{k-3}+\ldots+a_3p+a_2;&\\
+  &\ldots&\\
+  &\left\lfloor\frac{a_kp^k+a_{k-1}p^{k-1}+\ldots+a_1p+a_0}{p^{k-1}}\right\rfloor=
+  a_kp+a_{k-1};&\\
+  &\left\lfloor\frac{a_kp^k+a_{k-1}p^{k-1}+\ldots+a_1p+a_0}{p^{k}}\right\rfloor=
+  a_k;&\\
+  &\left\lfloor\frac{a_kp^k+a_{k-1}p^{k-1}+\ldots+a_1p+a_0}{p^{k+1}}\right\rfloor=
+  0;&\\
+\end{flalign*}
+\begin{flalign*}
+  &a_k\sum_{0\leq i\leq k-1}{p^i}+a_{k-1}\sum_{0\leq i\leq k-2}{p^i}+\ldots+a_2(1+p)+a_1=&\\
+  &a_k\left(\frac{1-p^{k}}{1-p}\right)+a_{k-1}\left(\frac{1-p^{k-1}}{1-p}\right)+\ldots+a_2\left(\frac{1-p^2}{1-p}\right)+a_1\frac{1-p}{1-p}=&\\
+  &\frac{a_k(1-p^k)+a_{k-1}(1-p^{k-1})+\ldots+a_2(1-p^2)+a_1(1-p)}{1-p}=&\\
+  &\frac{-(n-a_0)+\sum_{0<i\leq k}{a_i}}{1-p}=\frac{n-\sum_{0\leq i\leq k}{a_i}}{p-1}.&\\
+\end{flalign*}
+
 \subsection{Биномиальные коэффициенты}
 
 \subsubsection{10.}
