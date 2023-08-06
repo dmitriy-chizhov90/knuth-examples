@@ -1,0 +1,162 @@
+\documentclass{book}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{layout}
+
+\geometry{a4paper, textwidth=426pt}
+
+\title{Задание 1 \thanks{}}
+\author{Dim Ch}
+\date{August 2023}
+
+\graphicspath{ {../images/} }
+
+\begin{document}
+
+\section*{Занятие 1}
+
+\subsection*{}
+\subsubsection{6(б).}
+
+Покажите, что для произвольных множеств A, B и C выполнено если $A \subset B$ и $B \subset A$, то $A = B$.
+
+По определению подможества
+
+\begin{flalign*}
+  \forall a \in A \rightarrow a  \in B \textrm{;} && \\
+  \forall a \in B \rightarrow a  \in A \textrm{;} && \\
+\end{flalign*}
+
+Таким образом в $B$ есть все элементы из $A$ ($\forall a \in A \rightarrow a  \in B$) и нет элеметов, которых не было бы в $A$ ($\forall a \in B \rightarrow a  \in A \Rightarrow \nexists a \in B \rightarrow a \notin A$). Получается, что $B$ состоит из тех же элементов, что и $A$, т.е. $A = B$. 
+
+\subsubsection{9.}
+
+Что такое подмножество? Разница подмножества и принадлежности. Приведите пример.
+
+Множество $A$ называется подмножеством множества $B$, если все элементы, принадлежащие $A$, также принадлежат $B$. Формальное определение: $ A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) $.
+
+Не следует путать подможество и принадлежность. Если множество $A$ является подмножеством $B$, то все элементы $A$ входят в $B$. Если же $A$ принадлежит $B$, то $A$ является элементом $B$. Сами же элементы $A$ могут как входить в $B$ так и не входить в него.
+
+Например, для множеств $A = \{ 1; 2; 3 \}$, $B = \{ 0; 1; 2; 3; 4; 5\}$ и $C = \left\{ \{ 1; 2; 3\}; \{0; 1; 2; 3; 4; 5\} \right\}$ справедливо $A \subset B$, $A \in C$, $B \in C$.
+
+\subsubsection{12(a).}
+
+Докажите, что $A \cup B = B \cup A$.
+
+По определению объединением множеств называется множество $ A\cup B=\{x\mid x\in A\vee x\in B\} = \{x\mid x\in B\vee x\in A\} = B\cup A$.
+
+\subsubsection{12(б).}
+Докажите, что $(A \cap B) \cap C = A \cap (B \cap C)$.
+
+По определению $(A \cap B) = \{x\mid x\in A\wedge x\in B\}$. Тогда $(A \cap B) \cap C = \{x\mid (x\in A\wedge x\in B)\wedge x\in C\} = \{x\mid x\in A\wedge x\in B\wedge x\in C\} = \{x\mid x\in A\wedge (x\in B\wedge x\in C)\} = A \cap (B \cap C)$.
+
+\subsubsection{12(г).}
+
+Докажите, что $ A \setminus (A \setminus B) = A \cap B$.
+
+По определению разности $C = A\setminus B=\{x\mid x\in A\wedge x\not \in B\}$. Также $A\setminus C = \{x\mid x\in A\wedge x\not \in C\}$.
+
+$\bar{C} = \{x\mid x\not\in C\} = \{x\mid x\not\in A\vee x\in B\} = \{x\mid x\in B\}$.
+Таким образом $A\setminus C = \{x\mid x\in A\wedge x\not \in C\} = \{x\mid x\in A\wedge x \in B\} = A \cap B$.
+
+\subsubsection{16(a).}
+
+Докажите, что для любых множеств $A$, $B$ и $C$ $A \cong A$.
+
+Два множества равномощны, если между ними установлено взаимнооднозначное соответствие. Каждому элементу множества $A$ можно поставить в соответствие этот же элемент множества $A$. Следовательно множетсво $A$ равномощно самому себе.
+
+\subsubsection{16(б).}
+
+Докажите, что для любых множеств $A$, $B$ и $C$ если $A \cong B$, то $B \cong A$.
+
+Если $A \cong B$, то каждому элементу $A$ можно поставить в соответствие единственный элемент из $B$. Тогда каждому элементу из $B$ соответствует тот элемент из $A$, которому соответствует этот элемент из $B$. Таким образом каждому элементу из $B$ поставлен в соответствие один элемент из $A$ и $B \cong A$.
+
+\subsubsection{16(в).}
+
+Докажите, что для любых множеств $A$, $B$ и $C$ если $A \cong B$ и $B \cong C$, то $A \cong C$.
+
+Имеем взаимнооднозначное соответствие между элементами множетсва $A$ и множества $B$, а также $B$ и $C$. Тогда каждому элементу $a_i$, которому соответствует элемент $b_i$, можно поставить в соответствие единственный элемент $c_i$, который также соответствует $b_i$. Таким образом $A \cong C$.
+
+\subsubsection{18.}
+Докажите, что любое подмножество счётного множества счётно или конечно.
+
+Счетное множество равномощно множеству натуральных чисел. Пусть множество $A \cong \mathbb{N}$ и $B \subset A$.
+
+Очевидно, что $B$ может быть конечным и бесконечным. Если $B$ бесконечно, то $A \cong B$, т.к. каждому элементу множества $A$ можно поставить в соответствие единственный элемент множетсва $B$. Например, $A = \{\dots; a_{-2}; a_{-1}; a_0; a_1; a_2; \dots\}$ и $B = \{\dots; b_{-2}; b_{-1}; b_0; b_1; b_2; \dots\}$. Т.к. $B \subset A$, то должна существовать пара элементов $(a_i, b_j)$, такие что $a_i = b_j$.
+
+\paragraph{а)} Пусть $A$ и $B$ не имеют нижних и верхних границ и $a_i = b_j$, тогда можно установить соответствие следующим образом:
+
+\begin{tabularx}{0.6\textwidth} { 
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline  $A$ & $\dots$ & $a_{i-2}$ & $a_{i-1}$ & $a_i$ & $a_{i+1}$ & $a_{i+2}$ & $\dots$ \\
+ \hline  $B$ & $\dots$ & $b_{j-2}$ & $b_{j-1}$ & $b_j$ & $b_{j+1}$ & $b_{j+2}$ & $\dots$ \\
+ \hline
+\end{tabularx}
+
+Значит $B \cong \mathbb{N}$, т.к. $B \cong A$ и $A \cong \mathbb{N}$.
+
+\paragraph{б)} Пусть $A$ и $B$ имеют нижние границы $a_0$ и $b_0$. Тогда можно установить соответствие $a_i \leftrightarrow b_i$. Случай, когда оба множества имеют верхние границы рассматривается аналогично.
+
+\paragraph{в)} Пусть $A$ не имеет нижнюю и верхнюю границы, а $B$ имеет нижнюю границу, тогда можно установить соответствие следующим образом:
+
+\begin{tabularx}{0.6\textwidth} { 
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline  $A$ & $\dots$ & $a_{-2}$ & $a_{-1}$ & $a_0$ & $a_{1}$ & $a_{2}$ & $\dots$ \\
+ \hline  $B$ & $\dots$ & $b_{3}$ & $b_{1}$ & $b_0$ & $b_{2}$ & $b_{4}$ & $\dots$ \\
+ \hline
+\end{tabularx}.
+
+\paragraph{г)} Случай, когда $A$ имеет только верхнюю границу, а $B$ только нижнюю противоречит условию $B \subset A$.
+
+\subsubsection{20.}
+
+Докажите счетность рациональных чисел $\mathbb{Q}$.
+
+Рациональным числом $r = \frac{m}{n}$, где $m \in \mathbb{Z}$, а $n \in \mathbb{N}$. По другому $\mathbb{Q} = \{(m,n)\mid m \in \mathbb{Z}, n \in \mathbb{N}\} = \mathbb{Z} \times \mathbb{N}$. А как мы доказали в упр. 19 декартово произведение двух множеств счётно.
+
+\subsubsection{13*.}
+
+Решите уравнение: $B \cap X = A$ и $B \cup X = C$ и $A \subset B \subset C$ относительно $ X $.
+
+Т.к. $A \subset B$, то возможны три случая: $A = \varnothing$, $A = B$, и $A$ содержит некоторые элементы $B$. То же самое справедливо относительно $B$ и $C$.
+
+\begin{flalign*}
+  B\cap X=\{x\mid x\in B\wedge x\in X\} = \{x\mid x\in A\} \textrm{; (1)} &&  \\
+  B\cup X=\{x\mid x\in B\vee x\in X\} = \{x\mid x\in C\} \textrm{; (2)} && \\
+  A \subset B = \forall x \in A \rightarrow x  \in B \textrm{; (3)} && \\
+  B \subset C = \forall x \in B \rightarrow x  \in C \textrm{; (4)} && \\
+  A \subset X \textrm{  } \backslash\backslash \textrm{ из (1); (5)} && \\
+  B\setminus A \not\subset X \textrm{  } \backslash\backslash \textrm{ из (1); (6)} && \\
+  X \subset C \textrm{  } \backslash\backslash \textrm{ из (2); (7)} && \\
+  C \setminus B \subset X \textrm{  } \backslash\backslash \textrm{ из (2); (8)} && \\
+  A \subset X \subset C \textrm{  } \backslash\backslash \textrm{ из (5) и (7); (9)} && \\
+  X = A + C \setminus B \textrm{  } \backslash\backslash \textrm{ из (6), (9), (5) и (8). (10)} && \\
+\end{flalign*}
+
+
+
+
+\end{document}
